@@ -29,7 +29,7 @@ public class LoginApp {
     String getUsr;
     boolean getSuccess;
 
-    LoginService loginService;
+    LoginService loginService = new LoginService();
     ServerRequest serverRequest;
 
     @FXML
@@ -43,7 +43,6 @@ public class LoginApp {
     @FXML
     private AnchorPane loginAnchor;
 
-
     @FXML
     void loginTo(ActionEvent event) throws IOException {
         usr = userName.getText().trim();
@@ -52,9 +51,9 @@ public class LoginApp {
         if (isNullOrEmpty(usr) || isNullOrEmpty(pass)) {
             Dialog.errorMessage("Field Empty", "Please fill all field");
         } else {
-            LoginService login = new LoginService();
+//            LoginService login = new LoginService();
             Boolean status = null;
-            status = login.loginRequest(usr, pass);
+            status = loginService.loginRequest(usr, pass);
             if(status){
                 Window stage = loginAnchor.getScene().getWindow();
                SceneUtility sceneUtility  = new SceneUtility();
@@ -72,15 +71,13 @@ public class LoginApp {
             if (isNullOrEmpty(usr) || isNullOrEmpty(pass)) {
                 Dialog.errorMessage("Field Empty", "Please fill all field");
             } else {
-                LoginService login = new LoginService();
-                Boolean status = login.loginRequest(usr, pass);
-
+//                LoginService login = new LoginService();
+                Boolean status = loginService.loginRequest(usr, pass);
                 if(status){
                     Window stage = loginAnchor.getScene().getWindow();
                     SceneUtility sceneUtility  = new SceneUtility();
                     sceneUtility.homeScene((Stage) loginAnchor.getScene().getWindow());
                 }
-
             }
         }
     }
@@ -96,36 +93,6 @@ public class LoginApp {
             return false;
         return true;
     }
-
-//    public void homeScene() throws IOException {
-//        Window stage = loginAnchor.getScene().getWindow();
-//        stage.hide();
-//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
-//
-//        root.setOnMousePressed(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                xOffset = event.getSceneX();
-//                yOffset = event.getSceneY();
-//            }
-//        });
-//
-//        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-//            @Override
-//            public void handle(MouseEvent event) {
-//                xOffset = event.getSceneX();
-//                yOffset = event.getSceneY();
-//            }
-//        });
-//
-//
-//        Scene scene = new Scene(root);
-//        Stage homeStage = new Stage();
-////        homeStage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/icon.png")));
-//        homeStage.setScene(scene);
-//        homeStage.initStyle(StageStyle.UNDECORATED);
-//        homeStage.show();
-//    }
 
 
 }

@@ -4,37 +4,32 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.travest.fingerfx.Entity.AuthenticateErrorResult;
 import com.travest.fingerfx.Entity.LoginResult;
 import com.travest.fingerfx.Entity.Record;
-import com.travest.fingerfx.MainApp;
 import com.travest.fingerfx.utility.Consts;
 import com.travest.fingerfx.utility.Dialog;
-import javafx.fxml.FXML;
-import javafx.scene.layout.AnchorPane;
+import com.travest.fingerfx.utility.AppData;
 import okhttp3.*;
 
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.Handler;
 
 public class LoginService {
 
     private final OkHttpClient client = new OkHttpClient();
-
-    @FXML
-    private AnchorPane loginAnchor;
 
     private Record record;
     private String token;
     private String message;
 
     public Boolean status;
-    private Handler mHandler;
+
+    public AppData singleton;
 
     public Boolean loginRequest(String username, String password) throws IOException {
 
 //        OkHttpClient client = new OkHttpClient();
         OkHttpClient client1 = client.newBuilder()
-                .readTimeout(500, TimeUnit.MILLISECONDS)
-                .connectTimeout(2000, TimeUnit.MILLISECONDS)
+                .readTimeout(Consts.readTimeout, TimeUnit.MILLISECONDS)
+                .connectTimeout(Consts.readTimeout, TimeUnit.MILLISECONDS)
                 .build();
 
         RequestBody requestBody = new FormBody.Builder()
@@ -54,9 +49,11 @@ public class LoginService {
                 LoginResult result = new ObjectMapper().readValue(response.body().string(), LoginResult.class);
                 record = result.getRecord();
                 token = result.getToken();
-                MainApp app = new MainApp();
-                app.setRecord(record);
-                System.out.println("record :" + record.getUsername());
+
+                singleton.setRecord(record);
+                singleton.setToken(token);
+
+
                 return true;
 
             } else {
