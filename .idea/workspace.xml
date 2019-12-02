@@ -142,6 +142,7 @@
     <findStrings>
       <find>dependency</find>
       <find>maven</find>
+      <find>clien</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -151,9 +152,7 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/src/main/resources/fxml/Login.fxml" />
-        <option value="$PROJECT_DIR$/src/main/resources/styles/Styles.css" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FXMLController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/MainApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/TestJason.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/Record.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/LoginResult.java" />
@@ -347,7 +346,7 @@
       <workItem from="1575011924803" duration="718000" />
       <workItem from="1575015359817" duration="6808000" />
       <workItem from="1575252711647" duration="1170000" />
-      <workItem from="1575255138864" duration="59000" />
+      <workItem from="1575255138864" duration="1238000" />
     </task>
     <servers />
   </component>
@@ -507,7 +506,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/LoginService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/LoginApp.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
           <caret line="58" column="56" lean-forward="true" selection-start-line="58" selection-start-column="56" selection-end-line="58" selection-end-column="56" />
