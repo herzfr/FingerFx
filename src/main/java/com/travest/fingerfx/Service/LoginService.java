@@ -41,24 +41,30 @@ public class LoginService {
 
         Response response = client.newCall(request).execute();
 
-        if (response.code() == 200) {
-            String jsonString = response.body().string();
-            LoginResult result = new ObjectMapper().readValue(jsonString, LoginResult.class);
-            record = result.getRecord();
-            token = result.getToken();
-            status = true;
-            MainApp app = new MainApp();
-            app.setRecord(record);
-            System.out.println("record :" + record.getUsername());
-            return true;
+        if (response.isSuccessful()) {
+            if (response.code() == 200) {
+                String jsonString = response.body().string();
+                LoginResult result = new ObjectMapper().readValue(jsonString, LoginResult.class);
+                record = result.getRecord();
+                token = result.getToken();
+                MainApp app = new MainApp();
+                app.setRecord(record);
+                System.out.println("record :" + record.getUsername());
+                return true;
 
+            } else {
+                String jsonString = response.body().string();
+                AuthenticateErrorResult result = new ObjectMapper().readValue(jsonString, AuthenticateErrorResult.class);
+                message = result.getMessage();
+                Dialog.errorMessage("Login Error", message);
+                return false;
+            }
         } else {
-            String jsonString = response.body().string();
-            AuthenticateErrorResult result = new ObjectMapper().readValue(jsonString, AuthenticateErrorResult.class);
-            message = result.getMessage();
-            Dialog.errorMessage("Login Error", message);
+
+            Dialog.errorMessage("Login Error", "Failed to connect server");
             return false;
         }
+
 
 //        client.newCall(request).enqueue(new Callback() {
 //
@@ -115,4 +121,4 @@ public class LoginService {
 //        return status;
     }
 
-}
+}   
