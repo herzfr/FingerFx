@@ -76,6 +76,14 @@ public class FingerMainApp implements Initializable {
     @FXML
     private FontAwesomeIconView incubLight;
     @FXML
+    private FontAwesomeIconView conLog;
+    @FXML
+    private FontAwesomeIconView keyLog;
+    @FXML
+    private FontAwesomeIconView regLog;
+    @FXML
+    private FontAwesomeIconView clsLog;
+    @FXML
     private Label lblInfo;
     @FXML
     private Button btnConn;
@@ -93,32 +101,36 @@ public class FingerMainApp implements Initializable {
     @FXML
     void onConnection(ActionEvent event) {
         pnlConn.toFront();
-        fieldDSN.setDisable(true);
-        fieldBRGS.setDisable(true);
-        fieldPORT.setDisable(true);
-        fieldSPED.setDisable(true);
-        fieldCONT.setDisable(true);
-        fieldDVID.setDisable(true);
-        fieldFWVS.setDisable(true);
-        fieldGAIN.setDisable(true);
-        fieldDPI.setDisable(true);
-        fieldHEIGHT.setDisable(true);
-        fieldWIDTH.setDisable(true);
+        conLog.setStyle("-fx-fill: #2bc344;");
+        keyLog.setStyle("-fx-fill: #fff;");
+        regLog.setStyle("-fx-fill: #fff;");
+        clsLog.setStyle("-fx-fill: #fff;");
     }
 
     @FXML
     void onVerify(ActionEvent event) {
         pnlVerify.toFront();
+        conLog.setStyle("-fx-fill: #fff;");
+        keyLog.setStyle("-fx-fill: #2bc344;");
+        regLog.setStyle("-fx-fill: #fff;");
+        clsLog.setStyle("-fx-fill: #fff;");
     }
 
     @FXML
     void onRegister(ActionEvent event) {
         pnlReg.toFront();
+        conLog.setStyle("-fx-fill: #fff;");
+        keyLog.setStyle("-fx-fill: #fff;");
+        regLog.setStyle("-fx-fill: #2bc344;");
+        clsLog.setStyle("-fx-fill: #fff;");
     }
 
     @FXML
     void onDisconnect(ActionEvent event) {
-
+        conLog.setStyle("-fx-fill: #fff;");
+        keyLog.setStyle("-fx-fill: #fff;");
+        regLog.setStyle("-fx-fill: #fff;");
+        clsLog.setStyle("-fx-fill: #2bc344;");
     }
 
     @FXML
@@ -129,10 +141,44 @@ public class FingerMainApp implements Initializable {
     @FXML
     void onLedOff(ActionEvent event) {
 
+        displayCon.appendText("");
+        displayCon.appendText(" \n");
+        displayCon.appendText(jsgfpLib + "\n");
+
+        if (jsgfpLib != null) {
+            led = false;
+            ret = jsgfpLib.SetLedOn(led);
+            if (led == false) {
+                displayCon.appendText("Led OFF\n");
+            } else {
+                displayCon.appendText("Led ON\n");
+            }
+        } else {
+            displayCon.appendText("Filed to On, Device not Found");
+        }
+
     }
 
     @FXML
     void onLedOn(ActionEvent event) {
+
+        displayCon.appendText("");
+        displayCon.appendText(" \n");
+        displayCon.appendText(jsgfpLib + "\n");
+
+        if (jsgfpLib != null) {
+            led = true;
+            ret = jsgfpLib.SetLedOn(led);
+            if (led == true) {
+                displayCon.appendText("Led ON\n");
+            } else {
+                displayCon.appendText("Led OFF\n");
+            }
+        } else {
+            displayCon.appendText("Filed to On, Device not Found");
+        }
+
+
 
     }
 
@@ -205,6 +251,7 @@ public class FingerMainApp implements Initializable {
                     incubLight.setStyle(" -fx-fill: #2bc344;");
 
 
+
                 } else {
                     displayCon.appendText("Get Device Info Filed : " + ret + "\n");
                 }
@@ -226,6 +273,20 @@ public class FingerMainApp implements Initializable {
         }
 
         lblAccount.setText(appData.getRecord().getUsername());
+
+        fieldDSN.setDisable(true);
+        fieldBRGS.setDisable(true);
+        fieldPORT.setDisable(true);
+        fieldSPED.setDisable(true);
+        fieldCONT.setDisable(true);
+        fieldDVID.setDisable(true);
+        fieldFWVS.setDisable(true);
+        fieldGAIN.setDisable(true);
+        fieldDPI.setDisable(true);
+        fieldHEIGHT.setDisable(true);
+        fieldWIDTH.setDisable(true);
+        displayCon.setEditable(false);
+        conLog.setStyle("-fx-fill: #2bc344;");
 
     }
 

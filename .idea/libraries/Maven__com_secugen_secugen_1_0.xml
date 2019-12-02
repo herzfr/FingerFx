@@ -1,7 +1,11 @@
 <component name="libraryTable">
   <library name="Maven: com.secugen:secugen:1.0">
-    <CLASSES />
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/secugen-sdk/FDxSDKPro.jar!/" />
+    </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://$PROJECT_DIR$/src/main/resources/secugen-sdk/FDxSDKPro.jar!/" />
+    </SOURCES>
   </library>
 </component>

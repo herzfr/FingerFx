@@ -125,10 +125,10 @@
                   <DropShadow />
                </effect>
                <children>
-                  <FontAwesomeIconView fill="WHITE" glyphName="WIFI" layoutX="16.0" layoutY="140.0" size="15" />
-                  <FontAwesomeIconView fill="WHITE" glyphName="KEY" layoutX="17.0" layoutY="212.0" size="15" />
-                  <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="15.0" layoutY="284.0" size="15" />
-                  <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" layoutX="19.0" layoutY="361.0" size="15" />
+                  <FontAwesomeIconView fx:id="conLog" fill="WHITE" glyphName="WIFI" layoutX="16.0" layoutY="140.0" size="15" />
+                  <FontAwesomeIconView fx:id="keyLog" fill="WHITE" glyphName="KEY" layoutX="17.0" layoutY="212.0" size="15" />
+                  <FontAwesomeIconView fx:id="regLog" fill="WHITE" glyphName="USER" layoutX="19.0" layoutY="284.0" size="15" />
+                  <FontAwesomeIconView fx:id="clsLog" fill="WHITE" glyphName="CLOSE" layoutX="19.0" layoutY="361.0" size="15" />
                </children>
             </AnchorPane>
             <Label fx:id="lblAccount" alignment="CENTER" layoutX="138.0" layoutY="46.0" prefHeight="21.0" prefWidth="102.0" text="Account" textFill="WHITE">
