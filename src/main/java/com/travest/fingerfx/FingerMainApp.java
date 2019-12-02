@@ -142,7 +142,6 @@ public class FingerMainApp implements Initializable {
 
         lblAccount.setText(appData.getRecord().getUsername());
 
-
     }
 
 
