@@ -2,23 +2,34 @@ package com.travest.fingerfx;
 
 import SecuGen.FDxSDKPro.jni.JSGFPLib;
 import SecuGen.FDxSDKPro.jni.SGDeviceInfoParam;
+import com.travest.fingerfx.utility.AppData;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
+import sun.misc.BASE64Decoder;
+
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
 
 
-public class FingerMainApp {
+public class FingerMainApp implements Initializable {
 
     // SECUGEN
     private JSGFPLib jsgfpLib = null;
     SGDeviceInfoParam dvcInfo = new SGDeviceInfoParam();
     private boolean led = false;
+
+    AppData appData ;
 
 
 
@@ -115,5 +126,24 @@ public class FingerMainApp {
         displayCon.setText("");
         displayCon.appendText("Initialize Device... \n");
 
+
     }
+
+    @Override
+    public void initialize(URL url, ResourceBundle rb) {
+
+        try {
+            BASE64Decoder base64Decoder = new BASE64Decoder();
+            ByteArrayInputStream rocketInputStream = new ByteArrayInputStream(base64Decoder.decodeBuffer(appData.getRecord().getAvatar()));
+            imgView.setImage(new Image(rocketInputStream));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        lblAccount.setText(appData.getRecord().getUsername());
+
+
+    }
+
+
 }
