@@ -1,6 +1,9 @@
 package com.travest.fingerfx;
 
+import com.sun.security.ntlm.Server;
 import com.travest.fingerfx.Entity.Record;
+import com.travest.fingerfx.Service.LoginService;
+import com.travest.fingerfx.Service.ServerRequest;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -17,7 +20,8 @@ public class LoginApp {
     String getUsr;
     boolean getSuccess;
 
-    Record record;
+    LoginService loginService;
+    ServerRequest serverRequest;
 
 
     @FXML
@@ -34,8 +38,8 @@ public class LoginApp {
         usr = userName.getText();
         pass = passWord.getText();
 
-        System.out.println(usr);
-        System.out.println(pass);
+        LoginService login = new LoginService();
+        login.loginRequest(usr, pass);
 
     }
 
