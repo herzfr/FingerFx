@@ -13,9 +13,9 @@
    <children>
       <AnchorPane layoutX="238.0" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: cecece;">
          <children>
-            <Pane prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #3e75d2;" />
-            <Pane prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #3ed2c8;" />
-            <Pane prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #2de171;" />
+            <Pane fx:id="pnlConn" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #2de171;" />
+            <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #3ed2c8;" />
+            <Pane fx:id="pnlReg" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #3e75d2;" />
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="513.0" prefWidth="239.0" style="-fx-background-color: #234a7b;">
