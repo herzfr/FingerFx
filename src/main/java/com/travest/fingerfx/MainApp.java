@@ -1,8 +1,7 @@
 package com.travest.fingerfx;
 
+import com.travest.fingerfx.Entity.Record;
 import javafx.application.Application;
-import static javafx.application.Application.launch;
-
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -12,19 +11,23 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+import java.util.ResourceBundle;
+
 
 public class MainApp extends Application {
 
     private static double xOffset = 0;
     private static double yOffset = 0;
 
+    public Record record;
+    public String token;
 
     @Override
     public void start(Stage stage) throws Exception {
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Login.fxml"));
-        
-        Scene scene = new Scene(root);
-        scene.getStylesheets().add("/styles/Styles.css");
+        FXMLLoader loader = new FXMLLoader();
+//        loader.setResources(ResourceBundle.getBundle("fa.fontawesome"));
+        loader.setLocation(getClass().getResource("/fxml/Login.fxml"));
+        Parent root = loader.load();
 
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -42,26 +45,36 @@ public class MainApp extends Application {
             }
         });
 
+        Scene scene = new Scene(root);
+        scene.getStylesheets().add("/styles/Styles.css");
+
         stage.setTitle("Secugen Finger App");
         stage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/icon.png")));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
-        stage.setResizable(false);
 
         stage.show();
 
+
     }
 
-    /**
-     * The main() method is ignored in correctly deployed JavaFX application.
-     * main() serves only as fallback in case the application can not be
-     * launched through deployment artifacts, e.g., in IDEs with limited FX
-     * support. NetBeans ignores main().
-     *
-     * @param args the command line arguments
-     */
     public static void main(String[] args) {
         launch(args);
     }
 
+    public Record getRecord() {
+        return record;
+    }
+
+    public void setRecord(Record record) {
+        this.record = record;
+    }
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }
