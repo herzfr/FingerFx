@@ -1,13 +1,11 @@
 <component name="libraryTable">
   <library name="Maven: com.secugen:secugen:1.0">
     <CLASSES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/secugen/secugen/1.0/secugen-1.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/secugen-sdk/FDxSDKPro.jar!/" />
     </CLASSES>
-    <JAVADOC>
-      <root url="jar://$MAVEN_REPOSITORY$/com/secugen/secugen/1.0/secugen-1.0-javadoc.jar!/" />
-    </JAVADOC>
+    <JAVADOC />
     <SOURCES>
-      <root url="jar://$MAVEN_REPOSITORY$/com/secugen/secugen/1.0/secugen-1.0-sources.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/main/resources/secugen-sdk/FDxSDKPro.jar!/" />
     </SOURCES>
   </library>
 </component>
