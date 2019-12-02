@@ -43,7 +43,7 @@ public class MainApp extends Application {
         scene.getStylesheets().add("/styles/Styles.css");
 
         stage.setTitle("Secugen Finger App");
-        stage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/icon.png")));
+        stage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/fingericon.png")));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
 

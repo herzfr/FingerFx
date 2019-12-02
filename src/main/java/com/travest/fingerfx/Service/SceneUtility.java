@@ -21,6 +21,9 @@ public class SceneUtility {
 //        Window stage = loginAnchor.getScene().getWindow();
         stage.hide();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
+        
+        Scene scene = new Scene(root);
+        Stage homeStage = new Stage();
 
         root.setOnMousePressed(new EventHandler<MouseEvent>() {
             @Override
@@ -33,15 +36,13 @@ public class SceneUtility {
         root.setOnMouseDragged(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                stage.setX(event.getScreenX() - xOffset);
-                stage.setY(event.getScreenY() - yOffset);
+                homeStage.setX(event.getScreenX() - xOffset);
+                homeStage.setY(event.getScreenY() - yOffset);
             }
         });
 
-        Scene scene = new Scene(root);
-        Stage homeStage = new Stage();
-        homeStage.getIcons().add(new Image(SceneUtility.class.getResourceAsStream("/images/icon.png")));
-        homeStage.initStyle(StageStyle.UTILITY);
+        homeStage.getIcons().add(new Image(SceneUtility.class.getResourceAsStream("/images/fingericon.png")));
+        homeStage.initStyle(StageStyle.UNDECORATED);
         homeStage.setScene(scene);
         homeStage.show();
     }
