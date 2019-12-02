@@ -171,6 +171,10 @@
                   </TitledPane>
                   <TextArea layoutX="274.0" layoutY="268.0" prefHeight="212.0" prefWidth="416.0" />
                   <Button fx:id="btnInit1" alignment="TOP_CENTER" layoutX="396.0" layoutY="34.0" mnemonicParsing="false" onAction="#onInit" prefHeight="93.0" prefWidth="294.0" style="-fx-background-color: transparent; -fx-border-color: #234a7b;" text="Initialize" textAlignment="CENTER" textFill="#234a7b" />
+                  <FontAwesomeIconView fx:id="conLog" fill="WHITE" glyphName="WIFI" layoutX="16.0" layoutY="140.0" size="15" />
+                  <FontAwesomeIconView fx:id="keyLog" fill="WHITE" glyphName="KEY" layoutX="17.0" layoutY="212.0" size="15" />
+                  <FontAwesomeIconView fx:id="regLog" fill="WHITE" glyphName="USER" layoutX="19.0" layoutY="284.0" size="15" />
+                  <FontAwesomeIconView fx:id="clsLog" fill="WHITE" glyphName="CLOSE" layoutX="19.0" layoutY="361.0" size="15" />
                </children>
             </Pane>
          </children>
