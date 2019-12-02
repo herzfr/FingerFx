@@ -1,23 +1,35 @@
-.Button {
-    -fx-background-color:transparent ;
-    -fx-background-radius:0;
-    -fx-border-color:transparent;
-    -fx-border-width: 0 3 3 0;
+
+.rect {
+    -fx-padding: 5 22 5 22;
+    -fx-border-color: #e2e2e2;
+    -fx-border-width: 2;
+    -fx-background-radius: 0;
+    -fx-background-color: #1d1d1d;
+    -fx-font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+    -fx-font-size: 11pt;
+    -fx-text-fill: #d8d8d8;
+    -fx-background-insets: 0 0 0 0, 0, 1, 2;
 }
 
-
-.button:hover {
-    -fx-background-radius:0;
-    -fx-border-color:black;
-    -fx-border-width: 3 3 3 3;
-    -fx-background-insets: 0;
-    -fx-fill: black;
+.rect:hover {
+    -fx-background-color: #3a3a3a;
+    -fx-text-fill: #e82576;
+    -fx-fill: #e82576;
+    -fx-border-color: #fff;
 }
 
-.buttonCancel:hover {
-    -fx-background-radius:0;
-    -fx-border-color:red;
-    -fx-border-width: 3 3 3 3;
-    -fx-background-insets: 0;
-    -fx-fill: black;
+.rect:pressed {
+    -fx-scale-y: 0.9;
+    -fx-scale-x: 0.9;
+    -fx-fill: cornflowerblue ;
+    -fx-border-radius: 0;
 }
+
+.textUser {
+    -fx-text-inner-color: red;
+}
+
+.textPass {
+    -fx-text-inner-color: red;
+}
+
