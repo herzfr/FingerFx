@@ -46,6 +46,7 @@ public class ServerRequest {
                         record = result.getRecord();
                         token = result.getToken();
                         System.out.println(code);
+                        System.out.println(result.getRecord().getUsername());
                         Platform.runLater(
                                 () -> {
 //                                    try {

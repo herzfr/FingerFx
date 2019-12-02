@@ -1,6 +1,8 @@
 package com.travest.fingerfx;
 
 import com.travest.fingerfx.Entity.Record;
+import com.travest.fingerfx.Service.ServerRequest;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -37,6 +39,14 @@ public class LoginApp {
         System.out.println(usr);
         System.out.println(pass);
 
+
+        ServerRequest serverRequest = new ServerRequest();
+
+        serverRequest.loginRequest(usr,pass);
+
+
+
+
     }
 
     @FXML
@@ -45,6 +55,12 @@ public class LoginApp {
             //type here what you want
             System.out.println("enter di tekan");
         }
+    }
+
+    @FXML
+    void onBtnCancel(ActionEvent event) {
+        Platform.exit();
+        System.exit(0);
     }
 
 }

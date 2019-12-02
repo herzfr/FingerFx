@@ -7,6 +7,7 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -41,10 +42,12 @@ public class MainApp extends Application {
             }
         });
 
-        stage.setTitle("JavaFX and Maven");
+        stage.setTitle("Secugen Finger App");
+        stage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/icon.png")));
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setScene(scene);
         stage.setResizable(false);
+
         stage.show();
 
     }
