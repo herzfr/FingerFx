@@ -1,5 +1,7 @@
 package com.travest.fingerfx;
 
+import SecuGen.FDxSDKPro.jni.JSGFPLib;
+import SecuGen.FDxSDKPro.jni.SGDeviceInfoParam;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -12,6 +14,12 @@ import javafx.scene.layout.Pane;
 
 
 public class FingerMainApp {
+
+    // SECUGEN
+    private JSGFPLib jsgfpLib = null;
+    SGDeviceInfoParam dvcInfo = new SGDeviceInfoParam();
+    private boolean led = false;
+
 
 
     @FXML
