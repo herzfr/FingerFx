@@ -11,8 +11,8 @@ import java.io.IOException;
 
 public class LoginService {
 
-    private Record record;
-    private String token;
+    public Record record;
+    public String token;
     private String message;
 
     public void loginRequest(String username, String password) {
@@ -55,11 +55,11 @@ public class LoginService {
 
                         Platform.runLater(
                                 () -> {
-//                                    try {
-////                                        homeScene();
-//                                    } catch (IOException e) {
-//                                        e.printStackTrace();
-//                                    }
+                                    try {
+//                                        homeScene();
+                                    } catch (IOException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
                         );
                     } else {

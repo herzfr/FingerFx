@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.travest.fingerfx.FingerMainApp">
+   <children>
+      <AnchorPane layoutX="238.0" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: cecece;">
+         <children>
+            <Pane prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #3e75d2;" />
+            <Pane prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #3ed2c8;" />
+            <Pane prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #2de171;" />
+         </children>
+      </AnchorPane>
+      <AnchorPane prefHeight="513.0" prefWidth="239.0" style="-fx-background-color: #234a7b;">
+         <children>
+            <Button fx:id="btnConn" alignment="CENTER" layoutX="-5.0" layoutY="111.0" mnemonicParsing="false" onAction="#onConnection" prefHeight="48.0" prefWidth="245.0" style="-fx-background-color: #00000070;" text="Connect" textFill="WHITE" />
+            <Button fx:id="btnVrfy" layoutX="2.0" layoutY="184.0" mnemonicParsing="false" onAction="#onVerify" prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: #00000070;" text="Verify" textFill="WHITE" />
+            <Button fx:id="btnReg" layoutX="2.0" layoutY="257.0" mnemonicParsing="false" onAction="#onRegistration" prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: #00000070;" text="Register" textFill="WHITE" />
+            <Button fx:id="btnDisc" layoutX="1.0" layoutY="332.0" mnemonicParsing="false" onAction="#onDisconnect" prefHeight="48.0" prefWidth="240.0" style="-fx-background-color: #00000070;" text="Discconnect" textFill="WHITE" />
+            <AnchorPane prefHeight="513.0" prefWidth="49.0" style="-fx-background-color: cecece;">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <children>
+                  <FontAwesomeIconView fill="WHITE" glyphName="WIFI" layoutX="16.0" layoutY="140.0" size="15" />
+                  <FontAwesomeIconView fill="WHITE" glyphName="KEY" layoutX="17.0" layoutY="212.0" size="15" />
+                  <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="15.0" layoutY="284.0" size="15" />
+                  <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" layoutX="19.0" layoutY="361.0" size="15" />
+               </children>
+            </AnchorPane>
+            <Label layoutX="138.0" layoutY="46.0" prefHeight="21.0" prefWidth="102.0" text="Account" textFill="WHITE">
+               <font>
+                  <Font name="System Italic" size="15.0" />
+               </font></Label>
+         </children>
+         <effect>
+            <DropShadow />
+         </effect>
+      </AnchorPane>
+      <ButtonBar prefHeight="40.0" prefWidth="200.0" />
+   </children>
+</AnchorPane>
