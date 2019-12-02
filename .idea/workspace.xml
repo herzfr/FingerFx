@@ -2,6 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea15eef-3a42-4a85-a36d-98c0ae1a096d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/AbsoluteLayout1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/FDxSDKPro.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/AbsoluteLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/AbsoluteLayout.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_secugen_secugen_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_secugen_secugen_1_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FingerFx.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FingerFx.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FingerMainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FingerMainApp.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" afterDir="false" />
     </list>
@@ -28,7 +35,7 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/LoginService.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/LoginApp.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="636">
               <caret line="43" selection-start-line="43" selection-end-line="43" />
@@ -133,8 +140,8 @@
       <find>fx:id</find>
       <find>onConnection</find>
       <find>xOffset</find>
-      <find>status</find>
       <find>loginService</find>
+      <find>status</find>
     </findStrings>
     <dirStrings>
       <dir>C:\Users\Nepatyaz\Desktop\Project\Secugen\2-12-2019\FingerFx</dir>
@@ -196,11 +203,10 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds">
     <option name="x" value="-9" />
-    <option name="y" value="-9" />
-    <option name="width" value="1938" />
-    <option name="height" value="1048" />
+    <option name="width" value="1615" />
+    <option name="height" value="880" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -276,14 +282,6 @@
             </path>
             <path>
               <item name="FingerFx" type="b2602c69:ProjectViewProjectNode" />
-              <item name="FingerFx" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="fxml" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="FingerFx" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
@@ -298,7 +296,7 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/images" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../1-12-2019/secugen" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -386,7 +384,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25973153" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2671141" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -395,7 +393,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.3286119" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.20538244" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -565,7 +563,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/SceneUtility.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="54">
-          <caret line="17" column="38" lean-forward="true" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
+          <caret line="17" column="38" selection-start-line="17" selection-start-column="38" selection-end-line="17" selection-end-column="38" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -573,7 +571,7 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/Dialog.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FingerMainApp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/LoginService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="392">
           <caret line="187" column="50" selection-start-line="187" selection-start-column="50" selection-end-line="187" selection-end-column="50" />
@@ -641,7 +639,6 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>FingerFx</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -665,11 +662,11 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>Maven: com.secugen:secugen:1.0</last-edited>
+          <last-edited>AbsoluteLayout1</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
-                <option value="0.39885056" />
+                <option value="0.2" />
               </list>
             </option>
           </splitter-proportions>

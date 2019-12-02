@@ -22,7 +22,7 @@ public class LoginService {
 
     public Boolean status;
 
-    public AppData singleton;
+    public AppData appData;
 
     public Boolean loginRequest(String username, String password) throws IOException {
 
@@ -50,9 +50,8 @@ public class LoginService {
                 record = result.getRecord();
                 token = result.getToken();
 
-                singleton.setRecord(record);
-                singleton.setToken(token);
-
+                appData.setRecord(record);
+                appData.setToken(token);
 
                 return true;
 

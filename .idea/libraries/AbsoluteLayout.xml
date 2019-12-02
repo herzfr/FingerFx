@@ -1,8 +1,6 @@
 <component name="libraryTable">
   <library name="AbsoluteLayout">
-    <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/main/resources/secugen-sdk/AbsoluteLayout.jar!/" />
-    </CLASSES>
+    <CLASSES />
     <JAVADOC />
     <SOURCES />
   </library>
