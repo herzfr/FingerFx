@@ -2,6 +2,7 @@ package com.travest.fingerfx;
 
 import com.travest.fingerfx.Service.Dialog;
 import com.travest.fingerfx.Service.LoginService;
+import com.travest.fingerfx.Service.SceneUtility;
 import com.travest.fingerfx.Service.ServerRequest;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -27,8 +28,7 @@ import java.io.IOException;
 
 public class LoginApp {
 
-    private static double xOffset = 0;
-    private static double yOffset = 0;
+
 
     String usr;
     String pass;
@@ -63,7 +63,9 @@ public class LoginApp {
             Boolean status = null;
             status = login.loginRequest(usr, pass);
             if(status){
-                homeScene();
+                Window stage = loginAnchor.getScene().getWindow();
+               SceneUtility sceneUtility  = new SceneUtility();
+               sceneUtility.homeScene((Stage) loginAnchor.getScene().getWindow());
             }
         }
     }
@@ -81,7 +83,9 @@ public class LoginApp {
                 Boolean status = login.loginRequest(usr, pass);
 
                 if(status){
-                    homeScene();
+                    Window stage = loginAnchor.getScene().getWindow();
+                    SceneUtility sceneUtility  = new SceneUtility();
+                    sceneUtility.homeScene((Stage) loginAnchor.getScene().getWindow());
                 }
 
             }
@@ -100,35 +104,35 @@ public class LoginApp {
         return true;
     }
 
-    public void homeScene() throws IOException {
-        Window stage = loginAnchor.getScene().getWindow();
-        stage.hide();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
-
-        root.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
-        });
-
-        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
-        });
-
-
-        Scene scene = new Scene(root);
-        Stage homeStage = new Stage();
-//        homeStage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/icon.png")));
-        homeStage.setScene(scene);
-        homeStage.initStyle(StageStyle.UNDECORATED);
-        homeStage.show();
-    }
+//    public void homeScene() throws IOException {
+//        Window stage = loginAnchor.getScene().getWindow();
+//        stage.hide();
+//        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
+//
+//        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent event) {
+//                xOffset = event.getSceneX();
+//                yOffset = event.getSceneY();
+//            }
+//        });
+//
+//        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+//            @Override
+//            public void handle(MouseEvent event) {
+//                xOffset = event.getSceneX();
+//                yOffset = event.getSceneY();
+//            }
+//        });
+//
+//
+//        Scene scene = new Scene(root);
+//        Stage homeStage = new Stage();
+////        homeStage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/icon.png")));
+//        homeStage.setScene(scene);
+//        homeStage.initStyle(StageStyle.UNDECORATED);
+//        homeStage.show();
+//    }
 
 
 }
