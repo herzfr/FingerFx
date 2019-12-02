@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="738.0" style="-fx-background-color: linear-gradient(to right, #314755, #26a0da); -fx-border-color: #fff;" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.travest.fingerfx.LoginApp">
+<AnchorPane fx:id="loginAnchor" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="738.0" style="-fx-background-color: linear-gradient(to right, #314755, #26a0da); -fx-border-color: #fff;" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.travest.fingerfx.LoginApp">
    <children>
       <HBox layoutY="133.0" prefHeight="67.0" prefWidth="738.0" style="-fx-background-color: #ffffff8c;">
          <children>
@@ -32,8 +32,8 @@
       </HBox>
       <Pane layoutX="206.0" layoutY="13.0" prefHeight="373.0" prefWidth="519.0" style="-fx-border-color: #fff; -fx-border-radius: 30;">
          <children>
-            <TextField id="userName" fx:id="userName" layoutX="35.0" layoutY="127.0" prefHeight="52.0" prefWidth="450.0" style="-fx-border-radius: 10; -fx-border-color: #fff; -fx-background-color: transparent;" styleClass="text-field" stylesheets="@../styles/Styles.css" />
-            <PasswordField fx:id="passWord" layoutX="35.0" layoutY="219.0" onKeyPressed="#onPassKeyEntered" prefHeight="52.0" prefWidth="450.0" style="-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-radius: 10;" />
+            <TextField id="userName" fx:id="userName" layoutX="35.0" layoutY="127.0" prefHeight="52.0" prefWidth="450.0" promptText="Username" style="-fx-border-radius: 10; -fx-border-color: #fff; -fx-background-color: transparent;" styleClass="text-field" stylesheets="@../styles/Styles.css" />
+            <PasswordField fx:id="passWord" layoutX="35.0" layoutY="219.0" onKeyPressed="#onPassKeyEntered" prefHeight="52.0" prefWidth="450.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-radius: 10;" />
             <Button fx:id="btnLogin1" layoutX="148.0" layoutY="295.0" mnemonicParsing="false" onAction="#loginTo" prefHeight="52.0" prefWidth="165.0" style="-fx-border-color: #fff; -fx-border-radius: 30; -fx-background-color: transparent;" text="Login" textFill="WHITE">
                <font>
                   <Font size="18.0" />
