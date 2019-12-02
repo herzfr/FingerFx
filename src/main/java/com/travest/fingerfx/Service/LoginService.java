@@ -50,8 +50,8 @@ public class LoginService {
         try{
             Response response = client1.newCall(request).execute();
             if (response.code() == 200) {
-                String jsonString = response.body().string();
-                LoginResult result = new ObjectMapper().readValue(jsonString, LoginResult.class);
+//                String jsonString = response.body().string();
+                LoginResult result = new ObjectMapper().readValue(response.body().string(), LoginResult.class);
                 record = result.getRecord();
                 token = result.getToken();
                 MainApp app = new MainApp();
@@ -60,8 +60,8 @@ public class LoginService {
                 return true;
 
             } else {
-                String jsonString = response.body().string();
-                AuthenticateErrorResult result = new ObjectMapper().readValue(jsonString, AuthenticateErrorResult.class);
+//                String jsonString = response.body().string();
+                AuthenticateErrorResult result = new ObjectMapper().readValue(response.body().string(), AuthenticateErrorResult.class);
                 message = result.getMessage();
                 Dialog.errorMessage("Login Error", message);
                 return false;
