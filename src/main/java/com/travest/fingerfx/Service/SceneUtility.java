@@ -21,7 +21,7 @@ public class SceneUtility {
 //        Window stage = loginAnchor.getScene().getWindow();
         stage.hide();
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
-        
+
         Scene scene = new Scene(root);
         Stage homeStage = new Stage();
 
