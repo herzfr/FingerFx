@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea15eef-3a42-4a85-a36d-98c0ae1a096d" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/AbsoluteLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/AbsoluteLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/AbsoluteLayout1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/FDxSDKPro.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_secugen_secugen_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_secugen_secugen_1_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/FingerFx.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FingerFx.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FingerMainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FingerMainApp.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -84,8 +76,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FingerMainApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="222">
-              <caret line="123" column="42" selection-start-line="123" selection-start-column="42" selection-end-line="123" selection-end-column="42" />
+            <state relative-caret-position="188">
+              <caret line="142" column="49" selection-start-line="142" selection-start-column="49" selection-end-line="142" selection-end-column="49" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#2855#2856#0" expanded="true" />
@@ -380,7 +372,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="21937000" />
+    <option name="totallyTimeSpent" value="22275000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />

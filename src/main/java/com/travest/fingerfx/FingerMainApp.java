@@ -131,6 +131,20 @@ public class FingerMainApp implements Initializable {
         keyLog.setStyle("-fx-fill: #fff;");
         regLog.setStyle("-fx-fill: #fff;");
         clsLog.setStyle("-fx-fill: #2bc344;");
+
+        if (jsgfpLib != null ) {
+            jsgfpLib.CloseDevice();
+            jsgfpLib.Close();
+            jsgfpLib = null;
+        }
+        if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+            displayCon.setText("CloseDevice() Success [" + ret + "]");
+            lblInfo.setText("OFF");
+            incubLight.setStyle(" -fx-fill: #e12272;");
+        } else {
+            displayCon.setText( "CloseDevice() Error : " + ret);
+        }
+
     }
 
     @FXML
