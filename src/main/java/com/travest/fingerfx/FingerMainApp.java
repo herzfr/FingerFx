@@ -31,25 +31,21 @@ public class FingerMainApp {
 
     @FXML
     void onConnection(ActionEvent event) {
-        System.out.println("Connection");
         pnlConn.toFront();
-
     }
 
     @FXML
     void onDisconnect(ActionEvent event) {
-        System.out.println("Disconnection");
+
     }
 
     @FXML
-    void onRegistration(ActionEvent event) {
-        System.out.println("Registration");
+    void onRegister(ActionEvent event) {
         pnlReg.toFront();
     }
 
     @FXML
     void onVerify(ActionEvent event) {
-        System.out.println("Verify");
         pnlVerify.toFront();
     }
 }

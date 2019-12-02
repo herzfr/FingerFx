@@ -122,7 +122,6 @@ public class LoginApp {
         });
 
 
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
         Scene scene = new Scene(root);
         Stage homeStage = new Stage();
 //        homeStage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/icon.png")));

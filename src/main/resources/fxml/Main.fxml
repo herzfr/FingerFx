@@ -20,10 +20,10 @@
       </AnchorPane>
       <AnchorPane prefHeight="513.0" prefWidth="239.0" style="-fx-background-color: #234a7b;">
          <children>
-            <Button fx:id="btnConn" alignment="CENTER" layoutX="-5.0" layoutY="111.0" mnemonicParsing="false"  prefHeight="48.0" prefWidth="245.0" style="-fx-background-color: #00000070;" text="Connect" textFill="WHITE" />
-            <Button fx:id="btnVrfy" layoutX="2.0" layoutY="184.0" mnemonicParsing="false"  prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: #00000070;" text="Verify" textFill="WHITE" />
-            <Button fx:id="btnReg" layoutX="2.0" layoutY="257.0" mnemonicParsing="false"  prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: #00000070;" text="Register" textFill="WHITE" />
-            <Button fx:id="btnDisc" layoutX="1.0" layoutY="332.0" mnemonicParsing="false"  prefHeight="48.0" prefWidth="240.0" style="-fx-background-color: #00000070;" text="Discconnect" textFill="WHITE" />
+            <Button fx:id="btnConn" alignment="CENTER" layoutX="-5.0" layoutY="111.0" mnemonicParsing="false" onAction="#onConnection" prefHeight="48.0" prefWidth="245.0" style="-fx-background-color: #00000070;" text="Connect" textFill="WHITE" />
+            <Button fx:id="btnVrfy" layoutX="2.0" layoutY="184.0" mnemonicParsing="false" onAction="#onVerify" prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: #00000070;" text="Verify" textFill="WHITE" />
+            <Button fx:id="btnReg" layoutX="2.0" layoutY="257.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: #00000070;" text="Register" textFill="WHITE" />
+            <Button fx:id="btnDisc" layoutX="1.0" layoutY="332.0" mnemonicParsing="false" onAction="#onDisconnect" prefHeight="48.0" prefWidth="240.0" style="-fx-background-color: #00000070;" text="Discconnect" textFill="WHITE" />
             <AnchorPane prefHeight="513.0" prefWidth="49.0" style="-fx-background-color: cecece;">
                <effect>
                   <DropShadow />
