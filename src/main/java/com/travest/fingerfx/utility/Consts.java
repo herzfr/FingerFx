@@ -1,4 +1,4 @@
-package com.travest.fingerfx.Service;
+package com.travest.fingerfx.utility;
 
 public final class Consts  {
 
