@@ -1,25 +1,19 @@
 package com.travest.fingerfx;
 
-import com.travest.fingerfx.Service.Dialog;
+import com.travest.fingerfx.utility.Dialog;
 import com.travest.fingerfx.Service.LoginService;
+import com.travest.fingerfx.Service.SceneUtility;
 import com.travest.fingerfx.Service.ServerRequest;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import javafx.stage.Window;
 
 import java.io.IOException;
@@ -27,8 +21,7 @@ import java.io.IOException;
 
 public class LoginApp {
 
-    private static double xOffset = 0;
-    private static double yOffset = 0;
+
 
     String usr;
     String pass;
@@ -36,7 +29,7 @@ public class LoginApp {
     String getUsr;
     boolean getSuccess;
 
-    LoginService loginService;
+    LoginService loginService = new LoginService();
     ServerRequest serverRequest;
 
     @FXML
@@ -50,7 +43,6 @@ public class LoginApp {
     @FXML
     private AnchorPane loginAnchor;
 
-
     @FXML
     void loginTo(ActionEvent event) throws IOException {
         usr = userName.getText().trim();
@@ -59,11 +51,13 @@ public class LoginApp {
         if (isNullOrEmpty(usr) || isNullOrEmpty(pass)) {
             Dialog.errorMessage("Field Empty", "Please fill all field");
         } else {
-            LoginService login = new LoginService();
+//            LoginService login = new LoginService();
             Boolean status = null;
-            status = login.loginRequest(usr, pass);
+            status = loginService.loginRequest(usr, pass);
             if(status){
-                homeScene();
+                Window stage = loginAnchor.getScene().getWindow();
+               SceneUtility sceneUtility  = new SceneUtility();
+               sceneUtility.homeScene((Stage) loginAnchor.getScene().getWindow());
             }
         }
     }
@@ -77,13 +71,13 @@ public class LoginApp {
             if (isNullOrEmpty(usr) || isNullOrEmpty(pass)) {
                 Dialog.errorMessage("Field Empty", "Please fill all field");
             } else {
-                LoginService login = new LoginService();
-                Boolean status = login.loginRequest(usr, pass);
-
+//                LoginService login = new LoginService();
+                Boolean status = loginService.loginRequest(usr, pass);
                 if(status){
-                    homeScene();
+                    Window stage = loginAnchor.getScene().getWindow();
+                    SceneUtility sceneUtility  = new SceneUtility();
+                    sceneUtility.homeScene((Stage) loginAnchor.getScene().getWindow());
                 }
-
             }
         }
     }
@@ -98,36 +92,6 @@ public class LoginApp {
         if (str != null && !str.isEmpty())
             return false;
         return true;
-    }
-
-    public void homeScene() throws IOException {
-        Window stage = loginAnchor.getScene().getWindow();
-        stage.hide();
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
-
-        root.setOnMousePressed(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
-        });
-
-        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                xOffset = event.getSceneX();
-                yOffset = event.getSceneY();
-            }
-        });
-
-
-        Scene scene = new Scene(root);
-        Stage homeStage = new Stage();
-//        homeStage.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/icon.png")));
-        homeStage.setScene(scene);
-        homeStage.initStyle(StageStyle.UNDECORATED);
-        homeStage.show();
     }
 
 

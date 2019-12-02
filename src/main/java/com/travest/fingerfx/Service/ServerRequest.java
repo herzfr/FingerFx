@@ -4,6 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.travest.fingerfx.Entity.AuthenticateErrorResult;
 import com.travest.fingerfx.Entity.LoginResult;
 import com.travest.fingerfx.Entity.Record;
+import com.travest.fingerfx.utility.Consts;
+import com.travest.fingerfx.utility.Dialog;
 import javafx.application.Platform;
 import okhttp3.*;
 

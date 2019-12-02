@@ -4,30 +4,33 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.travest.fingerfx.Entity.AuthenticateErrorResult;
 import com.travest.fingerfx.Entity.LoginResult;
 import com.travest.fingerfx.Entity.Record;
-import com.travest.fingerfx.MainApp;
-import javafx.fxml.FXML;
-import javafx.scene.layout.AnchorPane;
+import com.travest.fingerfx.utility.Consts;
+import com.travest.fingerfx.utility.Dialog;
+import com.travest.fingerfx.utility.AppData;
 import okhttp3.*;
 
 import java.io.IOException;
-import java.util.logging.Handler;
+import java.util.concurrent.TimeUnit;
 
 public class LoginService {
 
-
-    @FXML
-    private AnchorPane loginAnchor;
+    private final OkHttpClient client = new OkHttpClient();
 
     private Record record;
     private String token;
     private String message;
 
     public Boolean status;
-    private Handler mHandler;
+
+    public AppData singleton;
 
     public Boolean loginRequest(String username, String password) throws IOException {
 
-        OkHttpClient client = new OkHttpClient();
+//        OkHttpClient client = new OkHttpClient();
+        OkHttpClient client1 = client.newBuilder()
+                .readTimeout(Consts.readTimeout, TimeUnit.MILLISECONDS)
+                .connectTimeout(Consts.readTimeout, TimeUnit.MILLISECONDS)
+                .build();
 
         RequestBody requestBody = new FormBody.Builder()
                 .add("username", username)
@@ -39,86 +42,37 @@ public class LoginService {
                 .post(requestBody)
                 .build();
 
-        Response response = client.newCall(request).execute();
-
-        if (response.isSuccessful()) {
+        try{
+            Response response = client1.newCall(request).execute();
             if (response.code() == 200) {
-                String jsonString = response.body().string();
-                LoginResult result = new ObjectMapper().readValue(jsonString, LoginResult.class);
+//                String jsonString = response.body().string();
+                LoginResult result = new ObjectMapper().readValue(response.body().string(), LoginResult.class);
                 record = result.getRecord();
                 token = result.getToken();
-                MainApp app = new MainApp();
-                app.setRecord(record);
-                System.out.println("record :" + record.getUsername());
+
+                singleton.setRecord(record);
+                singleton.setToken(token);
+
+
                 return true;
 
             } else {
-                String jsonString = response.body().string();
-                AuthenticateErrorResult result = new ObjectMapper().readValue(jsonString, AuthenticateErrorResult.class);
+//                String jsonString = response.body().string();
+                AuthenticateErrorResult result = new ObjectMapper().readValue(response.body().string(), AuthenticateErrorResult.class);
                 message = result.getMessage();
                 Dialog.errorMessage("Login Error", message);
                 return false;
             }
-        } else {
-
-            Dialog.errorMessage("Login Error", "Failed to connect server");
+        }catch (Exception e )
+        {
+            System.out.println(e.getMessage());
+            Dialog.errorMessage("Login Connection Error", e.getMessage());
             return false;
+
         }
 
 
-//        client.newCall(request).enqueue(new Callback() {
-//
-//            @Override
-//            public void onFailure(Call call, IOException e) {
-//                status = false;
-//                Platform.runLater(() -> {
-//                    status = false;
-//                    Dialog.errorMessage("Connect Error", "Failed to connect to server ");
-//                });
-//            }
-//
-//            @Override
-//            public void onResponse(Call call, Response response) throws IOException {
-//                try {
-//                    String jsonString = response.body().string();
-//                    int code = response.code();
-//                    status = true;
-//                    if (code == 200) {
-//                        LoginResult result = new ObjectMapper().readValue(jsonString, LoginResult.class);
-//                        record = result.getRecord();
-//                        token = result.getToken();
-//                        status = true;
-//                        Platform.runLater(
-//                                () -> {
-//                                    MainApp app = new MainApp();
-//                                    app.setRecord(record);
-//                                    System.out.println("record :" + record.getUsername());
-//                                    status = true;
-//                                }
-//                        );
-//                    } else {
-//                        Platform.runLater(
-//                                () -> {
-//                                    try {
-//                                        AuthenticateErrorResult result = new ObjectMapper().readValue(jsonString, AuthenticateErrorResult.class);
-//                                        message = result.getMessage();
-//                                        Dialog.errorMessage("Login Error", message);
-//                                    } catch (IOException e) {
-//                                        e.printStackTrace();
-//                                    }
-//                                }
-//                        );
-//                    }
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                    call.cancel();
-//                } finally {
-//                    response.body().close();
-//                    call.cancel();
-//                }
-//            }
-//        });
-//        return status;
+
     }
 
 }

@@ -11,16 +11,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-import java.util.ResourceBundle;
-
-
 public class MainApp extends Application {
 
     private static double xOffset = 0;
     private static double yOffset = 0;
-
-    public Record record;
-    public String token;
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -60,21 +54,5 @@ public class MainApp extends Application {
 
     public static void main(String[] args) {
         launch(args);
-    }
-
-    public Record getRecord() {
-        return record;
-    }
-
-    public void setRecord(Record record) {
-        this.record = record;
-    }
-
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
     }
 }
