@@ -17,7 +17,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.travest.fingerfx.FingerMainApp">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.travest.fingerfx.FingerMainApp">
    <children>
       <AnchorPane prefHeight="513.0" prefWidth="239.0" style="-fx-background-color: #234a7b;">
          <children>
@@ -30,10 +30,10 @@
                   <DropShadow />
                </effect>
                <children>
-                  <FontAwesomeIconView fill="WHITE" glyphName="WIFI" layoutX="16.0" layoutY="140.0" size="15" />
-                  <FontAwesomeIconView fill="WHITE" glyphName="KEY" layoutX="17.0" layoutY="212.0" size="15" />
-                  <FontAwesomeIconView fill="WHITE" glyphName="USER" layoutX="15.0" layoutY="284.0" size="15" />
-                  <FontAwesomeIconView fill="WHITE" glyphName="CLOSE" layoutX="19.0" layoutY="361.0" size="15" />
+                  <FontAwesomeIconView fx:id="conLog" fill="WHITE" glyphName="WIFI" layoutX="16.0" layoutY="140.0" size="15" />
+                  <FontAwesomeIconView fx:id="keyLog" fill="WHITE" glyphName="KEY" layoutX="17.0" layoutY="212.0" size="15" />
+                  <FontAwesomeIconView fx:id="regLog" fill="WHITE" glyphName="USER" layoutX="15.0" layoutY="284.0" size="15" />
+                  <FontAwesomeIconView fx:id="clsLog" fill="WHITE" glyphName="CLOSE" layoutX="19.0" layoutY="361.0" size="15" />
                </children>
             </AnchorPane>
             <Label fx:id="lblAccount" alignment="CENTER" layoutX="138.0" layoutY="46.0" prefHeight="21.0" prefWidth="102.0" text="Account" textFill="WHITE">
@@ -143,11 +143,11 @@
             </Pane>
             <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #3ed2c8;">
                <children>
-                  <TitledPane animated="false" layoutX="50.0" layoutY="34.0" text="Finger 1">
+                  <TitledPane animated="false" layoutX="30.0" layoutY="34.0" text="Finger 1">
                     <content>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fx:id="imageFinger1" fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/fingericon.png" />
                                  </image>
@@ -156,7 +156,7 @@
                         </AnchorPane>
                     </content>
                   </TitledPane>
-                  <TitledPane animated="false" layoutX="50.0" layoutY="268.0" text="Finger 2">
+                  <TitledPane animated="false" layoutX="255.0" layoutY="34.0" text="Finger 2">
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
@@ -169,12 +169,10 @@
                         </AnchorPane>
                      </content>
                   </TitledPane>
-                  <TextArea layoutX="274.0" layoutY="268.0" prefHeight="212.0" prefWidth="416.0" />
-                  <Button fx:id="btnInit1" alignment="TOP_CENTER" layoutX="396.0" layoutY="34.0" mnemonicParsing="false" onAction="#onInit" prefHeight="93.0" prefWidth="294.0" style="-fx-background-color: transparent; -fx-border-color: #234a7b;" text="Initialize" textAlignment="CENTER" textFill="#234a7b" />
-                  <FontAwesomeIconView fx:id="conLog" fill="WHITE" glyphName="WIFI" layoutX="16.0" layoutY="140.0" size="15" />
-                  <FontAwesomeIconView fx:id="keyLog" fill="WHITE" glyphName="KEY" layoutX="17.0" layoutY="212.0" size="15" />
-                  <FontAwesomeIconView fx:id="regLog" fill="WHITE" glyphName="USER" layoutX="19.0" layoutY="284.0" size="15" />
-                  <FontAwesomeIconView fx:id="clsLog" fill="WHITE" glyphName="CLOSE" layoutX="19.0" layoutY="361.0" size="15" />
+                  <TextArea fx:id="textArea" layoutX="30.0" layoutY="268.0" prefHeight="212.0" prefWidth="648.0" />
+                  <FontAwesomeIconView fill="#ff1744" glyphName="USER" layoutX="564.0" layoutY="166.0" size="40" />
+                  <Button fx:id="btnInit1" alignment="TOP_CENTER" layoutX="480.0" layoutY="93.0" mnemonicParsing="false" onAction="#onInit" prefHeight="93.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: #234a7b;" text="Verify" textAlignment="CENTER" textFill="#234a7b" />
+                  <Button fx:id="testCapture" layoutX="538.0" layoutY="50.0" mnemonicParsing="false" onAction="#testFingerCapture" text="Capture Finger" />
                </children>
             </Pane>
          </children>
