@@ -97,6 +97,21 @@ public class FingerMainApp implements Initializable {
     private Label lblAccount;
     @FXML
     private ImageView imgView;
+    @FXML
+    private Button capRegBtnA;
+    @FXML
+    private Button capRegBtnB;
+    @FXML
+    private Button regBtnOk;
+    @FXML
+    private TextArea infoCaptA;
+    @FXML
+    private TextArea infoCaptB;
+    @FXML
+    private TextField infoResultReg;
+
+
+
 
     @FXML
     void onConnection(ActionEvent event) {
@@ -301,6 +316,22 @@ public class FingerMainApp implements Initializable {
         displayCon.setEditable(false);
         conLog.setStyle("-fx-fill: #2bc344;");
 
+    }
+
+
+    @FXML
+    void regCaptA(ActionEvent event) {
+        infoCaptA.setText("testtttttt capt A");
+    }
+
+    @FXML
+    void regCaptB(ActionEvent event) {
+        infoCaptB.setText("testtttttt capt B");
+    }
+
+    @FXML
+    void registrationOk(ActionEvent event) {
+        infoResultReg.setText("Ok");
     }
 
 
