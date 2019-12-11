@@ -217,8 +217,7 @@ public class FingerMainApp implements Initializable {
         }
         int[] ndevs = new int[1];
 
-        ret = jsgfpLib.Init(deviceName);
-
+        ret = jsgfpLib.Init(SGFDxDeviceName.SG_DEV_AUTO);
         System.out.println(ret);
         if (ret == 6 ) {
             displayCon.appendText("Device not detected \n");

@@ -49,63 +49,63 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0" />
       <AnchorPane layoutX="238.0" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: cecece;">
          <children>
-            <Pane prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #eb4034;" />
             <Pane fx:id="pnlReg" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #3e75d2;" />
+            <Pane prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #eb4034;" />
             <Pane fx:id="pnlConn" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #fff;">
                <children>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Device S. N." textAlignment="CENTER" wrappingWidth="185.6708984375" />
+                        <Text fill="#0d5cab" strokeType="OUTSIDE" strokeWidth="0.0" text="Device S. N." textAlignment="CENTER" wrappingWidth="185.6708984375" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="45.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Brightness" textAlignment="CENTER" wrappingWidth="185.6708984375" />
+                        <Text fill="#0d5cab" strokeType="OUTSIDE" strokeWidth="0.0" text="Brightness" textAlignment="CENTER" wrappingWidth="185.6708984375" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="76.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ComPort" textAlignment="CENTER" wrappingWidth="185.6708984375" />
+                        <Text fill="#0d5cab" strokeType="OUTSIDE" strokeWidth="0.0" text="ComPort" textAlignment="CENTER" wrappingWidth="185.6708984375" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="107.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="ComSpeed" textAlignment="CENTER" wrappingWidth="185.6708984375" />
+                        <Text fill="#0d5cab" strokeType="OUTSIDE" strokeWidth="0.0" text="ComSpeed" textAlignment="CENTER" wrappingWidth="185.6708984375" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="138.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Contrast" textAlignment="CENTER" wrappingWidth="185.6708984375" />
+                        <Text fill="#0d5cab" strokeType="OUTSIDE" strokeWidth="0.0" text="Contrast" textAlignment="CENTER" wrappingWidth="185.6708984375" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="169.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Device ID" textAlignment="CENTER" wrappingWidth="185.6708984375" />
+                        <Text fill="#0d5cab" strokeType="OUTSIDE" strokeWidth="0.0" text="Device ID" textAlignment="CENTER" wrappingWidth="185.6708984375" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="200.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="FW Version" textAlignment="CENTER" wrappingWidth="185.6708984375" />
+                        <Text fill="#0d5cab" strokeType="OUTSIDE" strokeWidth="0.0" text="FW Version" textAlignment="CENTER" wrappingWidth="185.6708984375" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="231.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Gain" textAlignment="CENTER" wrappingWidth="185.6708984375" />
+                        <Text fill="#0d5cab" strokeType="OUTSIDE" strokeWidth="0.0" text="Gain" textAlignment="CENTER" wrappingWidth="185.6708984375" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="262.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image DPI" textAlignment="CENTER" wrappingWidth="185.6708984375" />
+                        <Text fill="#0d5cab" strokeType="OUTSIDE" strokeWidth="0.0" text="Image DPI" textAlignment="CENTER" wrappingWidth="185.6708984375" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="293.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Image Height" textAlignment="CENTER" wrappingWidth="185.6708984375" />
+                        <Text fill="#0d5cab" strokeType="OUTSIDE" strokeWidth="0.0" text="Image Height" textAlignment="CENTER" wrappingWidth="185.6708984375" />
                      </children>
                   </HBox>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="324.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
                      <children>
-                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text=" Image Width" textAlignment="CENTER" wrappingWidth="185.6708984375" />
+                        <Text fill="#0d5cab" strokeType="OUTSIDE" strokeWidth="0.0" text=" Image Width" textAlignment="CENTER" wrappingWidth="185.6708984375" />
                      </children>
                   </HBox>
                   <TextField fx:id="fieldDSN" layoutX="200.0" layoutY="14.0" />
@@ -133,21 +133,21 @@
                   <FontAwesomeIconView fill="#39c7c9" glyphName="REFRESH" layoutX="532.0" layoutY="79.0" size="40" />
                   <FontAwesomeIconView fill="#2bc344" glyphName="CIRCLE" layoutX="532.0" layoutY="203.0" size="40" />
                   <FontAwesomeIconView fill="#c93636" glyphName="CLOSE" layoutX="533.0" layoutY="327.0" size="40" />
-                  <FontAwesomeIconView fx:id="incubLight" fill="#e12272" glyphName="SQUARE" layoutX="625.0" layoutY="426.0" size="40" />
-                  <Label fx:id="lblInfo" layoutX="621.0" layoutY="446.0" text="OFF">
+                  <FontAwesomeIconView fx:id="incubLight" fill="#e0242c" glyphName="SQUARE" layoutX="625.0" layoutY="426.0" size="40" />
+                  <Label fx:id="lblInfo" layoutX="621.0" layoutY="446.0" text="OFF" textFill="#0d5cab">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #3ed2c8;">
+            <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #fff;">
                <children>
                   <TitledPane animated="false" layoutX="30.0" layoutY="34.0" text="Finger 1">
                     <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: transparent;">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/fingericon.png" />
                                  </image>
@@ -160,7 +160,7 @@
                      <content>
                         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                            <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../images/fingericon.png" />
                                  </image>
