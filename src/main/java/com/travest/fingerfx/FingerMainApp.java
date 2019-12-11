@@ -124,6 +124,20 @@ public class FingerMainApp implements Initializable {
     private TextArea textArea;
     @FXML
     private ImageView imageFinger1;
+    @FXML
+    private Button capRegBtnA;
+    @FXML
+    private Button capRegBtnB;
+    @FXML
+    private Button regBtnOk;
+    @FXML
+    private TextArea infoCaptA;
+    @FXML
+    private TextArea infoCaptB;
+    @FXML
+    private TextField infoResultReg;
+
+
 
 
     @FXML
@@ -244,8 +258,7 @@ public class FingerMainApp implements Initializable {
         }
         int[] ndevs = new int[1];
 
-        ret = jsgfpLib.Init(deviceName);
-
+        ret = jsgfpLib.Init(SGFDxDeviceName.SG_DEV_AUTO);
         System.out.println(ret);
         if (ret == 6) {
             displayCon.appendText("Device not detected \n");
@@ -410,5 +423,20 @@ public class FingerMainApp implements Initializable {
 
 
     }
+
+    void regCaptA(ActionEvent event) {
+        infoCaptA.setText("testtttttt capt A");
+    }
+
+    @FXML
+    void regCaptB(ActionEvent event) {
+        infoCaptB.setText("testtttttt capt B");
+    }
+
+    @FXML
+    void registrationOk(ActionEvent event) {
+        infoResultReg.setText("Ok");
+    }
+
 
 }
