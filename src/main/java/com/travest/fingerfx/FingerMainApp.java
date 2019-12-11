@@ -424,6 +424,7 @@ public class FingerMainApp implements Initializable {
 
     }
 
+    @FXML
     void regCaptA(ActionEvent event) {
         infoCaptA.setText("testtttttt capt A");
     }
