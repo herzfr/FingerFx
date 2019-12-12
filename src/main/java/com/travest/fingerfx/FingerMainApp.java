@@ -63,7 +63,7 @@ public class FingerMainApp implements Initializable {
 
 
 
-    private BufferedImage imgVerif;
+
     private BufferedImage imgVerif2;
 
     public String fingerVerif1 = null;
@@ -74,7 +74,6 @@ public class FingerMainApp implements Initializable {
 //    verification tab properties
 
 
-    AppData appData;
 
     //server request service
     ServerRequest serverRequest = new ServerRequest();
