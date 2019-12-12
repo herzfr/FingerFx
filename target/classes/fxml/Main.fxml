@@ -189,14 +189,19 @@
                      </children>
                   </AnchorPane>
                   <AnchorPane fx:id="frameCaptB" layoutX="241.0" layoutY="232.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #bcbcbc;">
+            <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #81d4fa;">
+               <children>
+                  <TextArea fx:id="infoCaptA1" disable="true" layoutX="215.0" layoutY="32.0" prefHeight="200.0" prefWidth="275.0" promptText="Info capture 1" />
+                  <AnchorPane layoutX="30.0" layoutY="32.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #bcbcbc; -fx-border-color: #424242; -fx-border-width: 2;">
                      <children>
-                        <ImageView fx:id="imageVerifA" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fx:id="imageVerifA" fitHeight="200.0" fitWidth="154.0" layoutX="4.0" layoutY="3.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../images/fingericon.png" />
                            </image>
                         </ImageView>
                      </children>
                   </AnchorPane>
+                  <Button fx:id="btnVerify" layoutX="509.0" layoutY="32.0" mnemonicParsing="false" onAction="#verifyFinger" prefHeight="40.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #d32f2f;" text="Verify" textFill="#d32f2f" />
                </children>
             </Pane>
             <Pane fx:id="pnlUpd" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #2583a8;">
