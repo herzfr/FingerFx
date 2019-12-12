@@ -14,6 +14,7 @@ import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import sun.misc.BASE64Decoder;
 
@@ -21,6 +22,7 @@ import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Base64;
@@ -63,6 +65,8 @@ public class FingerMainApp implements Initializable {
     private Pane pnlReg;
     @FXML
     private Pane pnlConn;
+    @FXML
+    private Pane pnlUpd;
     @FXML
     private TextField fieldDSN;
     @FXML
@@ -114,7 +118,7 @@ public class FingerMainApp implements Initializable {
     @FXML
     private Button btnReg;
     @FXML
-    private Button btnDisc;
+    private Button btnUpdt;
     @FXML
     private Label lblAccount;
     @FXML
@@ -131,15 +135,35 @@ public class FingerMainApp implements Initializable {
     private ImageView imageA;
     @FXML
     private ImageView imageB;
+    @FXML
+    private TextArea infoUpdA;
+    @FXML
+    private AnchorPane frameUpdtA;
+    @FXML
+    private ImageView iupdateA;
+    @FXML
+    private TextArea infoUpdB;
+    @FXML
+    private AnchorPane frameUpdtB;
+    @FXML
+    private ImageView iupdateB;
+    @FXML
+    private TextField infoResultUpd;
+    @FXML
+    private Button updBtnOk;
+    @FXML
+    private Button capUpdBtnA;
+    @FXML
+    private Button capUpdBtnB;
+    @FXML
+    private Label infoLabelA;
+    @FXML
+    private Label infoLabelB;
 
 
     @FXML
     void onConnection(ActionEvent event) {
         pnlConn.toFront();
-        conLog.setStyle("-fx-fill: #2bc344;");
-        keyLog.setStyle("-fx-fill: #fff;");
-        regLog.setStyle("-fx-fill: #fff;");
-        clsLog.setStyle("-fx-fill: #fff;");
     }
 
     @FXML
@@ -150,36 +174,34 @@ public class FingerMainApp implements Initializable {
         regLog.setStyle("-fx-fill: #fff;");
         clsLog.setStyle("-fx-fill: #fff;");
 
+        Boolean status = serverRequest.getFinger(appData.getRecord().getUsername(), appData.getToken());
+        System.out.println(appData.getFinger().getTemplate());
+
     }
 
     @FXML
     void onRegister(ActionEvent event) {
         pnlReg.toFront();
-        conLog.setStyle("-fx-fill: #fff;");
-        keyLog.setStyle("-fx-fill: #fff;");
-        regLog.setStyle("-fx-fill: #2bc344;");
-        clsLog.setStyle("-fx-fill: #fff;");
+
     }
 
     @FXML
-    void onDisconnect(ActionEvent event) {
-        conLog.setStyle("-fx-fill: #fff;");
-        keyLog.setStyle("-fx-fill: #fff;");
-        regLog.setStyle("-fx-fill: #fff;");
-        clsLog.setStyle("-fx-fill: #2bc344;");
+    void onUpdate(ActionEvent event) {
 
-        if (jsgfpLib != null) {
-            jsgfpLib.CloseDevice();
-            jsgfpLib.Close();
-            jsgfpLib = null;
-        }
-        if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
-            displayCon.setText("CloseDevice() Success [" + ret + "]");
-            lblInfo.setText("OFF");
-            incubLight.setStyle(" -fx-fill: #e12272;");
-        } else {
-            displayCon.setText("CloseDevice() Error : " + ret);
-        }
+        pnlUpd.toFront();
+
+//        if (jsgfpLib != null) {
+//            jsgfpLib.CloseDevice();
+//            jsgfpLib.Close();
+//            jsgfpLib = null;
+//        }
+//        if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+//            displayCon.setText("CloseDevice() Success [" + ret + "]");
+//            lblInfo.setText("OFF");
+//            incubLight.setStyle(" -fx-fill: #e12272;");
+//        } else {
+//            displayCon.setText("CloseDevice() Error : " + ret);
+//        }
 
     }
 
@@ -330,7 +352,10 @@ public class FingerMainApp implements Initializable {
         fieldHEIGHT.setDisable(true);
         fieldWIDTH.setDisable(true);
         displayCon.setEditable(false);
-        conLog.setStyle("-fx-fill: #2bc344;");
+        infoCaptA.setEditable(false);
+        infoCaptB.setEditable(false);
+        infoResultReg.setEditable(false);
+        
 
         initialize();
         initVerify();
@@ -434,7 +459,6 @@ public class FingerMainApp implements Initializable {
 
     @FXML
     void regCaptB(ActionEvent event) {
-        infoCaptB.setText("");
         int[] quality = new int[1];
         long nfiqvalue;
         int[] numOfMinutes = new int[1];
@@ -509,6 +533,157 @@ public class FingerMainApp implements Initializable {
         }
 
     }
+
+
+    @FXML
+    void updCaptA(ActionEvent event) {
+        int[] quality = new int[1];
+        long nfiqvalue;
+        int[] numOfMinutes = new int[1];
+
+        // Global BufferedImage
+        imgRegA = new BufferedImage(dvcInfo.imageWidth, dvcInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+
+        // Global Byte Image
+        imageBufferA = ((java.awt.image.DataBufferByte) imgRegA.getRaster().getDataBuffer()).getData();
+
+        if (jsgfpLib != null) {
+            ret = jsgfpLib.GetImageEx(imageBufferA, 10 * 1000, 0, 80);
+            jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferA, quality);
+            SGFingerInfo fingerInfo = new SGFingerInfo();
+            fingerInfo.FingerNumber = SGFingerPosition.SG_FINGPOS_LI;
+            fingerInfo.ImageQuality = quality[0];
+            fingerInfo.ImpressionType = SGImpressionType.SG_IMPTYPE_LP;
+            fingerInfo.ViewNumber = 1;
+
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                infoUpdA.appendText("Captured\n");
+
+                BufferedImage resized = resize(imgRegA, 200, 154);
+                Image i = SwingFXUtils.toFXImage(resized, null);
+                iupdateA.setImage(i);
+
+//                System.out.println(quality[0]);
+                if (quality[0] < 50) {
+                    infoUpdA.appendText("Get Image Success, \nbut image quality is => " + quality[0] + "\n");
+                    infoUpdA.appendText("Please Try Again!\n");
+                } else {
+                    infoUpdA.appendText("Get Image Success, \nyour image quality is => " + quality[0] + "\n");
+                    infoUpdA.appendText("Thank You\n");
+
+                    ret = jsgfpLib.CreateTemplate(fingerInfo, imageBufferA, regMinA);
+
+                    if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                        long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferA, quality);
+                        nfiqvalue = jsgfpLib.ComputeNFIQ(imageBufferA, dvcInfo.imageWidth, dvcInfo.imageHeight);
+                        ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinA, numOfMinutes);
+                        if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
+                            infoUpdA.appendText("Reg. Capture 2 PASS QC. \nQual[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
+                            infoLabelA.setText("SUCCESS");
+                            infoLabelA.setStyle("-fx-text-fill: #23cf87");
+                        } else {
+                            infoUpdA.appendText("Reg. Capture 2 FAIL QC. \nQuality[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
+                            infoLabelA.setText("FAILED");
+                            infoLabelA.setStyle("-fx-text-fill: #b51967");
+                        }
+                    }
+                }
+
+            } else {
+                infoUpdA.appendText("Captured A is Failed\n");
+            }
+
+        } else {
+            infoUpdA.setText("Please Initialize Device First in Connection Form");
+        }
+    }
+
+    @FXML
+    void updCaptB(ActionEvent event) {
+        int[] quality = new int[1];
+        long nfiqvalue;
+        int[] numOfMinutes = new int[1];
+
+        // Global BufferedImage
+        imgRegB = new BufferedImage(dvcInfo.imageWidth, dvcInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+
+        // Global Byte Image
+        imageBufferB = ((java.awt.image.DataBufferByte) imgRegB.getRaster().getDataBuffer()).getData();
+
+        if (jsgfpLib != null) {
+            ret = jsgfpLib.GetImageEx(imageBufferB, 10 * 1000, 0, 80);
+            jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferB, quality);
+            SGFingerInfo fingerInfo = new SGFingerInfo();
+            fingerInfo.FingerNumber = SGFingerPosition.SG_FINGPOS_LI;
+            fingerInfo.ImageQuality = quality[0];
+            fingerInfo.ImpressionType = SGImpressionType.SG_IMPTYPE_LP;
+            fingerInfo.ViewNumber = 1;
+
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                infoUpdB.appendText("Captured\n");
+
+                BufferedImage resized = resize(imgRegB, 200, 154);
+                Image i = SwingFXUtils.toFXImage(resized, null);
+                iupdateB.setImage(i);
+
+//                System.out.println(quality[0]);
+                if (quality[0] < 50) {
+                    infoUpdB.appendText("Get Image Success, \nbut image quality is => " + quality[0] + "\n");
+                    infoUpdB.appendText("Please Try Again!\n");
+                } else {
+                    infoUpdB.appendText("Get Image Success, \nyour image quality is => " + quality[0] + "\n");
+                    infoUpdB.appendText("Thank You\n");
+
+                    ret = jsgfpLib.CreateTemplate(fingerInfo, imageBufferB, regMinB);
+
+                    if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                        long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferB, quality);
+                        nfiqvalue = jsgfpLib.ComputeNFIQ(imageBufferB, dvcInfo.imageWidth, dvcInfo.imageHeight);
+                        ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinB, numOfMinutes);
+                        if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
+                            infoUpdB.appendText("Reg. Capture 2 PASS QC. \nQual[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
+                            infoLabelB.setText("SUCCESS");
+                            infoLabelB.setStyle("-fx-text-fill: #23cf87");
+                        } else {
+                            infoUpdB.appendText("Reg. Capture 2 FAIL QC. \nQuality[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
+                            infoLabelA.setText("FAILED");
+                            infoLabelA.setStyle("-fx-text-fill: #b51967");
+                        }
+                    }
+                }
+
+            } else {
+                infoUpdB.appendText("Captured A is Failed\n");
+            }
+
+        } else {
+            infoUpdB.setText("Please Initialize Device First in Connection Form");
+        }
+    }
+
+    @FXML
+    void updateOk(ActionEvent event) {
+//        infoUpdB.setText("upd ok");
+
+        String imageA = null;
+        String imageB = null;
+
+        ByteArrayOutputStream bAOS = new ByteArrayOutputStream();
+        ByteArrayOutputStream bAOS2 = new ByteArrayOutputStream();
+        try {
+            ImageIO.write(imgRegA, "png", bAOS);
+            ImageIO.write(imgRegB, "png", bAOS2);
+            byte[] imageByteA = bAOS.toByteArray();
+            byte[] imageByteB = bAOS2.toByteArray();
+            imageA = Base64.getEncoder().encodeToString(imageByteA);
+            imageB = Base64.getEncoder().encodeToString(imageByteB);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+
 
 
 }
