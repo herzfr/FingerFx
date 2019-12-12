@@ -16,71 +16,39 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.travest.fingerfx.FingerMainApp">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.travest.fingerfx.FingerMainApp">
    <children>
-      <AnchorPane prefHeight="513.0" prefWidth="239.0" style="-fx-background-color: #234a7b;">
-         <children>
-            <Button fx:id="btnConn" alignment="CENTER" layoutX="-5.0" layoutY="111.0" mnemonicParsing="false" onAction="#onConnection" prefHeight="48.0" prefWidth="245.0" style="-fx-background-color: #00000070;" text="Connect" textFill="WHITE" />
-            <Button fx:id="btnVrfy" layoutX="2.0" layoutY="184.0" mnemonicParsing="false" onAction="#onVerify" prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: #00000070;" text="Verify" textFill="WHITE" />
-            <Button fx:id="btnReg" layoutX="2.0" layoutY="257.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: #00000070;" text="Register" textFill="WHITE" />
-            <Button fx:id="btnUpdt" layoutX="1.0" layoutY="332.0" mnemonicParsing="false" onAction="#onUpdate" prefHeight="48.0" prefWidth="240.0" style="-fx-background-color: #00000070;" text="Update" textFill="WHITE" />
-            <AnchorPane prefHeight="513.0" prefWidth="49.0" style="-fx-background-color: cecece;">
-               <effect>
-                  <DropShadow />
-               </effect>
-               <children>
-                  <FontAwesomeIconView fx:id="conLog" fill="WHITE" glyphName="WIFI" layoutX="16.0" layoutY="140.0" size="15" />
-                  <FontAwesomeIconView fx:id="keyLog" fill="WHITE" glyphName="KEY" layoutX="17.0" layoutY="212.0" size="15" />
-                  <FontAwesomeIconView fx:id="regLog" fill="WHITE" glyphName="USER" layoutX="15.0" layoutY="284.0" size="15" />
-                  <FontAwesomeIconView fx:id="clsLog" fill="WHITE" glyphName="CLOSE" layoutX="19.0" layoutY="361.0" size="15" />
-               </children>
-            </AnchorPane>
-            <Label fx:id="lblAccount" alignment="CENTER" layoutX="138.0" layoutY="46.0" prefHeight="21.0" prefWidth="102.0" text="Account" textFill="WHITE">
-               <font>
-                  <Font name="System Italic" size="15.0" />
-               </font></Label>
-            <ImageView fx:id="imgView" fitHeight="71.0" fitWidth="77.0" layoutX="61.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
-         </children>
-         <effect>
-            <DropShadow />
-         </effect>
-      </AnchorPane>
       <ButtonBar prefHeight="40.0" prefWidth="200.0" />
       <AnchorPane layoutX="238.0" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: cecece;">
          <children>
-            <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #fff;">
+            <Pane prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #eb4034;" />
+            <Pane fx:id="pnlReg" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #3e75d2;">
                <children>
-                  <TitledPane animated="false" layoutX="30.0" layoutY="34.0" text="Finger 1">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: transparent;">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/fingericon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </TitledPane>
-                  <TitledPane animated="false" layoutX="255.0" layoutY="34.0" text="Finger 2">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/fingericon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </TitledPane>
-                  <TextArea layoutX="30.0" layoutY="268.0" prefHeight="212.0" prefWidth="648.0" />
-                  <FontAwesomeIconView fill="#ff1744" glyphName="USER" layoutX="564.0" layoutY="166.0" size="40" />
-                  <Button fx:id="btnInit1" alignment="TOP_CENTER" layoutX="480.0" layoutY="93.0" mnemonicParsing="false" onAction="#onInit" prefHeight="93.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: #234a7b;" text="Verify" textAlignment="CENTER" textFill="#234a7b" />
-               </children>
-            </Pane>
+                  <Button fx:id="capRegBtnA" layoutX="14.0" layoutY="93.0" mnemonicParsing="false" onAction="#regCaptA" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture A" textFill="WHITE" />
+                  <TextArea fx:id="infoCaptA" layoutX="405.0" layoutY="21.0" prefHeight="200.0" prefWidth="294.0" promptText="Info capture 1" />
+                  <TextArea fx:id="infoCaptB" layoutX="405.0" layoutY="246.0" prefHeight="200.0" prefWidth="294.0" promptText="Info capture 2" />
+                  <Button fx:id="capRegBtnB" layoutX="14.0" layoutY="319.0" mnemonicParsing="false" onAction="#regCaptB" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B" textFill="WHITE" />
+                  <Button fx:id="regBtnOk" layoutX="14.0" layoutY="451.0" mnemonicParsing="false" onAction="#registrationOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Register" textFill="#234a7b" />
+                  <TextField fx:id="infoResultReg" layoutX="241.0" layoutY="462.0" prefHeight="41.0" prefWidth="458.0" promptText="result callback" />
+                  <AnchorPane layoutX="241.0" layoutY="21.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #bcbcbc;">
+                     <children>
+                        <ImageView fx:id="imageA" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/fingericon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="241.0" layoutY="246.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #bcbcbc;">
+                     <children>
+                        <ImageView fx:id="imageB" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/fingericon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+               </children></Pane>
             <Pane fx:id="pnlConn" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #fff;">
                <children>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
@@ -171,24 +139,6 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="pnlReg" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #188394;">
-               <children>
-                  <Button fx:id="capRegBtnA" layoutX="14.0" layoutY="93.0" mnemonicParsing="false" onAction="#regCaptA" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture A" textFill="WHITE" />
-                  <TextArea fx:id="infoCaptA" layoutX="405.0" layoutY="21.0" prefHeight="200.0" prefWidth="294.0" promptText="Info capture 1" />
-                  <TextArea fx:id="infoCaptB" layoutX="405.0" layoutY="231.0" prefHeight="200.0" prefWidth="294.0" promptText="Info capture 2" />
-                  <Button fx:id="capRegBtnB" layoutX="14.0" layoutY="319.0" mnemonicParsing="false" onAction="#regCaptB" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B" textFill="WHITE" />
-                  <Button fx:id="regBtnOk" layoutX="14.0" layoutY="438.0" mnemonicParsing="false" onAction="#registrationOk" prefHeight="62.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Register" textFill="#234a7b" />
-                  <TextField fx:id="infoResultReg" layoutX="241.0" layoutY="441.0" prefHeight="62.0" prefWidth="458.0" promptText="result callback" />
-                  <AnchorPane fx:id="frameCaptA" layoutX="241.0" layoutY="21.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #bcbcbc;">
-                     <children>
-                        <ImageView fx:id="imageA" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/fingericon.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="frameCaptB" layoutX="241.0" layoutY="232.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #bcbcbc;">
             <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #81d4fa;">
                <children>
                   <TextArea fx:id="infoCaptA1" disable="true" layoutX="215.0" layoutY="32.0" prefHeight="200.0" prefWidth="275.0" promptText="Info capture 1" />
@@ -204,44 +154,6 @@
                   <Button fx:id="btnVerify" layoutX="509.0" layoutY="32.0" mnemonicParsing="false" onAction="#verifyFinger" prefHeight="40.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #d32f2f;" text="Verify" textFill="#d32f2f" />
                </children>
             </Pane>
-            <Pane fx:id="pnlUpd" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #2583a8;">
-               <children>
-                  <TextArea fx:id="infoUpdA" layoutX="404.0" layoutY="14.0" prefHeight="200.0" prefWidth="294.0" promptText="Info capture 1" />
-                  <AnchorPane fx:id="frameUpdtA" layoutX="236.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #bcbcbc;">
-                     <children>
-                        <ImageView fx:id="iupdateA" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/fingericon.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                  <TextArea fx:id="infoUpdB" layoutX="404.0" layoutY="222.0" prefHeight="200.0" prefWidth="294.0" promptText="Info capture 2" />
-                  <AnchorPane fx:id="frameUpdtB" layoutX="236.0" layoutY="222.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #bcbcbc;">
-                     <children>
-                        <ImageView fx:id="iupdateB" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../images/fingericon.png" />
-                           </image>
-                        </ImageView>
-                     </children>
-                  </AnchorPane>
-                  <TextField fx:id="infoResultUpd" layoutX="236.0" layoutY="433.0" prefHeight="62.0" prefWidth="458.0" promptText="result callback" />
-                  <Button fx:id="updBtnOk" layoutX="14.0" layoutY="430.0" mnemonicParsing="false" onAction="#updateOk" prefHeight="62.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Update" textFill="#234a7b" />
-                  <Button fx:id="capUpdBtnA" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#updCaptA" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture A" textFill="WHITE" />
-                  <Button fx:id="capUpdBtnB" layoutX="14.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptB" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B" textFill="WHITE" />
-                  <Label fx:id="infoLabelA" alignment="CENTER" layoutX="14.0" layoutY="87.0" prefHeight="55.0" prefWidth="186.0" text="Info A" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="infoLabelB" alignment="CENTER" layoutX="14.0" layoutY="295.0" prefHeight="55.0" prefWidth="186.0" text="Info B" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
          </children>
       </AnchorPane>
       <AnchorPane prefHeight="513.0" prefWidth="239.0" style="-fx-background-color: #234a7b;">
@@ -249,7 +161,7 @@
             <Button fx:id="btnConn" alignment="CENTER" layoutX="-5.0" layoutY="111.0" mnemonicParsing="false" onAction="#onConnection" prefHeight="48.0" prefWidth="245.0" style="-fx-background-color: #00000070;" text="Connect" textFill="WHITE" />
             <Button fx:id="btnVrfy" layoutX="2.0" layoutY="184.0" mnemonicParsing="false" onAction="#onVerify" prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: #00000070;" text="Verify" textFill="WHITE" />
             <Button fx:id="btnReg" layoutX="2.0" layoutY="257.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: #00000070;" text="Register" textFill="WHITE" />
-            <Button fx:id="btnDisc" layoutX="1.0" layoutY="332.0" mnemonicParsing="false" onAction="#onDisconnect" prefHeight="48.0" prefWidth="240.0" style="-fx-background-color: #00000070;" text="Discconnect" textFill="WHITE" />
+            <Button fx:id="btnDisc" layoutX="1.0" layoutY="332.0" mnemonicParsing="false" prefHeight="48.0" prefWidth="240.0" style="-fx-background-color: #00000070;" text="Discconnect" textFill="WHITE" />
             <Label fx:id="lblAccount" alignment="CENTER" layoutX="138.0" layoutY="46.0" prefHeight="21.0" prefWidth="102.0" text="Account" textFill="WHITE">
                <font>
                   <Font name="System Italic" size="15.0" />
