@@ -17,6 +17,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import sun.misc.BASE64Decoder;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
@@ -37,19 +38,22 @@ public class FingerMainApp implements Initializable {
 
     byte[] imageBufferA;
     byte[] imageBufferB;
+    byte[] imageBufferAVerify;
 
     private BufferedImage imgRegA;
     private BufferedImage imgRegB;
+    private BufferedImage imgVerifA;
 
     private byte[] regMinA = new byte[400];
     private byte[] regMinB = new byte[400];
+    private byte[] VerifMinA = new byte[400];
 
     AppData appData;
 
-    BufferedImage imgReg2;
 
-    byte[] imageBuffer2;
-    byte[] regMin2;
+    public String fingerVerif64 = null;
+    byte[] imgByteVerif;
+
 
     ServerRequest serverRequest = new ServerRequest();
 
@@ -110,21 +114,11 @@ public class FingerMainApp implements Initializable {
     @FXML
     private Button btnDisc;
     @FXML
-    private Button testCapture;
-    @FXML
     private Label lblAccount;
     @FXML
     private ImageView imgView;
     @FXML
-    private TextArea textArea;
-    @FXML
-    private ImageView imageFinger1;
-    @FXML
-    private Button capRegBtnA;
-    @FXML
-    private Button capRegBtnB;
-    @FXML
-    private Button regBtnOk;
+    private ImageView imageVerifA;
     @FXML
     private TextArea infoCaptA;
     @FXML
@@ -153,6 +147,13 @@ public class FingerMainApp implements Initializable {
         keyLog.setStyle("-fx-fill: #2bc344;");
         regLog.setStyle("-fx-fill: #fff;");
         clsLog.setStyle("-fx-fill: #fff;");
+
+        //init request template
+        Boolean status = serverRequest.getFinger(appData.getRecord().getUsername(), appData.getToken());
+
+        System.out.println(appData.getFinger().getTemplate());
+
+
     }
 
     @FXML
@@ -295,12 +296,9 @@ public class FingerMainApp implements Initializable {
                     fieldDPI.setText(dvcInfo.imageDPI + "\n");
                     fieldHEIGHT.setText(dvcInfo.imageHeight + "\n");
                     fieldWIDTH.setText(+dvcInfo.imageWidth + "\n");
-
-
                     devicePort = dvcInfo.comPort;
                     lblInfo.setText("ON");
                     incubLight.setStyle(" -fx-fill: #2bc344;");
-
 
                 } else {
                     displayCon.appendText("Get Device Info Filed : " + ret + "\n");
@@ -337,94 +335,36 @@ public class FingerMainApp implements Initializable {
         fieldWIDTH.setDisable(true);
         displayCon.setEditable(false);
         conLog.setStyle("-fx-fill: #2bc344;");
-        
-        initialize();
 
+        initialize();
+        initVerify();
+
+    }
+
+
+    public void initVerify(){
+        System.out.println("fingerprint user : "+appData.getFinger().getFinger());
+
+        fingerVerif64 = appData.getFinger().getFinger();
+        imgByteVerif = Base64.getDecoder().decode(fingerVerif64);
+
+        try {
+            imgVerifA = ImageIO.read(new ByteArrayInputStream(imgByteVerif));
+            System.out.println("image verify : "+ imageVerifA);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 
     @FXML
     void testFingerCapture(ActionEvent event) {
 
-
-        System.out.println("halo test capture");
-
-        int[] quality = new int[1];
-        int[] numOfMinutiae = new int[1];
-        long nfiqvalue;
-        imgReg2 = new BufferedImage(dvcInfo.imageWidth, dvcInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
-        imageBuffer2 = ((java.awt.image.DataBufferByte) imgReg2.getRaster().getDataBuffer()).getData();
-
-        Image image = SwingFXUtils.toFXImage(imgReg2, null);
-
-        if (jsgfpLib != null) {
-            ret = jsgfpLib.GetImageEx(imageBuffer2, 10 * 1000, 0, 80);
-            System.out.println(new String(imageBuffer2));
-
-            jsgfpLib.GetImageQuality(dvcInfo.imageHeight, dvcInfo.imageWidth, imageBuffer2, quality);
-            SGFingerInfo fingerInfo = new SGFingerInfo();
-            fingerInfo.FingerNumber = SGFingerPosition.SG_FINGPOS_LI;
-            fingerInfo.ImageQuality = quality[0];
-            fingerInfo.ImpressionType = SGImpressionType.SG_IMPTYPE_LP;
-            fingerInfo.ViewNumber = 1;
-
-            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
-                textArea.appendText("Tahap 2 Second Capture\n");
-                System.out.println("tahap 2 second capture ");
-                imageFinger1.setImage(image);
-//                JlabelImage2.setIcon(new ImageIcon(imgReg2.getScaledInstance(130, 150, java.awt.Image.SCALE_DEFAULT)));
-
-                if (quality[0] < 45) {
-                    textArea.appendText("GetImageEx() Success [" + ret + "] but image quality is [" + quality[0] + "]. Please try again\n");
-                    System.out.println("GetImageEx() Success [" + ret + "] but image quality is [" + quality[0] + "]. Please try again\n");
-                } else {
-                    textArea.appendText("GetImageEx() Success [" + ret + "] but image quality is [" + quality[0] + "]. Thank u\n");
-                    System.out.println("GetImageEx() Success [" + ret + "] but image quality is [" + quality[0] + "]. Thank u\n");
-
-                    ret = jsgfpLib.CreateTemplate(fingerInfo, imageBuffer2, regMin2);
-                    System.out.println("create template " + new String(regMin2));
-                    textArea.appendText("\ncreate template " + new String(regMin2) + "\n");
-
-                    if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
-                        long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageHeight, dvcInfo.imageWidth, imageBuffer2, quality);
-                        nfiqvalue = jsgfpLib.ComputeNFIQ(imageBuffer2, dvcInfo.imageWidth, dvcInfo.imageHeight);
-                        ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMin2, numOfMinutiae);
-
-                        System.out.println(quality[0]);
-                        System.out.println(nfiqvalue);
-                        System.out.println(numOfMinutiae);
-
-                        if ((quality[0] >= 45) && (nfiqvalue <= 2) && (numOfMinutiae[0] >= 20)) {
-                            textArea.appendText("Verification Capture PASS QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]\n");
-                            System.out.println("Verification Capture PASS QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]\n");
-//                            r2Captured = true;
-                            System.out.println("ret value : " + ret);
-                        } else {
-                            textArea.appendText("Verification Capture FAIL QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]\n");
-                            System.out.println("Verification Capture FAIL QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]\n");
-                        }
-
-                    } else {
-                        System.out.println("CreateTemplate() Error : " + ret + "\n");
-                        textArea.appendText("CreateTemplate() Error : " + ret + "\n");
-                    }
-                }
-
-            } else {
-                textArea.appendText("Failed #1");
-                System.out.println("failed");
-            }
-
-        } else {
-            textArea.appendText("Errorr Guysss jsqfpLib nya \n");
-            System.out.println("Error jsgfplibnya ");
-        }
-
-
     }
 
     @FXML
     void regCaptA(ActionEvent event) {
+        infoCaptA.setText("");
         int[] quality = new int[1];
         long nfiqvalue;
         int[] numOfMinutes = new int[1];
@@ -451,7 +391,6 @@ public class FingerMainApp implements Initializable {
                 Image i = SwingFXUtils.toFXImage(resized, null);
                 imageA.setImage(i);
 
-//                System.out.println(quality[0]);
                 if (quality[0] < 50) {
                     infoCaptA.appendText("Get Image Success, \nbut image quality is => " + quality[0] + "\n");
                     infoCaptA.appendText("Please Try Again!\n");
@@ -467,8 +406,7 @@ public class FingerMainApp implements Initializable {
                         ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinA, numOfMinutes);
                         if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
                             infoCaptA.appendText("Reg. Capture 2 PASS QC. \nQual[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
-                            infoCaptA.appendText("template : " + new String(regMinA) + "\n");
-//
+//                            infoCaptA.appendText("template : " + new String(regMinA) + "\n");
                         } else {
                             infoCaptA.appendText("Reg. Capture 2 FAIL QC. \nQuality[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
                         }
@@ -497,8 +435,7 @@ public class FingerMainApp implements Initializable {
 
     @FXML
     void regCaptB(ActionEvent event) {
-        infoCaptB.setText("testtttttt capt B");
-
+        infoCaptB.setText("");
         int[] quality = new int[1];
         long nfiqvalue;
         int[] numOfMinutes = new int[1];
@@ -541,8 +478,7 @@ public class FingerMainApp implements Initializable {
                         ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinB, numOfMinutes);
                         if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
                             infoCaptB.appendText("Reg. Capture 2 PASS QC. \nQual[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
-                            infoCaptB.appendText("template : " + new String(regMinB) + "\n");
-//
+//                            infoCaptB.appendText("template : " + new String(regMinB) + "\n");
                         } else {
                             infoCaptB.appendText("Reg. Capture 2 FAIL QC. \nQuality[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
                         }
@@ -563,34 +499,16 @@ public class FingerMainApp implements Initializable {
     @FXML
     void registrationOk(ActionEvent event) throws IOException {
 
-        infoResultReg.setText("Ok\n");
-
         long secuLevel = SGFDxSecurityLevel.SL_NORMAL;
         boolean[] matched = new boolean[1];
-//        matched[0] = false;
-
         ret = jsgfpLib.MatchTemplate(regMinA, regMinB, secuLevel, matched);
 
-        String str = new String(regMinA);
-        byte[] b = str.getBytes();
-
-        System.out.println("hasil : " + ret);
-        infoResultReg.appendText(String.valueOf(matched[0]) + "\n");
-//        infoResultReg.appendText(new String(regMinA)+ "\n");
-        infoCaptB.setText("");
-//        infoCaptB.appendText("\noriginal :" + regMinA + "\n");
-//        infoCaptB.appendText("\nkedalam string :" + str + "\n");
-//        infoCaptB.appendText("\nkedalam byte :" + new String(b) + "\n");
-//        infoCaptB.appendText("\nappdata :" + appData.getRecord().getUsername() + "\n");
-
-        String encoded = Base64.getEncoder().encodeToString(regMinA);
-        String decoded = new String(Base64.getDecoder().decode(encoded.getBytes()));
-
-        infoCaptB.appendText("original : " + new String(regMinA) +"\n");
-        infoCaptB.appendText("encode decode  : " + decoded + "\n");
-
-        serverRequest.registerNewFinger(appData.getRecord().getUsername(), regMinA, appData.getToken());
-
+        Boolean status = serverRequest.registerNewFinger(appData.getRecord().getUsername(), regMinA, appData.getToken(),  imgRegA);
+        if(status){
+            infoResultReg.setText("Operation Done\n");
+        }else{
+            infoResultReg.setText("Operation Failed\n");
+        }
 
     }
 
