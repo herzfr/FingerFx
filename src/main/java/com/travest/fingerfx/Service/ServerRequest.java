@@ -32,7 +32,7 @@ public class ServerRequest {
 
     public AppData appData;
 
-    public Boolean registerNewFinger(String username, byte[] template, String token, BufferedImage finger) throws IOException {
+    public Boolean updateFinger(String username, byte[] template, String token, BufferedImage finger) throws IOException {
 
         String encodedTemplate = Base64.getEncoder().encodeToString(template);
 //        String decoded = new String(Base64.getDecoder().decode(encodedTemplate.getBytes()));

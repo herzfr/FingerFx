@@ -38,18 +38,15 @@ public class FingerMainApp implements Initializable {
 
     byte[] imageBufferA;
     byte[] imageBufferB;
-    byte[] imageBufferAVerify;
 
     private BufferedImage imgRegA;
     private BufferedImage imgRegB;
-    private BufferedImage imgVerifA;
+    private BufferedImage imgVerif;
 
     private byte[] regMinA = new byte[400];
     private byte[] regMinB = new byte[400];
-    private byte[] VerifMinA = new byte[400];
 
     AppData appData;
-
 
     public String fingerVerif64 = null;
     byte[] imgByteVerif;
@@ -91,6 +88,8 @@ public class FingerMainApp implements Initializable {
     private Button btnOn;
     @FXML
     private Button btnOff;
+    @FXML
+    private Button btnVerify;
     @FXML
     private TextArea displayCon;
     @FXML
@@ -147,12 +146,11 @@ public class FingerMainApp implements Initializable {
         keyLog.setStyle("-fx-fill: #2bc344;");
         regLog.setStyle("-fx-fill: #fff;");
         clsLog.setStyle("-fx-fill: #fff;");
-
-        //init request template
-        Boolean status = serverRequest.getFinger(appData.getRecord().getUsername(), appData.getToken());
-
-        System.out.println(appData.getFinger().getTemplate());
-
+//
+//        //init request template
+//        Boolean status = serverRequest.getFinger(appData.getRecord().getUsername(), appData.getToken());
+//
+//        System.out.println(appData.getFinger().getTemplate());
 
     }
 
@@ -343,24 +341,27 @@ public class FingerMainApp implements Initializable {
 
 
     public void initVerify(){
-        System.out.println("fingerprint user : "+appData.getFinger().getFinger());
-
         fingerVerif64 = appData.getFinger().getFinger();
         imgByteVerif = Base64.getDecoder().decode(fingerVerif64);
 
         try {
-            imgVerifA = ImageIO.read(new ByteArrayInputStream(imgByteVerif));
-            System.out.println("image verify : "+ imageVerifA);
+            imgVerif = ImageIO.read(new ByteArrayInputStream(imgByteVerif));
+            System.out.println("image verify : "+ imgVerif);
         } catch (IOException e) {
             e.printStackTrace();
         }
+        BufferedImage resized = resize(imgVerif, 200, 154);
+        Image i = SwingFXUtils.toFXImage(resized, null);
+        imageVerifA.setImage(i);
     }
-
 
     @FXML
-    void testFingerCapture(ActionEvent event) {
+    void verifyFinger(ActionEvent event) {
+
+        System.out.println("hello world");
 
     }
+
 
     @FXML
     void regCaptA(ActionEvent event) {
@@ -503,7 +504,7 @@ public class FingerMainApp implements Initializable {
         boolean[] matched = new boolean[1];
         ret = jsgfpLib.MatchTemplate(regMinA, regMinB, secuLevel, matched);
 
-        Boolean status = serverRequest.registerNewFinger(appData.getRecord().getUsername(), regMinA, appData.getToken(),  imgRegA);
+        Boolean status = serverRequest.updateFinger(appData.getRecord().getUsername(), regMinA, appData.getToken(),  imgRegA);
         if(status){
             infoResultReg.setText("Operation Done\n");
         }else{
