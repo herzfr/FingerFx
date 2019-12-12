@@ -337,6 +337,8 @@ public class FingerMainApp implements Initializable {
         fieldWIDTH.setDisable(true);
         displayCon.setEditable(false);
         conLog.setStyle("-fx-fill: #2bc344;");
+        
+        initialize();
 
     }
 
