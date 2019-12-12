@@ -51,8 +51,11 @@ public class FingerMainApp implements Initializable {
     public String fingerVerif64 = null;
     byte[] imgByteVerif;
 
-
     ServerRequest serverRequest = new ServerRequest();
+
+
+    private boolean isFingerRegistered = false;
+
 
     @FXML
     private Pane pnlVerify;
@@ -146,11 +149,6 @@ public class FingerMainApp implements Initializable {
         keyLog.setStyle("-fx-fill: #2bc344;");
         regLog.setStyle("-fx-fill: #fff;");
         clsLog.setStyle("-fx-fill: #fff;");
-//
-//        //init request template
-//        Boolean status = serverRequest.getFinger(appData.getRecord().getUsername(), appData.getToken());
-//
-//        System.out.println(appData.getFinger().getTemplate());
 
     }
 
@@ -340,13 +338,13 @@ public class FingerMainApp implements Initializable {
     }
 
 
-    public void initVerify(){
+    public void initVerify() {
         fingerVerif64 = appData.getFinger().getFinger();
         imgByteVerif = Base64.getDecoder().decode(fingerVerif64);
 
         try {
             imgVerif = ImageIO.read(new ByteArrayInputStream(imgByteVerif));
-            System.out.println("image verify : "+ imgVerif);
+            System.out.println("image verify : " + imgVerif);
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -494,7 +492,6 @@ public class FingerMainApp implements Initializable {
             infoCaptB.setText("Please Initialize Device First in Connection Form");
         }
 
-
     }
 
     @FXML
@@ -504,10 +501,10 @@ public class FingerMainApp implements Initializable {
         boolean[] matched = new boolean[1];
         ret = jsgfpLib.MatchTemplate(regMinA, regMinB, secuLevel, matched);
 
-        Boolean status = serverRequest.updateFinger(appData.getRecord().getUsername(), regMinA, appData.getToken(),  imgRegA);
-        if(status){
+        Boolean status = serverRequest.updateFinger(appData.getRecord().getUsername(), regMinA, appData.getToken(), imgRegA);
+        if (status) {
             infoResultReg.setText("Operation Done\n");
-        }else{
+        } else {
             infoResultReg.setText("Operation Failed\n");
         }
 

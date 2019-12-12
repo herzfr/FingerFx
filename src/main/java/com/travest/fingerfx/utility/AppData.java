@@ -8,6 +8,7 @@ public class AppData {
     public static Record record;
     public static String token;
     public static Finger finger;
+    public static Boolean isFingerRegistered;
 
     public AppData() {
     }
@@ -34,5 +35,13 @@ public class AppData {
 
     public static void setFinger(Finger finger) {
         AppData.finger = finger;
+    }
+
+    public static Boolean getIsFingerRegistered() {
+        return isFingerRegistered;
+    }
+
+    public static void setIsFingerRegistered(Boolean isFingerRegistered) {
+        AppData.isFingerRegistered = isFingerRegistered;
     }
 }
