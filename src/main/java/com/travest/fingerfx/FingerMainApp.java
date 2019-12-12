@@ -164,6 +164,10 @@ public class FingerMainApp implements Initializable {
     @FXML
     void onConnection(ActionEvent event) {
         pnlConn.toFront();
+        conLog.setStyle("-fx-fill: #2bc344;");
+        keyLog.setStyle("-fx-fill: #fff;");
+        regLog.setStyle("-fx-fill: #fff;");
+        clsLog.setStyle("-fx-fill: #fff;");
     }
 
     @FXML
@@ -182,11 +186,19 @@ public class FingerMainApp implements Initializable {
     @FXML
     void onRegister(ActionEvent event) {
         pnlReg.toFront();
+        conLog.setStyle("-fx-fill: #fff;");
+        keyLog.setStyle("-fx-fill: #fff;");
+        regLog.setStyle("-fx-fill: #2bc344;");
+        clsLog.setStyle("-fx-fill: #fff;");
 
     }
 
     @FXML
     void onUpdate(ActionEvent event) {
+        conLog.setStyle("-fx-fill: #fff;");
+        keyLog.setStyle("-fx-fill: #fff;");
+        regLog.setStyle("-fx-fill: #fff;");
+        clsLog.setStyle("-fx-fill: #2bc344;");
 
         pnlUpd.toFront();
 
@@ -337,7 +349,7 @@ public class FingerMainApp implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        conLog.setStyle("-fx-fill: #2bc344;");
         lblAccount.setText(appData.getRecord().getUsername());
 
         fieldDSN.setDisable(true);
@@ -355,6 +367,8 @@ public class FingerMainApp implements Initializable {
         infoCaptA.setEditable(false);
         infoCaptB.setEditable(false);
         infoResultReg.setEditable(false);
+        infoUpdA.setEditable(false);
+        infoUpdB.setEditable(false);
         
 
         initialize();
@@ -537,6 +551,7 @@ public class FingerMainApp implements Initializable {
 
     @FXML
     void updCaptA(ActionEvent event) {
+        infoUpdA.setText("");
         int[] quality = new int[1];
         long nfiqvalue;
         int[] numOfMinutes = new int[1];
@@ -600,6 +615,7 @@ public class FingerMainApp implements Initializable {
 
     @FXML
     void updCaptB(ActionEvent event) {
+        infoUpdB.setText("");
         int[] quality = new int[1];
         long nfiqvalue;
         int[] numOfMinutes = new int[1];
