@@ -20,9 +20,8 @@ public class LoginService {
     private String token;
     private String message;
 
-    public Boolean status;
-
     public AppData appData;
+    ServerRequest serverRequest = new ServerRequest();
 
     public Boolean loginRequest(String username, String password) throws IOException {
 
@@ -52,6 +51,8 @@ public class LoginService {
                 appData.setRecord(record);
                 appData.setToken(token);
 
+                serverRequest.getFinger(record.getUsername(), token);
+
                 return true;
 
             } else {
@@ -63,7 +64,7 @@ public class LoginService {
             }
         }catch (Exception e )
         {
-            System.out.println(e.getMessage());
+//            System.out.println(e.getMessage());
             Dialog.errorMessage("Login Connection Error", e.getMessage());
             return false;
 
