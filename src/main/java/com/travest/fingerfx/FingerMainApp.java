@@ -1,8 +1,7 @@
 package com.travest.fingerfx;
 
 import SecuGen.FDxSDKPro.jni.*;
-import SecuGen.FDxSDKPro.jni.JSGFPLib;
-import SecuGen.FDxSDKPro.jni.SGDeviceInfoParam;
+import com.travest.fingerfx.Service.ServerRequest;
 import com.travest.fingerfx.utility.AppData;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.embed.swing.SwingFXUtils;
@@ -18,15 +17,13 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import sun.misc.BASE64Decoder;
 
-
-import javax.swing.*;
-import java.awt.font.ImageGraphicAttribute;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.URL;
+import java.util.Base64;
 import java.util.ResourceBundle;
-
 
 public class FingerMainApp implements Initializable {
 
@@ -38,25 +35,23 @@ public class FingerMainApp implements Initializable {
     private long deviceName;
     private long devicePort;
 
-    byte[] imageBuffer1;
-    byte[] imageBuffer2;
+    byte[] imageBufferA;
+    byte[] imageBufferB;
 
-    private BufferedImage imgReg1;
-    private BufferedImage imgReg2;
-    private BufferedImage imgVerify;
+    private BufferedImage imgRegA;
+    private BufferedImage imgRegB;
 
-    private byte[] regMin1 = new byte[400];
-    private byte[] regMin2 = new byte[400];
-    private byte[] vrfMin = new byte[400];
-
-    private boolean r1Captured = false;
-    private boolean r2Captured = false;
-    private boolean v1Captured = false;
-
-
+    private byte[] regMinA = new byte[400];
+    private byte[] regMinB = new byte[400];
 
     AppData appData;
 
+    BufferedImage imgReg2;
+
+    byte[] imageBuffer2;
+    byte[] regMin2;
+
+    ServerRequest serverRequest = new ServerRequest();
 
     @FXML
     private Pane pnlVerify;
@@ -136,8 +131,10 @@ public class FingerMainApp implements Initializable {
     private TextArea infoCaptB;
     @FXML
     private TextField infoResultReg;
-
-
+    @FXML
+    private ImageView imageA;
+    @FXML
+    private ImageView imageB;
 
 
     @FXML
@@ -383,8 +380,8 @@ public class FingerMainApp implements Initializable {
                     System.out.println("GetImageEx() Success [" + ret + "] but image quality is [" + quality[0] + "]. Thank u\n");
 
                     ret = jsgfpLib.CreateTemplate(fingerInfo, imageBuffer2, regMin2);
-                    System.out.println("create template " + new String(regMin2) );
-                    textArea.appendText("\ncreate template " + new String(regMin2) +"\n");
+                    System.out.println("create template " + new String(regMin2));
+                    textArea.appendText("\ncreate template " + new String(regMin2) + "\n");
 
                     if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
                         long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageHeight, dvcInfo.imageWidth, imageBuffer2, quality);
@@ -398,8 +395,8 @@ public class FingerMainApp implements Initializable {
                         if ((quality[0] >= 45) && (nfiqvalue <= 2) && (numOfMinutiae[0] >= 20)) {
                             textArea.appendText("Verification Capture PASS QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]\n");
                             System.out.println("Verification Capture PASS QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]\n");
-                            r2Captured = true;
-                            System.out.println("ret value : "+ ret);
+//                            r2Captured = true;
+                            System.out.println("ret value : " + ret);
                         } else {
                             textArea.appendText("Verification Capture FAIL QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]\n");
                             System.out.println("Verification Capture FAIL QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]\n");
@@ -426,17 +423,173 @@ public class FingerMainApp implements Initializable {
 
     @FXML
     void regCaptA(ActionEvent event) {
-        infoCaptA.setText("testtttttt capt A");
+        int[] quality = new int[1];
+        long nfiqvalue;
+        int[] numOfMinutes = new int[1];
+
+        // Global BufferedImage
+        imgRegA = new BufferedImage(dvcInfo.imageWidth, dvcInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+
+        // Global Byte Image
+        imageBufferA = ((java.awt.image.DataBufferByte) imgRegA.getRaster().getDataBuffer()).getData();
+
+        if (jsgfpLib != null) {
+            ret = jsgfpLib.GetImageEx(imageBufferA, 10 * 1000, 0, 80);
+            jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferA, quality);
+            SGFingerInfo fingerInfo = new SGFingerInfo();
+            fingerInfo.FingerNumber = SGFingerPosition.SG_FINGPOS_LI;
+            fingerInfo.ImageQuality = quality[0];
+            fingerInfo.ImpressionType = SGImpressionType.SG_IMPTYPE_LP;
+            fingerInfo.ViewNumber = 1;
+
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                infoCaptA.appendText("Captured\n");
+
+                BufferedImage resized = resize(imgRegA, 200, 154);
+                Image i = SwingFXUtils.toFXImage(resized, null);
+                imageA.setImage(i);
+
+//                System.out.println(quality[0]);
+                if (quality[0] < 50) {
+                    infoCaptA.appendText("Get Image Success, \nbut image quality is => " + quality[0] + "\n");
+                    infoCaptA.appendText("Please Try Again!\n");
+                } else {
+                    infoCaptA.appendText("Get Image Success, \nyour image quality is => " + quality[0] + "\n");
+                    infoCaptA.appendText("Thank You\n");
+
+                    ret = jsgfpLib.CreateTemplate(fingerInfo, imageBufferA, regMinA);
+
+                    if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                        long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferA, quality);
+                        nfiqvalue = jsgfpLib.ComputeNFIQ(imageBufferA, dvcInfo.imageWidth, dvcInfo.imageHeight);
+                        ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinA, numOfMinutes);
+                        if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
+                            infoCaptA.appendText("Reg. Capture 2 PASS QC. \nQual[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
+                            infoCaptA.appendText("template : " + new String(regMinA) + "\n");
+//
+                        } else {
+                            infoCaptA.appendText("Reg. Capture 2 FAIL QC. \nQuality[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
+                        }
+                    }
+                }
+
+            } else {
+                infoCaptA.appendText("Captured A is Failed\n");
+            }
+
+        } else {
+            infoCaptA.setText("Please Initialize Device First in Connection Form");
+        }
+
+
+    }
+
+    private static BufferedImage resize(BufferedImage image, int height, int width) {
+        java.awt.Image tmp = image.getScaledInstance(width, height, java.awt.Image.SCALE_DEFAULT);
+        BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
+        Graphics2D g2d = resized.createGraphics();
+        g2d.drawImage(tmp, 0, 0, null);
+        g2d.dispose();
+        return resized;
     }
 
     @FXML
     void regCaptB(ActionEvent event) {
         infoCaptB.setText("testtttttt capt B");
+
+        int[] quality = new int[1];
+        long nfiqvalue;
+        int[] numOfMinutes = new int[1];
+
+        // Global BufferedImage
+        imgRegB = new BufferedImage(dvcInfo.imageWidth, dvcInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+
+        // Global Byte Image
+        imageBufferB = ((java.awt.image.DataBufferByte) imgRegB.getRaster().getDataBuffer()).getData();
+
+        if (jsgfpLib != null) {
+            ret = jsgfpLib.GetImageEx(imageBufferB, 10 * 1000, 0, 80);
+            jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferB, quality);
+            SGFingerInfo fingerInfo = new SGFingerInfo();
+            fingerInfo.FingerNumber = SGFingerPosition.SG_FINGPOS_LI;
+            fingerInfo.ImageQuality = quality[0];
+            fingerInfo.ImpressionType = SGImpressionType.SG_IMPTYPE_LP;
+            fingerInfo.ViewNumber = 1;
+
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                infoCaptB.appendText("Captured\n");
+
+                BufferedImage resized = resize(imgRegB, 200, 154);
+                Image i = SwingFXUtils.toFXImage(resized, null);
+                imageB.setImage(i);
+
+//                System.out.println(quality[0]);
+                if (quality[0] < 50) {
+                    infoCaptB.appendText("Get Image Success, \nbut image quality is => " + quality[0] + "\n");
+                    infoCaptB.appendText("Please Try Again!\n");
+                } else {
+                    infoCaptB.appendText("Get Image Success, \nyour image quality is => " + quality[0] + "\n");
+                    infoCaptB.appendText("Thank You\n");
+
+                    ret = jsgfpLib.CreateTemplate(fingerInfo, imageBufferB, regMinB);
+
+                    if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                        long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferB, quality);
+                        nfiqvalue = jsgfpLib.ComputeNFIQ(imageBufferB, dvcInfo.imageWidth, dvcInfo.imageHeight);
+                        ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinB, numOfMinutes);
+                        if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
+                            infoCaptB.appendText("Reg. Capture 2 PASS QC. \nQual[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
+                            infoCaptB.appendText("template : " + new String(regMinB) + "\n");
+//
+                        } else {
+                            infoCaptB.appendText("Reg. Capture 2 FAIL QC. \nQuality[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
+                        }
+                    }
+                }
+
+            } else {
+                infoCaptB.appendText("Captured A is Failed\n");
+            }
+
+        } else {
+            infoCaptB.setText("Please Initialize Device First in Connection Form");
+        }
+
+
     }
 
     @FXML
-    void registrationOk(ActionEvent event) {
-        infoResultReg.setText("Ok");
+    void registrationOk(ActionEvent event) throws IOException {
+
+        infoResultReg.setText("Ok\n");
+
+        long secuLevel = SGFDxSecurityLevel.SL_NORMAL;
+        boolean[] matched = new boolean[1];
+//        matched[0] = false;
+
+        ret = jsgfpLib.MatchTemplate(regMinA, regMinB, secuLevel, matched);
+
+        String str = new String(regMinA);
+        byte[] b = str.getBytes();
+
+        System.out.println("hasil : " + ret);
+        infoResultReg.appendText(String.valueOf(matched[0]) + "\n");
+//        infoResultReg.appendText(new String(regMinA)+ "\n");
+        infoCaptB.setText("");
+//        infoCaptB.appendText("\noriginal :" + regMinA + "\n");
+//        infoCaptB.appendText("\nkedalam string :" + str + "\n");
+//        infoCaptB.appendText("\nkedalam byte :" + new String(b) + "\n");
+//        infoCaptB.appendText("\nappdata :" + appData.getRecord().getUsername() + "\n");
+
+        String encoded = Base64.getEncoder().encodeToString(regMinA);
+        String decoded = new String(Base64.getDecoder().decode(encoded.getBytes()));
+
+        infoCaptB.appendText("original : " + new String(regMinA) +"\n");
+        infoCaptB.appendText("encode decode  : " + decoded + "\n");
+
+        serverRequest.registerNewFinger(appData.getRecord().getUsername(), regMinA, appData.getToken());
+
+
     }
 
 

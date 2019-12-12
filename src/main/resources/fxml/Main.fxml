@@ -142,38 +142,30 @@
             <Pane prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #eb4034;" />
             <Pane fx:id="pnlReg" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #3e75d2;">
                <children>
-                  <TitledPane animated="false" layoutX="212.0" layoutY="15.0" text="Fingers A" textFill="#234a7b">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ImageView fx:id="imageFinger1" fitHeight="150.0" fitWidth="200.0" layoutX="15.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/fingericon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </TitledPane>
-                  <TitledPane animated="false" layoutX="212.0" layoutY="241.0" text="Fingers B" textFill="#234a7b">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="172.0" layoutX="25.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/fingericon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </TitledPane>
-                  <Button fx:id="capRegBtnA" layoutX="14.0" layoutY="93.0" mnemonicParsing="false" onAction="#regCaptA" prefHeight="55.0" prefWidth="172.0" text="Capture A" textFill="#234a7b" />
-                  <TextArea fx:id="infoCaptA" layoutX="422.0" layoutY="14.0" prefHeight="212.0" prefWidth="284.0" promptText="Info capture 1" />
-                  <TextArea fx:id="infoCaptB" layoutX="422.0" layoutY="240.0" prefHeight="212.0" prefWidth="284.0" promptText="Info capture 2" />
-                  <Button fx:id="capRegBtnB" layoutX="14.0" layoutY="319.0" mnemonicParsing="false" onAction="#regCaptB" prefHeight="55.0" prefWidth="172.0" text="Capture B" textFill="#234a7b" />
-                  <Button fx:id="regBtnOk" layoutX="14.0" layoutY="451.0" mnemonicParsing="false" onAction="#registrationOk" prefHeight="55.0" prefWidth="172.0" text="Register" textFill="#234a7b" />
-                  <TextField fx:id="infoResultReg" layoutX="212.0" layoutY="462.0" prefHeight="41.0" prefWidth="493.0" promptText="result callback" />
+                  <Button fx:id="capRegBtnA" layoutX="14.0" layoutY="93.0" mnemonicParsing="false" onAction="#regCaptA" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture A" textFill="WHITE" />
+                  <TextArea fx:id="infoCaptA" layoutX="405.0" layoutY="21.0" prefHeight="200.0" prefWidth="294.0" promptText="Info capture 1" />
+                  <TextArea fx:id="infoCaptB" layoutX="405.0" layoutY="246.0" prefHeight="200.0" prefWidth="294.0" promptText="Info capture 2" />
+                  <Button fx:id="capRegBtnB" layoutX="14.0" layoutY="319.0" mnemonicParsing="false" onAction="#regCaptB" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B" textFill="WHITE" />
+                  <Button fx:id="regBtnOk" layoutX="14.0" layoutY="451.0" mnemonicParsing="false" onAction="#registrationOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Register" textFill="#234a7b" />
+                  <TextField fx:id="infoResultReg" layoutX="241.0" layoutY="462.0" prefHeight="41.0" prefWidth="458.0" promptText="result callback" />
+                  <AnchorPane layoutX="241.0" layoutY="21.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #bcbcbc;">
+                     <children>
+                        <ImageView fx:id="imageA" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/fingericon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="241.0" layoutY="246.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #bcbcbc;">
+                     <children>
+                        <ImageView fx:id="imageB" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/fingericon.png" />
+                           </image>
+                        </ImageView>
+                     </children>
+                  </AnchorPane>
                </children></Pane>
             <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #fff;">
                <children>
