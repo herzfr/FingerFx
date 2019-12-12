@@ -141,7 +141,7 @@
             </Pane>
             <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #81d4fa;">
                <children>
-                  <TextArea fx:id="infoCaptA1" disable="true" layoutX="215.0" layoutY="32.0" prefHeight="200.0" prefWidth="275.0" promptText="Info capture 1" />
+                  <TextArea fx:id="infoCaptA1" disable="true" layoutX="215.0" layoutY="32.0" prefHeight="200.0" prefWidth="275.0" />
                   <AnchorPane layoutX="30.0" layoutY="32.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #bcbcbc; -fx-border-color: #424242; -fx-border-width: 2;">
                      <children>
                         <ImageView fx:id="imageVerifA" fitHeight="200.0" fitWidth="154.0" layoutX="4.0" layoutY="3.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true">

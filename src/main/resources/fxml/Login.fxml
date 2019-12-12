@@ -34,7 +34,7 @@
          <children>
             <TextField id="userName" fx:id="userName" layoutX="35.0" layoutY="127.0" prefHeight="52.0" prefWidth="450.0" promptText="Username" style="-fx-border-radius: 10; -fx-border-color: #fff; -fx-background-color: transparent;" styleClass="textUser" stylesheets="@../styles/Styles.css" text="admin" />
             <PasswordField fx:id="passWord" layoutX="35.0" layoutY="219.0" onKeyPressed="#onPassKeyEntered" prefHeight="52.0" prefWidth="450.0" promptText="Password" style="-fx-background-color: transparent; -fx-border-color: #fff; -fx-border-radius: 10;" styleClass="textPass" text="admin" />
-            <Button fx:id="btnLogin1" layoutX="148.0" layoutY="295.0" mnemonicParsing="false" onAction="#loginTo" prefHeight="52.0" prefWidth="165.0" style="-fx-border-color: #fff; -fx-border-radius: 30; -fx-background-color: transparent;" styleClass="rect" text="Login" textFill="WHITE">
+            <Button fx:id="btnLogin1" layoutX="11.0" layoutY="295.0" mnemonicParsing="false" onAction="#loginTo" prefHeight="52.0" prefWidth="150.0" style="-fx-border-color: #fff; -fx-border-radius: 30; -fx-background-color: transparent;" styleClass="rect" text="Login" textFill="WHITE">
                <font>
                   <Font size="18.0" />
                </font>
@@ -42,7 +42,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button fx:id="btnCancel" layoutX="320.0" layoutY="295.0" mnemonicParsing="false" onAction="#onBtnCancel" prefHeight="52.0" prefWidth="165.0" style="-fx-border-color: #f54242; -fx-border-radius: 30; -fx-background-color: transparent;" styleClass="rect" text="Cancel" textFill="#f54242">
+            <Button fx:id="btnCancel" layoutX="337.0" layoutY="295.0" mnemonicParsing="false" onAction="#onBtnCancel" prefHeight="52.0" prefWidth="150.0" style="-fx-border-color: #f54242; -fx-border-radius: 30; -fx-background-color: transparent;" styleClass="rect" text="Cancel" textFill="#f54242">
                <font>
                   <Font size="18.0" />
                </font>
@@ -55,6 +55,14 @@
                   <Font name="Candara Bold" size="36.0" />
                </font>
             </Label>
+            <Button fx:id="fingerScan" layoutX="173.0" layoutY="295.0" mnemonicParsing="false" onAction="#fingerLogin" prefHeight="52.0" prefWidth="150.0" style="-fx-border-color: #00acc1; -fx-border-radius: 30; -fx-background-color: transparent;" styleClass="rect" text="Finger Scan" textFill="#00acc1">
+               <font>
+                  <Font size="18.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
       </Pane>
       <Label layoutX="14.0" layoutY="14.0" text="Travest .Ltd" textFill="WHITE">

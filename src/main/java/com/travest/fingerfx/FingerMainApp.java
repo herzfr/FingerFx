@@ -40,13 +40,17 @@ public class FingerMainApp implements Initializable {
 
     byte[] imageBufferA;
     byte[] imageBufferB;
+    byte[] imageBufferC;
 
     private BufferedImage imgRegA;
     private BufferedImage imgRegB;
     private BufferedImage imgVerif;
+    private BufferedImage imgVerif2;
 
     private byte[] regMinA = new byte[400];
     private byte[] regMinB = new byte[400];
+    private byte[] regMinC = new byte[400];
+    private byte[] regMinD = new byte[400];
 
     AppData appData;
 
@@ -143,6 +147,8 @@ public class FingerMainApp implements Initializable {
     private ImageView iupdateA;
     @FXML
     private TextArea infoUpdB;
+    @FXML
+    private TextArea infoCaptA1;
     @FXML
     private AnchorPane frameUpdtB;
     @FXML
@@ -249,8 +255,6 @@ public class FingerMainApp implements Initializable {
         } else {
             displayCon.appendText("Filed to On, Device not Found");
         }
-
-
     }
 
 
@@ -355,7 +359,7 @@ public class FingerMainApp implements Initializable {
         infoCaptA.setEditable(false);
         infoCaptB.setEditable(false);
         infoResultReg.setEditable(false);
-        
+
 
         initialize();
         initVerify();
@@ -364,6 +368,10 @@ public class FingerMainApp implements Initializable {
 
 
     public void initVerify() {
+
+
+        regMinD = Base64.getDecoder().decode(appData.getFinger().getTemplate().getBytes());
+
         fingerVerif64 = appData.getFinger().getFinger();
         imgByteVerif = Base64.getDecoder().decode(fingerVerif64);
 
@@ -376,12 +384,90 @@ public class FingerMainApp implements Initializable {
         BufferedImage resized = resize(imgVerif, 200, 154);
         Image i = SwingFXUtils.toFXImage(resized, null);
         imageVerifA.setImage(i);
+
+        infoCaptA1.setDisable(false);
+        infoCaptA1.setEditable(false);
+        infoCaptA1.setText("Verify Info : ");
     }
 
     @FXML
     void verifyFinger(ActionEvent event) {
 
-        System.out.println("hello world");
+        infoCaptA1.setText("Scan your finger.... ");
+
+        int[] quality = new int[1];
+        long nfiqvalue;
+        int[] numOfMinutes = new int[1];
+
+        // Global BufferedImage
+        imgVerif2 = new BufferedImage(dvcInfo.imageWidth, dvcInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+
+        // Global Byte Image
+        imageBufferC = ((java.awt.image.DataBufferByte) imgVerif2.getRaster().getDataBuffer()).getData();
+
+        if (jsgfpLib != null) {
+            ret = jsgfpLib.GetImageEx(imageBufferC, 10 * 1000, 0, 80);
+            jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferC, quality);
+            SGFingerInfo fingerInfo = new SGFingerInfo();
+            fingerInfo.FingerNumber = SGFingerPosition.SG_FINGPOS_LI;
+            fingerInfo.ImageQuality = quality[0];
+            fingerInfo.ImpressionType = SGImpressionType.SG_IMPTYPE_LP;
+            fingerInfo.ViewNumber = 1;
+
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+
+                BufferedImage resized = resize(imgVerif2, 200, 154);
+                Image i = SwingFXUtils.toFXImage(resized, null);
+                imageA.setImage(i);
+
+                if (quality[0] < 50) {
+                    infoCaptA1.appendText("Get Image Success, \nbut image quality is => " + quality[0] + "\n");
+                    infoCaptA1.appendText("Please Try Again!\n");
+                } else {
+                    infoCaptA1.appendText("Get Image Success, \nyour image quality is => " + quality[0] + "\n");
+                    infoCaptA1.appendText("Thank You\n");
+
+                    ret = jsgfpLib.CreateTemplate(fingerInfo, imageBufferC, regMinC);
+
+                    if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                        long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferC, quality);
+                        nfiqvalue = jsgfpLib.ComputeNFIQ(imageBufferC, dvcInfo.imageWidth, dvcInfo.imageHeight);
+                        ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinC, numOfMinutes);
+                        if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
+                            infoCaptA1.appendText("Reg. Capture 2 PASS QC. \nQual[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
+//
+
+                            int[] matchScore = new int[1];
+                            boolean[] matched = new boolean[1];
+                            long secuLevel = SGFDxSecurityLevel.SL_NORMAL;
+                            matched[0] = false;
+
+                            ret = jsgfpLib.MatchTemplate(regMinC, regMinD, secuLevel, matched);
+
+                            if (matched[0]) {
+                                infoCaptA1.setText("");
+                                infoCaptA1.appendText("Verification Success");
+                            } else {
+                                infoCaptA1.setText("");
+                                infoCaptA1.appendText("Verification Failed");
+                            }
+
+                        } else {
+                            infoCaptA1.setText("");
+                            infoCaptA1.appendText("Reg. Capture 2 FAIL QC. \nQuality[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
+                            infoCaptA1.appendText("Try Again");
+                        }
+                    }
+                }
+
+            } else {
+                infoCaptA1.appendText("Captured A is Failed\n");
+            }
+
+        } else {
+            infoCaptA1.setText("Please Initialize Device First in Connection Form");
+        }
+
 
     }
 
@@ -683,7 +769,6 @@ public class FingerMainApp implements Initializable {
 
 
     }
-
 
 
 }

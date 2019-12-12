@@ -7,20 +7,21 @@ import com.travest.fingerfx.Service.ServerRequest;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.Window;
 
 import java.io.IOException;
+import java.util.Optional;
 
 
 public class LoginApp {
-
 
 
     String usr;
@@ -42,6 +43,19 @@ public class LoginApp {
     private Button btnCancel;
     @FXML
     private AnchorPane loginAnchor;
+    @FXML
+    private Button fingerScan;
+
+    @FXML
+    void fingerLogin(ActionEvent event) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText("Start Finger Scan Device");
+        alert.initModality(Modality.NONE);
+
+        alert.showAndWait();
+    }
 
     @FXML
     void loginTo(ActionEvent event) throws IOException {
@@ -54,10 +68,10 @@ public class LoginApp {
 //            LoginService login = new LoginService();
             Boolean status = null;
             status = loginService.loginRequest(usr, pass);
-            if(status){
+            if (status) {
                 Window stage = loginAnchor.getScene().getWindow();
-               SceneUtility sceneUtility  = new SceneUtility();
-               sceneUtility.homeScene((Stage) loginAnchor.getScene().getWindow());
+                SceneUtility sceneUtility = new SceneUtility();
+                sceneUtility.homeScene((Stage) loginAnchor.getScene().getWindow());
             }
         }
     }
@@ -73,9 +87,9 @@ public class LoginApp {
             } else {
 //                LoginService login = new LoginService();
                 Boolean status = loginService.loginRequest(usr, pass);
-                if(status){
+                if (status) {
                     Window stage = loginAnchor.getScene().getWindow();
-                    SceneUtility sceneUtility  = new SceneUtility();
+                    SceneUtility sceneUtility = new SceneUtility();
                     sceneUtility.homeScene((Stage) loginAnchor.getScene().getWindow());
                 }
             }
