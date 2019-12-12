@@ -245,9 +245,11 @@ public class FingerMainApp implements Initializable {
         regBtnB2.setDisable(true);
         regBtnOk.setDisable(true);
 
+        updBtnB1.setDisable(true);
+        updBtnA2.setDisable(true);
+        updBtnB2.setDisable(true);
+        updBtnOk.setDisable(true);
 
-
-        
 
         initialize();
     }
@@ -638,22 +640,255 @@ public class FingerMainApp implements Initializable {
     // ===================================================================================================================
     @FXML
     void updCaptA1(ActionEvent event) {
+        infoReg.setText("");
+        int[] quality = new int[1];
+        long nfiqvalue;
+        int[] numOfMinutes = new int[1];
 
+        // Global BufferedImage
+        imgRegA1 = new BufferedImage(dvcInfo.imageWidth, dvcInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+
+        // Global Byte Image
+        imageBufferA1 = ((java.awt.image.DataBufferByte) imgRegA1.getRaster().getDataBuffer()).getData();
+
+        if (jsgfpLib != null) {
+            ret = jsgfpLib.GetImageEx(imageBufferA1, 10 * 1000, 0, 80);
+            jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferA1, quality);
+            SGFingerInfo fingerInfo = new SGFingerInfo();
+            fingerInfo.FingerNumber = SGFingerPosition.SG_FINGPOS_LI;
+            fingerInfo.ImageQuality = quality[0];
+            fingerInfo.ImpressionType = SGImpressionType.SG_IMPTYPE_LP;
+            fingerInfo.ViewNumber = 1;
+
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                infoUpd.appendText("Captured A1\n");
+
+                BufferedImage resized = resize(imgRegA1, 200, 154);
+                Image i = SwingFXUtils.toFXImage(resized, null);
+                iupdateA1.setImage(i);
+
+                if (quality[0] < 50) {
+                    infoUpd.appendText("Get Image Success, but image quality is [" + quality[0] + "]. Please Try Again!\n");
+                } else {
+                    infoUpd.appendText("Get Image Success, your image quality is [" + quality[0] + "]. Thank You.\n");
+
+                    ret = jsgfpLib.CreateTemplate(fingerInfo, imageBufferA1, regMinA1);
+                    if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                        long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferA1, quality);
+                        nfiqvalue = jsgfpLib.ComputeNFIQ(imageBufferA1, dvcInfo.imageWidth, dvcInfo.imageHeight);
+                        ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinA1, numOfMinutes);
+                        if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
+                            infoUpd.appendText("Reg. Capture 2 PASS. Quality [" + quality[0] + "] NFIQ [" + nfiqvalue + "] Minutiae [" + numOfMinutes[0] + "]\n");
+                            updBtnB1.setDisable(false);
+                        } else {
+                            infoReg.appendText("Reg. Capture 2 FAIL. Quality [" + quality[0] + "] NFIQ [" + nfiqvalue + "] Minutiae [" + numOfMinutes[0] + "]\n");
+                            updBtnB1.setDisable(true);
+                            updBtnA2.setDisable(true);
+                            updBtnB2.setDisable(true);
+                            updBtnOk.setDisable(true);
+
+                            iupdateB1.setImage(null);
+                            iupdateA2.setImage(null);
+                            iupdateB2.setImage(null);
+                        }
+                    }
+                }
+
+            } else {
+                infoUpd.appendText("Captured A is Failed\n");
+            }
+
+        } else {
+            infoUpd.setText("Please Initialize Device First in Connection Form");
+        }
     }
 
     @FXML
     void updCaptB1(ActionEvent event) {
+        infoUpd.setText("");
+        int[] quality = new int[1];
+        long nfiqvalue;
+        int[] numOfMinutes = new int[1];
 
+        // Global BufferedImage
+        imgRegB1 = new BufferedImage(dvcInfo.imageWidth, dvcInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+
+        // Global Byte Image
+        imageBufferB1 = ((java.awt.image.DataBufferByte) imgRegB1.getRaster().getDataBuffer()).getData();
+
+        if (jsgfpLib != null) {
+            ret = jsgfpLib.GetImageEx(imageBufferB1, 10 * 1000, 0, 80);
+            jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferB1, quality);
+            SGFingerInfo fingerInfo = new SGFingerInfo();
+            fingerInfo.FingerNumber = SGFingerPosition.SG_FINGPOS_LI;
+            fingerInfo.ImageQuality = quality[0];
+            fingerInfo.ImpressionType = SGImpressionType.SG_IMPTYPE_LP;
+            fingerInfo.ViewNumber = 1;
+
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                infoUpd.appendText("Captured B1\n");
+
+                BufferedImage resized = resize(imgRegB1, 200, 154);
+                Image i = SwingFXUtils.toFXImage(resized, null);
+                iupdateB1.setImage(i);
+
+                if (quality[0] < 50) {
+                    infoUpd.appendText("Get Image Success, but image quality is [" + quality[0] + "]. Please Try Again!\n");
+                } else {
+                    infoUpd.appendText("Get Image Success, your image quality is [" + quality[0] + "]. Thank You.\n");
+
+                    ret = jsgfpLib.CreateTemplate(fingerInfo, imageBufferB1, regMinB1);
+                    if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                        long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferB1, quality);
+                        nfiqvalue = jsgfpLib.ComputeNFIQ(imageBufferB1, dvcInfo.imageWidth, dvcInfo.imageHeight);
+                        ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinB1, numOfMinutes);
+                        if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
+                            infoUpd.appendText("Reg. Capture 2 PASS. Quality [" + quality[0] + "] NFIQ [" + nfiqvalue + "] Minutiae [" + numOfMinutes[0] + "]\n");
+                            updBtnA2.setDisable(false);
+                            updateFinger1();
+                        } else {
+                            infoUpd.appendText("Reg. Capture 2 FAIL. Quality [" + quality[0] + "] NFIQ [" + nfiqvalue + "] Minutiae [" + numOfMinutes[0] + "]\n");
+                            updBtnA2.setDisable(true);
+                            updBtnB2.setDisable(true);
+                            updBtnOk.setDisable(true);
+
+                            iupdateA2.setImage(null);
+                            iupdateB2.setImage(null);
+
+                        }
+                    }
+                }
+
+            } else {
+                infoUpd.appendText("Captured A is Failed\n");
+            }
+
+        } else {
+            infoUpd.setText("Please Initialize Device First in Connection Form");
+        }
     }
 
     @FXML
     void updCaptA2(ActionEvent event) {
+        infoUpd.setText("");
+        int[] quality = new int[1];
+        long nfiqvalue;
+        int[] numOfMinutes = new int[1];
 
+        // Global BufferedImage
+        imgRegA2 = new BufferedImage(dvcInfo.imageWidth, dvcInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+
+        // Global Byte Image
+        imageBufferA2 = ((java.awt.image.DataBufferByte) imgRegA2.getRaster().getDataBuffer()).getData();
+
+        if (jsgfpLib != null) {
+            ret = jsgfpLib.GetImageEx(imageBufferA2, 10 * 1000, 0, 80);
+            jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferA2, quality);
+            SGFingerInfo fingerInfo = new SGFingerInfo();
+            fingerInfo.FingerNumber = SGFingerPosition.SG_FINGPOS_LI;
+            fingerInfo.ImageQuality = quality[0];
+            fingerInfo.ImpressionType = SGImpressionType.SG_IMPTYPE_LP;
+            fingerInfo.ViewNumber = 1;
+
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                infoUpd.appendText("Captured A2\n");
+
+                BufferedImage resized = resize(imgRegA1, 200, 154);
+                Image i = SwingFXUtils.toFXImage(resized, null);
+                iupdateA2.setImage(i);
+
+                if (quality[0] < 50) {
+                    infoUpd.appendText("Get Image Success, but image quality is [" + quality[0] + "]. Please Try Again!\n");
+                } else {
+                    infoUpd.appendText("Get Image Success, your image quality is [" + quality[0] + "]. Thank You.\n");
+
+                    ret = jsgfpLib.CreateTemplate(fingerInfo, imageBufferA2, regMinA2);
+                    if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                        long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferA2, quality);
+                        nfiqvalue = jsgfpLib.ComputeNFIQ(imageBufferA2, dvcInfo.imageWidth, dvcInfo.imageHeight);
+                        ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinA2, numOfMinutes);
+                        if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
+                            infoUpd.appendText("Reg. Capture 2 PASS. Quality [" + quality[0] + "] NFIQ [" + nfiqvalue + "] Minutiae [" + numOfMinutes[0] + "]\n");
+                            updBtnB2.setDisable(false);
+
+                        } else {
+                            infoUpd.appendText("Reg. Capture 2 FAIL. Quality [" + quality[0] + "] NFIQ [" + nfiqvalue + "] Minutiae [" + numOfMinutes[0] + "]\n");
+                            updBtnB2.setDisable(true);
+                            updBtnOk.setDisable(true);
+
+                            iupdateB2.setImage(null);
+                        }
+                    }
+                }
+
+            } else {
+                infoUpd.appendText("Captured A is Failed\n");
+            }
+
+        } else {
+            infoUpd.setText("Please Initialize Device First in Connection Form");
+        }
     }
 
     @FXML
     void updCaptB2(ActionEvent event) {
+        infoUpd.setText("");
+        int[] quality = new int[1];
+        long nfiqvalue;
+        int[] numOfMinutes = new int[1];
 
+        // Global BufferedImage
+        imgRegB2 = new BufferedImage(dvcInfo.imageWidth, dvcInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+
+        // Global Byte Image
+        imageBufferB2 = ((java.awt.image.DataBufferByte) imgRegB2.getRaster().getDataBuffer()).getData();
+
+        if (jsgfpLib != null) {
+            ret = jsgfpLib.GetImageEx(imageBufferB2, 10 * 1000, 0, 80);
+            jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferB2, quality);
+            SGFingerInfo fingerInfo = new SGFingerInfo();
+            fingerInfo.FingerNumber = SGFingerPosition.SG_FINGPOS_LI;
+            fingerInfo.ImageQuality = quality[0];
+            fingerInfo.ImpressionType = SGImpressionType.SG_IMPTYPE_LP;
+            fingerInfo.ViewNumber = 1;
+
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                infoUpd.appendText("Captured B2\n");
+
+                BufferedImage resized = resize(imgRegB2, 200, 154);
+                Image i = SwingFXUtils.toFXImage(resized, null);
+                iupdateB2.setImage(i);
+
+                if (quality[0] < 50) {
+                    infoUpd.appendText("Get Image Success, but image quality is [" + quality[0] + "]. Please Try Again!\n");
+                } else {
+                    infoUpd.appendText("Get Image Success, your image quality is [" + quality[0] + "]. Thank You.\n");
+
+                    ret = jsgfpLib.CreateTemplate(fingerInfo, imageBufferB2, regMinB2);
+
+                    if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                        long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferB2, quality);
+                        nfiqvalue = jsgfpLib.ComputeNFIQ(imageBufferB2, dvcInfo.imageWidth, dvcInfo.imageHeight);
+                        ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinB2, numOfMinutes);
+                        if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
+                            infoUpd.appendText("Reg. Capture 2 PASS. Quality [" + quality[0] + "] NFIQ [" + nfiqvalue + "] Minutiae [" + numOfMinutes[0] + "]\n");
+                            updBtnOk.setDisable(false);
+                            updateFinger2();
+                        } else {
+                            infoUpd.appendText("Reg. Capture 2 FAIL. Quality [" + quality[0] + "] NFIQ [" + nfiqvalue + "] Minutiae [" + numOfMinutes[0] + "]\n");
+                            updBtnOk.setDisable(true);
+
+                        }
+                    }
+                }
+
+            } else {
+                infoUpd.appendText("Captured A is Failed\n");
+            }
+
+        } else {
+            infoUpd.setText("Please Initialize Device First in Connection Form");
+        }
     }
 
     @FXML
@@ -795,6 +1030,64 @@ public class FingerMainApp implements Initializable {
             }
         } else {
             infoReg.appendText( "Registration Fail, MatchTemplate() Error : " + ret + "\n");
+        }
+    }
+
+    public void updateFinger1(){
+        int[] matchScore = new int[1];
+        boolean[] matched = new boolean[1];
+        long secuLevel = (long) (8);
+        matched[0] = false;
+
+        ret = jsgfpLib.MatchTemplate(regMinA1,regMinB1, secuLevel, matched);
+        System.out.println(ret);
+
+        if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+            matchScore[0] = 0;
+            ret = jsgfpLib.GetMatchingScore(regMinA1, regMinB1, matchScore);
+
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+
+                if (matched[0]) {
+                    infoLabelA.setText( "Success: " + matchScore[0]);
+                } else  {
+                    infoLabelA.setText( "Fail: " + matchScore[0]);
+                }
+
+            } else {
+                infoUpd.appendText( "Registration Fail, GetMatchingScore() Error : " + ret + "\n");
+            }
+        } else {
+            infoUpd.appendText( "Registration Fail, MatchTemplate() Error : " + ret + "\n");
+        }
+    }
+
+    public void updateFinger2(){
+        int[] matchScore = new int[1];
+        boolean[] matched = new boolean[1];
+        long secuLevel = (long) (8);
+        matched[0] = false;
+
+        ret = jsgfpLib.MatchTemplate(regMinA2,regMinB2, secuLevel, matched);
+        System.out.println(ret);
+
+        if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+            matchScore[0] = 0;
+            ret = jsgfpLib.GetMatchingScore(regMinA2, regMinB2, matchScore);
+
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+
+                if (matched[0]) {
+                    infoLabelB.setText( "Success: " + matchScore[0]);
+                } else  {
+                    infoLabelB.setText( "Fail: " + matchScore[0]);
+                }
+
+            } else {
+                infoUpd.appendText( "Registration Fail, GetMatchingScore() Error : " + ret + "\n");
+            }
+        } else {
+            infoUpd.appendText( "Registration Fail, MatchTemplate() Error : " + ret + "\n");
         }
     }
 
