@@ -1,26 +1,29 @@
 package com.travest.fingerfx;
 
 import SecuGen.FDxSDKPro.jni.*;
-import SecuGen.FDxSDKPro.jni.JSGFPLib;
-import SecuGen.FDxSDKPro.jni.SGDeviceInfoParam;
+import com.travest.fingerfx.Service.ServerRequest;
 import com.travest.fingerfx.utility.AppData;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.effect.ImageInput;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import sun.misc.BASE64Decoder;
 
+import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.net.URL;
+import java.util.Base64;
+import java.util.ResourceBundle;
 
 public class FingerMainApp implements Initializable {
 
@@ -41,12 +44,14 @@ public class FingerMainApp implements Initializable {
     private byte[] regMinA = new byte[400];
     private byte[] regMinB = new byte[400];
 
-    AppData appData ;
-
-
-
     AppData appData;
 
+    BufferedImage imgReg2;
+
+    byte[] imageBuffer2;
+    byte[] regMin2;
+
+    ServerRequest serverRequest = new ServerRequest();
 
     @FXML
     private Pane pnlVerify;
@@ -130,10 +135,6 @@ public class FingerMainApp implements Initializable {
     private ImageView imageA;
     @FXML
     private ImageView imageB;
-
-
-
-
 
 
     @FXML
@@ -379,8 +380,8 @@ public class FingerMainApp implements Initializable {
                     System.out.println("GetImageEx() Success [" + ret + "] but image quality is [" + quality[0] + "]. Thank u\n");
 
                     ret = jsgfpLib.CreateTemplate(fingerInfo, imageBuffer2, regMin2);
-                    System.out.println("create template " + new String(regMin2) );
-                    textArea.appendText("\ncreate template " + new String(regMin2) +"\n");
+                    System.out.println("create template " + new String(regMin2));
+                    textArea.appendText("\ncreate template " + new String(regMin2) + "\n");
 
                     if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
                         long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageHeight, dvcInfo.imageWidth, imageBuffer2, quality);
@@ -394,8 +395,8 @@ public class FingerMainApp implements Initializable {
                         if ((quality[0] >= 45) && (nfiqvalue <= 2) && (numOfMinutiae[0] >= 20)) {
                             textArea.appendText("Verification Capture PASS QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]\n");
                             System.out.println("Verification Capture PASS QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]\n");
-                            r2Captured = true;
-                            System.out.println("ret value : "+ ret);
+//                            r2Captured = true;
+                            System.out.println("ret value : " + ret);
                         } else {
                             textArea.appendText("Verification Capture FAIL QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]\n");
                             System.out.println("Verification Capture FAIL QC. Quality[" + quality[0] + "] NFIQ[" + nfiqvalue + "] Minutiae[" + numOfMinutiae[0] + "]\n");
@@ -441,7 +442,7 @@ public class FingerMainApp implements Initializable {
             fingerInfo.ImpressionType = SGImpressionType.SG_IMPTYPE_LP;
             fingerInfo.ViewNumber = 1;
 
-            if ( ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
                 infoCaptA.appendText("Captured\n");
 
                 BufferedImage resized = resize(imgRegA, 200, 154);
@@ -449,7 +450,7 @@ public class FingerMainApp implements Initializable {
                 imageA.setImage(i);
 
 //                System.out.println(quality[0]);
-                if (quality[0] < 50 ) {
+                if (quality[0] < 50) {
                     infoCaptA.appendText("Get Image Success, \nbut image quality is => " + quality[0] + "\n");
                     infoCaptA.appendText("Please Try Again!\n");
                 } else {
@@ -464,7 +465,8 @@ public class FingerMainApp implements Initializable {
                         ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinA, numOfMinutes);
                         if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
                             infoCaptA.appendText("Reg. Capture 2 PASS QC. \nQual[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
-//                            r1Captured = true;
+                            infoCaptA.appendText("template : " + new String(regMinA) + "\n");
+//
                         } else {
                             infoCaptA.appendText("Reg. Capture 2 FAIL QC. \nQuality[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
                         }
@@ -482,11 +484,11 @@ public class FingerMainApp implements Initializable {
 
     }
 
-    private static BufferedImage resize(BufferedImage image, int height, int width){
+    private static BufferedImage resize(BufferedImage image, int height, int width) {
         java.awt.Image tmp = image.getScaledInstance(width, height, java.awt.Image.SCALE_DEFAULT);
         BufferedImage resized = new BufferedImage(width, height, BufferedImage.TYPE_BYTE_GRAY);
         Graphics2D g2d = resized.createGraphics();
-        g2d.drawImage(tmp, 0,0, null);
+        g2d.drawImage(tmp, 0, 0, null);
         g2d.dispose();
         return resized;
     }
@@ -494,11 +496,100 @@ public class FingerMainApp implements Initializable {
     @FXML
     void regCaptB(ActionEvent event) {
         infoCaptB.setText("testtttttt capt B");
+
+        int[] quality = new int[1];
+        long nfiqvalue;
+        int[] numOfMinutes = new int[1];
+
+        // Global BufferedImage
+        imgRegB = new BufferedImage(dvcInfo.imageWidth, dvcInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
+
+        // Global Byte Image
+        imageBufferB = ((java.awt.image.DataBufferByte) imgRegB.getRaster().getDataBuffer()).getData();
+
+        if (jsgfpLib != null) {
+            ret = jsgfpLib.GetImageEx(imageBufferB, 10 * 1000, 0, 80);
+            jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferB, quality);
+            SGFingerInfo fingerInfo = new SGFingerInfo();
+            fingerInfo.FingerNumber = SGFingerPosition.SG_FINGPOS_LI;
+            fingerInfo.ImageQuality = quality[0];
+            fingerInfo.ImpressionType = SGImpressionType.SG_IMPTYPE_LP;
+            fingerInfo.ViewNumber = 1;
+
+            if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                infoCaptB.appendText("Captured\n");
+
+                BufferedImage resized = resize(imgRegB, 200, 154);
+                Image i = SwingFXUtils.toFXImage(resized, null);
+                imageB.setImage(i);
+
+//                System.out.println(quality[0]);
+                if (quality[0] < 50) {
+                    infoCaptB.appendText("Get Image Success, \nbut image quality is => " + quality[0] + "\n");
+                    infoCaptB.appendText("Please Try Again!\n");
+                } else {
+                    infoCaptB.appendText("Get Image Success, \nyour image quality is => " + quality[0] + "\n");
+                    infoCaptB.appendText("Thank You\n");
+
+                    ret = jsgfpLib.CreateTemplate(fingerInfo, imageBufferB, regMinB);
+
+                    if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
+                        long ret2 = jsgfpLib.GetImageQuality(dvcInfo.imageWidth, dvcInfo.imageHeight, imageBufferB, quality);
+                        nfiqvalue = jsgfpLib.ComputeNFIQ(imageBufferB, dvcInfo.imageWidth, dvcInfo.imageHeight);
+                        ret2 = jsgfpLib.GetNumOfMinutiae(SGFDxTemplateFormat.TEMPLATE_FORMAT_SG400, regMinB, numOfMinutes);
+                        if ((quality[0] >= 50) && (nfiqvalue <= 2) && (numOfMinutes[0] >= 20)) {
+                            infoCaptB.appendText("Reg. Capture 2 PASS QC. \nQual[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
+                            infoCaptB.appendText("template : " + new String(regMinB) + "\n");
+//
+                        } else {
+                            infoCaptB.appendText("Reg. Capture 2 FAIL QC. \nQuality[" + quality[0] + "] \nNFIQ[" + nfiqvalue + "] \nMinutiae[" + numOfMinutes[0] + "]\n");
+                        }
+                    }
+                }
+
+            } else {
+                infoCaptB.appendText("Captured A is Failed\n");
+            }
+
+        } else {
+            infoCaptB.setText("Please Initialize Device First in Connection Form");
+        }
+
+
     }
 
     @FXML
-    void registrationOk(ActionEvent event) {
-        infoResultReg.setText("Ok");
+    void registrationOk(ActionEvent event) throws IOException {
+
+        infoResultReg.setText("Ok\n");
+
+        long secuLevel = SGFDxSecurityLevel.SL_NORMAL;
+        boolean[] matched = new boolean[1];
+//        matched[0] = false;
+
+        ret = jsgfpLib.MatchTemplate(regMinA, regMinB, secuLevel, matched);
+
+        String str = new String(regMinA);
+        byte[] b = str.getBytes();
+
+        System.out.println("hasil : " + ret);
+        infoResultReg.appendText(String.valueOf(matched[0]) + "\n");
+//        infoResultReg.appendText(new String(regMinA)+ "\n");
+        infoCaptB.setText("");
+//        infoCaptB.appendText("\noriginal :" + regMinA + "\n");
+//        infoCaptB.appendText("\nkedalam string :" + str + "\n");
+//        infoCaptB.appendText("\nkedalam byte :" + new String(b) + "\n");
+//        infoCaptB.appendText("\nappdata :" + appData.getRecord().getUsername() + "\n");
+
+        String encoded = Base64.getEncoder().encodeToString(regMinA);
+        String decoded = new String(Base64.getDecoder().decode(encoded.getBytes()));
+
+        infoCaptB.appendText("original : " + new String(regMinA) +"\n");
+        infoCaptB.appendText("encode decode  : " + decoded + "\n");
+
+        serverRequest.registerNewFinger(appData.getRecord().getUsername(), regMinA, appData.getToken());
+
+
     }
 
 

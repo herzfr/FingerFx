@@ -26,7 +26,6 @@ public class LoginService {
 
     public Boolean loginRequest(String username, String password) throws IOException {
 
-//        OkHttpClient client = new OkHttpClient();
         OkHttpClient client1 = client.newBuilder()
                 .readTimeout(Consts.readTimeout, TimeUnit.MILLISECONDS)
                 .connectTimeout(Consts.readTimeout, TimeUnit.MILLISECONDS)
@@ -69,8 +68,6 @@ public class LoginService {
             return false;
 
         }
-
-
 
     }
 

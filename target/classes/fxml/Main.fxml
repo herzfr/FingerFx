@@ -49,43 +49,6 @@
       <ButtonBar prefHeight="40.0" prefWidth="200.0" />
       <AnchorPane layoutX="238.0" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: cecece;">
          <children>
-            <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #fff;">
-               <children>
-                  <TitledPane animated="false" layoutX="30.0" layoutY="34.0" text="Finger 1">
-                    <content>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: transparent;">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/fingericon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                    </content>
-                  </TitledPane>
-                  <TitledPane animated="false" layoutX="255.0" layoutY="34.0" text="Finger 2">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                           <children>
-                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../images/fingericon.png" />
-                                 </image>
-                              </ImageView>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </TitledPane>
-                  <TextArea layoutX="30.0" layoutY="268.0" prefHeight="212.0" prefWidth="648.0" />
-                  <FontAwesomeIconView fill="#ff1744" glyphName="USER" layoutX="564.0" layoutY="166.0" size="40" />
-                  <Button fx:id="btnInit1" alignment="TOP_CENTER" layoutX="480.0" layoutY="93.0" mnemonicParsing="false" onAction="#onInit" prefHeight="93.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: #234a7b;" text="Verify" textAlignment="CENTER" textFill="#234a7b" />
-                  <FontAwesomeIconView fx:id="conLog" fill="WHITE" glyphName="WIFI" layoutX="16.0" layoutY="140.0" size="15" />
-                  <FontAwesomeIconView fx:id="keyLog" fill="WHITE" glyphName="KEY" layoutX="17.0" layoutY="212.0" size="15" />
-                  <FontAwesomeIconView fx:id="regLog" fill="WHITE" glyphName="USER" layoutX="19.0" layoutY="284.0" size="15" />
-                  <FontAwesomeIconView fx:id="clsLog" fill="WHITE" glyphName="CLOSE" layoutX="19.0" layoutY="361.0" size="15" />
-               </children>
-            </Pane>
             <Pane fx:id="pnlConn" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #fff;">
                <children>
                   <HBox alignment="CENTER" layoutX="14.0" layoutY="14.0" prefHeight="31.0" prefWidth="56.0" style="-fx-background-color: #9a9a9a9e;">
@@ -204,6 +167,39 @@
                      </children>
                   </AnchorPane>
                </children></Pane>
+            <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #fff;">
+               <children>
+                  <TitledPane animated="false" layoutX="30.0" layoutY="34.0" text="Finger 1">
+                    <content>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: transparent;">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/fingericon.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                    </content>
+                  </TitledPane>
+                  <TitledPane animated="false" layoutX="255.0" layoutY="34.0" text="Finger 2">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                           <children>
+                              <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="25.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@../images/fingericon.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
+                     </content>
+                  </TitledPane>
+                  <TextArea layoutX="30.0" layoutY="268.0" prefHeight="212.0" prefWidth="648.0" />
+                  <FontAwesomeIconView fill="#ff1744" glyphName="USER" layoutX="564.0" layoutY="166.0" size="40" />
+                  <Button fx:id="btnInit1" alignment="TOP_CENTER" layoutX="480.0" layoutY="93.0" mnemonicParsing="false" onAction="#onInit" prefHeight="93.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: #234a7b;" text="Verify" textAlignment="CENTER" textFill="#234a7b" />
+               </children>
+            </Pane>
          </children>
       </AnchorPane>
    </children>
