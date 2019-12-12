@@ -32,7 +32,74 @@ public class ServerRequest {
 
     public AppData appData;
 
-    public Boolean updateFinger(String username, byte[] template, String token, BufferedImage finger) throws IOException {
+    public Boolean updateFinger(String username, byte[] template, byte[] template2, BufferedImage finger, BufferedImage finger2, String token) throws IOException {
+
+        String encodedTemplate = Base64.getEncoder().encodeToString(template);
+        String encodedTemplate2 = Base64.getEncoder().encodeToString(template2);
+
+
+        String fingerImage1 = null;
+        String fingerImage2 = null;
+        ByteArrayOutputStream bAOS = new ByteArrayOutputStream();
+        ByteArrayOutputStream bAOS2 = new ByteArrayOutputStream();
+
+        try {
+            ImageIO.write(finger, "png", bAOS);
+            ImageIO.write(finger2, "png", bAOS);
+            byte[] imageByte = bAOS.toByteArray();
+            byte[] imageByte2 = bAOS2.toByteArray();
+            fingerImage1 = Base64.getEncoder().encodeToString(imageByte);
+            fingerImage2 = Base64.getEncoder().encodeToString(imageByte2);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        String jsonString = "{\n" +
+                "    \"username\": \"" + username + "\",\n" +
+                "    \"finger\": \"" + fingerImage1 + "\",\n" +
+                "    \"finger2\": \"" + fingerImage2 + "\",\n" +
+                "    \"template\": \"" + encodedTemplate + "\",\n" +
+                "    \"template2\": \"" + encodedTemplate2 + "\"\n" +
+                "  }";
+
+        OkHttpClient client1 = client.newBuilder()
+                .readTimeout(Consts.readTimeout, TimeUnit.MILLISECONDS)
+                .connectTimeout(Consts.readTimeout, TimeUnit.MILLISECONDS)
+                .build();
+
+        RequestBody body = RequestBody.create(JSON, jsonString);
+
+        Request request = new Request.Builder()
+                .url(Consts.host + "editFinger")
+                .header("Authorization", "Bearer " + token)
+                .put(body)
+                .build();
+        try {
+            Response response = client1.newCall(request).execute();
+            if (response.code() == 200) {
+//                String jsonString = response.body().string();
+                RequestResult result = new ObjectMapper().readValue(response.body().string(), RequestResult.class);
+
+                System.out.println(result.getMessage());
+
+                response.close();
+                return true;
+            } else {
+                AuthenticateErrorResult result = new ObjectMapper().readValue(response.body().string(), AuthenticateErrorResult.class);
+                message = result.getMessage();
+                Dialog.errorMessage("Request Error", message);
+                response.close();
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            Dialog.errorMessage("Request Connection Error", e.getMessage());
+            return false;
+        }
+
+    }
+
+    public Boolean registerFinger(String username, byte[] template, byte[] template2, BufferedImage finger, BufferedImage finger2, String token) throws IOException {
 
         String encodedTemplate = Base64.getEncoder().encodeToString(template);
 //        String decoded = new String(Base64.getDecoder().decode(encodedTemplate.getBytes()));
@@ -41,28 +108,32 @@ public class ServerRequest {
         ByteArrayOutputStream bAOS = new ByteArrayOutputStream();
 
         try {
-            ImageIO.write(finger, "png", bAOS);
+            ImageIO.write(finger, "jpg", bAOS);
             byte[] imageByte = bAOS.toByteArray();
             image = Base64.getEncoder().encodeToString(imageByte);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        String jsonInString = "{\"username\":\""+username+"\",\"finger\":\"" + image + "\",\"template\":\"" + encodedTemplate + "\"}";
-
-//        System.out.println("token : " + appData.getToken());
+        String jsonString = "{\n" +
+                "    \"username\": \"" + username + "\",\n" +
+                "    \"finger\": \"" + finger + "\",\n" +
+                "    \"finger2\": \"" + finger2 + "\",\n" +
+                "    \"template\": \"" + template + "\",\n" +
+                "    \"template2\": \"" + template2 + "\"\n" +
+                "  }";
 
         OkHttpClient client1 = client.newBuilder()
                 .readTimeout(Consts.readTimeout, TimeUnit.MILLISECONDS)
                 .connectTimeout(Consts.readTimeout, TimeUnit.MILLISECONDS)
                 .build();
 
-        RequestBody body = RequestBody.create(JSON, jsonInString);
+        RequestBody body = RequestBody.create(JSON, jsonString);
 
         Request request = new Request.Builder()
-                .url(Consts.host + "editFinger")
+                .url(Consts.host + "addFinger")
                 .header("Authorization", "Bearer " + token)
-                .put(body)
+                .post(body)
                 .build();
         try {
             Response response = client1.newCall(request).execute();

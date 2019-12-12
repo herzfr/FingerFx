@@ -61,14 +61,23 @@ public class FingerMainApp implements Initializable {
 
     AppData appData;
 
-    public String fingerVerif64 = null;
+
+
+    private BufferedImage imgVerif;
+    private BufferedImage imgVerif2;
+
+    public String fingerVerif1 = null;
+    public String fingerVerif2 = null;
     byte[] imgByteVerif;
+    byte[] imgByteVerif2;
 
+//    verification tab properties
+
+
+    AppData appData;
+
+    //server request service
     ServerRequest serverRequest = new ServerRequest();
-
-
-    private boolean isFingerRegistered = false;
-
 
     @FXML
     private Button btnConn;
