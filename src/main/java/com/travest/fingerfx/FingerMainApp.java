@@ -256,6 +256,7 @@ public class FingerMainApp implements Initializable {
         updBtnA2.setDisable(true);
         updBtnB2.setDisable(true);
         updBtnOk.setDisable(true);
+        infoCaptA1.setDisable(true);
 
         System.out.println("is registered"+appData.getIsFingerRegistered());
 
