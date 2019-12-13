@@ -1,0 +1,45 @@
+.window {
+    -fx-background-color: linear-gradient(to right, #085078, #85D8CE);
+}
+
+
+.text-login {
+    -fx-text-fill: #085078;
+    -fx-fill: linear-gradient(to right, #E0EAFC, #CFDEF3);
+}
+
+
+.btn-login {
+    -fx-background-color: linear-gradient(to right, #E0EAFC, #CFDEF3);
+    -fx-text-fill: linear-gradient(to right, #0F2027, #2C5364);
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+}
+
+.btn-login:hover {
+    -fx-background-color: transparent;
+    -fx-text-fill: linear-gradient(to right, #0F2027, #2C5364);
+    -fx-border-color: linear-gradient(to right, #0F2027, #2C5364);;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+}
+
+.btn-login:pressed {
+    -fx-background-color: linear-gradient(to right, #0F2027, #2C5364);
+    -fx-text-fill: #fff;
+    -fx-border-color: linear-gradient(to right, #0F2027, #2C5364);;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+}
+
+
+.btn-close {
+    -fx-background-color: transparent;
+    -fx-border-color: #fff;
+    -fx-border-radius: 0;
+    -fx-background-radius: 0;
+}
+
+.btn-close:hover {
+    -fx-background-color: #bcbcbc;
+}
