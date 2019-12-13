@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
@@ -15,7 +16,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.travest.fingerfx.FingerMainApp">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.travest.fingerfx.FingerMainApp">
    <children>
       <AnchorPane prefHeight="513.0" prefWidth="239.0" style="-fx-background-color: #234a7b;">
          <children>
@@ -39,6 +40,15 @@
                   <Font name="System Italic" size="15.0" />
                </font></Label>
             <ImageView fx:id="imgView" fitHeight="71.0" fitWidth="77.0" layoutX="61.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
+            <ButtonBar layoutY="1.0" prefHeight="40.0" prefWidth="49.0" />
+            <Button fx:id="closeBtn" layoutX="113.0" layoutY="420.0" minWidth="0.0" mnemonicParsing="false" onAction="#onClose" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-border-color: #fff;">
+               <graphic>
+                  <FontAwesomeIconView fill="WHITE" glyphName="TIMES" size="30" />
+               </graphic>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Button>
          </children>
          <effect>
             <DropShadow />
@@ -171,7 +181,10 @@
                         <ImageView fx:id="iupdateB1" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="updBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#updateOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Update" textFill="#234a7b" />
+                  <Button fx:id="updBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#updateOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Update" textFill="#234a7b">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                   <Button fx:id="updBtnB1" layoutX="180.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptB1" prefHeight="55.0" prefWidth="156.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B1" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -227,7 +240,10 @@
                         <ImageView fx:id="iregistrasiB1" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="regBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#registrationOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Registrasi" textFill="#234a7b" />
+                  <Button fx:id="regBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#registrationOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Registrasi" textFill="#234a7b">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
                   <Button fx:id="regBtnB1" layoutX="180.0" layoutY="222.0" mnemonicParsing="false" onAction="#regCaptB1" prefHeight="55.0" prefWidth="156.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B1" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -243,12 +259,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <AnchorPane fx:id="frameUpdtA1" layoutX="544.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
+                  <AnchorPane fx:id="frameRegA1" layoutX="544.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
                      <children>
                         <ImageView fx:id="iregistrasiB2" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="frameUpdtA2" layoutX="377.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
+                  <AnchorPane fx:id="frameRegA2" layoutX="377.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
                      <children>
                         <ImageView fx:id="iregistrasiA2" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
                      </children>

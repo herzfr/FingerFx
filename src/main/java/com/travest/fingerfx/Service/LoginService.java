@@ -4,9 +4,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.travest.fingerfx.Entity.AuthenticateErrorResult;
 import com.travest.fingerfx.Entity.LoginResult;
 import com.travest.fingerfx.Entity.Record;
+import com.travest.fingerfx.utility.AppData;
 import com.travest.fingerfx.utility.Consts;
 import com.travest.fingerfx.utility.Dialog;
-import com.travest.fingerfx.utility.AppData;
 import okhttp3.*;
 
 import java.io.IOException;
@@ -40,7 +40,7 @@ public class LoginService {
                 .post(requestBody)
                 .build();
 
-        try{
+        try {
             Response response = client1.newCall(request).execute();
             if (response.code() == 200) {
 //                String jsonString = response.body().string();
@@ -51,7 +51,12 @@ public class LoginService {
                 appData.setRecord(record);
                 appData.setToken(token);
 
-                serverRequest.getFinger(record.getUsername(), token);
+                try {
+                    serverRequest.getFinger(record.getUsername(), token);
+                } catch (Exception e) {
+
+                }
+
 
                 return true;
 
@@ -62,8 +67,7 @@ public class LoginService {
                 Dialog.errorMessage("Login Error", message);
                 return false;
             }
-        }catch (Exception e )
-        {
+        } catch (Exception e) {
 //            System.out.println(e.getMessage());
             Dialog.errorMessage("Login Connection Error", e.getMessage());
             return false;

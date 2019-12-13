@@ -8,7 +8,6 @@ import com.travest.fingerfx.Entity.RequestResult2;
 import com.travest.fingerfx.utility.AppData;
 import com.travest.fingerfx.utility.Consts;
 import com.travest.fingerfx.utility.Dialog;
-import javafx.scene.control.Alert;
 import okhttp3.*;
 
 import javax.imageio.ImageIO;
@@ -100,27 +99,36 @@ public class ServerRequest {
     }
 
     public Boolean registerFinger(String username, byte[] template, byte[] template2, BufferedImage finger, BufferedImage finger2, String token) throws IOException {
-
         String encodedTemplate = Base64.getEncoder().encodeToString(template);
-//        String decoded = new String(Base64.getDecoder().decode(encodedTemplate.getBytes()));
+        String encodedTemplate2 = Base64.getEncoder().encodeToString(template2);
 
-        String image = null;
+        String fingerImage1 = null;
+        String fingerImage2 = null;
         ByteArrayOutputStream bAOS = new ByteArrayOutputStream();
+        ByteArrayOutputStream bAOS2 = new ByteArrayOutputStream();
 
         try {
-            ImageIO.write(finger, "jpg", bAOS);
+            ImageIO.write(finger, "png", bAOS);
             byte[] imageByte = bAOS.toByteArray();
-            image = Base64.getEncoder().encodeToString(imageByte);
+            fingerImage1 = Base64.getEncoder().encodeToString(imageByte);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            ImageIO.write(finger2, "png", bAOS2);
+            byte[] imageByte2 = bAOS2.toByteArray();
+            fingerImage2 = Base64.getEncoder().encodeToString(imageByte2);
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         String jsonString = "{\n" +
                 "    \"username\": \"" + username + "\",\n" +
-                "    \"finger\": \"" + finger + "\",\n" +
-                "    \"finger2\": \"" + finger2 + "\",\n" +
-                "    \"template\": \"" + template + "\",\n" +
-                "    \"template2\": \"" + template2 + "\"\n" +
+                "    \"finger\": \"" + fingerImage1 + "\",\n" +
+                "    \"finger2\": \"" + fingerImage2 + "\",\n" +
+                "    \"template\": \"" + encodedTemplate + "\",\n" +
+                "    \"template2\": \"" + encodedTemplate2 + "\"\n" +
                 "  }";
 
         OkHttpClient client1 = client.newBuilder()
@@ -187,20 +195,22 @@ public class ServerRequest {
             if (response.code() == 200) {
                 RequestResult2 result = new ObjectMapper().readValue(response.body().string(), RequestResult2.class);
 
-                AppData.setFinger(result.getRecord());
+                appData.setFinger(result.getRecord());
+                appData.setIsFingerRegistered(true);
 
                 response.close();
                 return true;
             } else {
-                AuthenticateErrorResult result = new ObjectMapper().readValue(response.body().string(), AuthenticateErrorResult.class);
-                message = result.getMessage();
-                Dialog.errorMessage("Request Error", message);
+                System.out.println("error");
+                Dialog.errorMessage("Request Error", "Error Get Finger/Finger Not Registered");
                 response.close();
+                appData.setIsFingerRegistered(false);
                 return false;
             }
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            System.out.println("pesan"+e.getMessage());
             Dialog.errorMessage("Request Connection Error", e.getMessage());
+            appData.setIsFingerRegistered(false);
             return false;
 
         }
