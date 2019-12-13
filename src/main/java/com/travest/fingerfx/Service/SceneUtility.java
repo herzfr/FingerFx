@@ -47,5 +47,35 @@ public class SceneUtility {
         homeStage.show();
     }
 
+    public void fingerLoginStage(Stage stage) throws IOException {
+//        Window stage = loginAnchor.getScene().getWindow();
+        stage.hide();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/Main.fxml"));
+
+        Scene scene = new Scene(root);
+        Stage homeStage = new Stage();
+
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                homeStage.setX(event.getScreenX() - xOffset);
+                homeStage.setY(event.getScreenY() - yOffset);
+            }
+        });
+
+        homeStage.getIcons().add(new Image(SceneUtility.class.getResourceAsStream("/images/fingericon.png")));
+        homeStage.initStyle(StageStyle.UNDECORATED);
+        homeStage.setScene(scene);
+        homeStage.show();
+    }
+
 
 }
