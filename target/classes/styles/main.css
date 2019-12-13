@@ -101,3 +101,7 @@
     -fx-background-color: transparent;
     -fx-border-color:  #234a7b;
 }
+
+.text-area {
+    -fx-text-fill: black;
+}
