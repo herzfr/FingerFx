@@ -196,7 +196,7 @@ public class ScanLoginController implements Initializable {
 
         data = authenticateData.getFingerList();
 
-        int i = 0;
+//        int i = 0;
         for (Finger temp : data) {
             regVerify1 = Base64.getDecoder().decode(temp.getTemplate().getBytes());
             regVerify2 = Base64.getDecoder().decode(temp.getTemplate2().getBytes());
@@ -206,68 +206,49 @@ public class ScanLoginController implements Initializable {
             long secuLevel = SGFDxSecurityLevel.SL_NORMAL;
             matched[0] = false;
 
-
-            ret = jsgfpLib.MatchTemplate(scannedTemplate, regVerify1, secuLevel, matched);
-            ret = jsgfpLib.MatchTemplate(scannedTemplate, regVerify2, secuLevel, matched);
-
+            ret = jsgfpLib.MatchTemplate(regVerify1, regVerify3, secuLevel, matched);
 
             if (matched[0]) {
                 textStatus.setText("");
-//                textStatus.appendText("1st Attempt Verification Success");
-//                textStatus.appendText("index : " + i);
                 textStatus.appendText("Username Anda =>" + temp.getUsername());
-
-                System.out.println("index =>" + i + " Success");
-                System.out.println("username anda =>" + temp.getUsername());
+                textStatus.appendText("\nOn Finger 1");
+//                System.out.println("index =>" + i + " Success");
+//                System.out.println("username anda =>" + temp.getUsername());
                 break;
 
             } else {
                 textStatus.setText("");
                 textStatus.appendText("1st Verification Failed\n");
-                System.out.println("index =>" + i + " Failed");
-
-                boolean status = compare2ndFinger(temp, scannedTemplate, i);
-
+                boolean status = compare2ndFinger(temp, scannedTemplate);
                 if (status) {
                     break;
                 }
-
             }
-
-
-            i++;
+//            i++;
         }
     }
 
 
-    boolean compare2ndFinger(Finger finger, byte[] scannedTemplate, int i) {
-
-        System.out.println("compare 2nd finger : ");
-
+    boolean compare2ndFinger(Finger finger, byte[] scannedTemplate) {
 
         int[] matchScore = new int[1];
         boolean[] matched = new boolean[1];
         long secuLevel = SGFDxSecurityLevel.SL_NORMAL;
         matched[0] = false;
 
-
         ret = jsgfpLib.MatchTemplate(scannedTemplate, regVerify2, secuLevel, matched);
 
         if (matched[0]) {
             textStatus.setText("");
-            textStatus.appendText("2nd Attempt Verification Success");
-            textStatus.appendText("index : " + i);
-
-            System.out.println("index =>" + i + " Success");
-            System.out.println("username anda =>" + finger.getUsername());
+            textStatus.appendText("Username Anda => " + finger.getUsername());
+            textStatus.appendText("\nOn Finger 2");
+//            textStatus.appendText("index : " + i);
+//            System.out.println("index =>" + i + " Success");
+//            System.out.println("username anda =>" + finger.getUsername());
             return true;
         } else {
-            textStatus.setText("");
-            textStatus.appendText("2nd Verification Failed\n");
-            System.out.println("index =>" + i + " Failed");
+            textStatus.setText("Verification Failed\n");
             return false;
         }
-
-
     }
 }

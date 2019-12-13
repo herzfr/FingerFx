@@ -34,7 +34,6 @@ public class ServerRequest {
         String encodedTemplate = Base64.getEncoder().encodeToString(template);
         String encodedTemplate2 = Base64.getEncoder().encodeToString(template2);
 
-
         String fingerImage1 = null;
         String fingerImage2 = null;
         ByteArrayOutputStream bAOS = new ByteArrayOutputStream();
