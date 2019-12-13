@@ -16,14 +16,26 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="949.0" xmlns="http://javafx.com/javafx/8.0.211" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.travest.fingerfx.FingerMainApp">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="513.0" prefWidth="949.0" stylesheets="@../styles/main.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.travest.fingerfx.FingerMainApp">
    <children>
       <AnchorPane prefHeight="513.0" prefWidth="239.0" style="-fx-background-color: #234a7b;">
          <children>
-            <Button fx:id="btnConn" alignment="CENTER" layoutX="-5.0" layoutY="111.0" mnemonicParsing="false" onAction="#onConnection" prefHeight="48.0" prefWidth="245.0" style="-fx-background-color: #00000070;" text="Connect" textFill="WHITE" />
-            <Button fx:id="btnVrfy" layoutX="2.0" layoutY="184.0" mnemonicParsing="false" onAction="#onVerify" prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: #00000070;" text="Verify" textFill="WHITE" />
-            <Button fx:id="btnReg" layoutX="2.0" layoutY="257.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="48.0" prefWidth="238.0" style="-fx-background-color: #00000070;" text="Register" textFill="WHITE" />
-            <Button fx:id="btnUpdt" layoutX="1.0" layoutY="332.0" mnemonicParsing="false" onAction="#onUpdate" prefHeight="48.0" prefWidth="240.0" style="-fx-background-color: #00000070;" text="Update" textFill="WHITE" />
+            <Button fx:id="btnConn" alignment="CENTER" layoutX="-5.0" layoutY="111.0" mnemonicParsing="false" onAction="#onConnection" prefHeight="48.0" prefWidth="245.0" styleClass="btn-connect" stylesheets="@../styles/main.css" text="Connect" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btnVrfy" layoutX="2.0" layoutY="184.0" mnemonicParsing="false" onAction="#onVerify" prefHeight="48.0" prefWidth="238.0" styleClass="btn-verify" stylesheets="@../styles/main.css" text="Verify" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btnReg" layoutX="2.0" layoutY="330.0" mnemonicParsing="false" onAction="#onRegister" prefHeight="48.0" prefWidth="238.0" styleClass="btn-registred" stylesheets="@../styles/main.css" text="Register" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="btnUpdt" layoutX="1.0" layoutY="257.0" mnemonicParsing="false" onAction="#onUpdate" prefHeight="48.0" prefWidth="240.0" styleClass="btn-update" stylesheets="@../styles/main.css" text="Update" textFill="WHITE">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
             <AnchorPane prefHeight="513.0" prefWidth="49.0" style="-fx-background-color: cecece;">
                <effect>
                   <DropShadow />
@@ -31,8 +43,8 @@
                <children>
                   <FontAwesomeIconView fx:id="conLog" fill="WHITE" glyphName="WIFI" layoutX="16.0" layoutY="142.0" size="15" />
                   <FontAwesomeIconView fx:id="keyLog" fill="WHITE" glyphName="KEY" layoutX="17.0" layoutY="212.0" size="15" />
-                  <FontAwesomeIconView fx:id="regLog" fill="WHITE" glyphName="USER" layoutX="19.0" layoutY="283.0" size="15" />
-                  <FontAwesomeIconView fx:id="clsLog" fill="WHITE" glyphName="EDIT" layoutX="17.0" layoutY="360.0" size="15" />
+                  <FontAwesomeIconView fx:id="regLog" fill="WHITE" glyphName="USER" layoutX="19.0" layoutY="361.0" size="15" />
+                  <FontAwesomeIconView fx:id="clsLog" fill="WHITE" glyphName="EDIT" layoutX="17.0" layoutY="284.0" size="15" />
                </children>
             </AnchorPane>
             <Label fx:id="lblAccount" alignment="CENTER" layoutX="138.0" layoutY="46.0" prefHeight="21.0" prefWidth="102.0" text="Account" textFill="WHITE">
@@ -41,9 +53,9 @@
                </font></Label>
             <ImageView fx:id="imgView" fitHeight="71.0" fitWidth="77.0" layoutX="61.0" layoutY="21.0" pickOnBounds="true" preserveRatio="true" />
             <ButtonBar layoutY="1.0" prefHeight="40.0" prefWidth="49.0" />
-            <Button fx:id="closeBtn" layoutX="113.0" layoutY="420.0" minWidth="0.0" mnemonicParsing="false" onAction="#onClose" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: transparent; -fx-border-color: #fff;">
+            <Button fx:id="closeBtn" layoutX="113.0" layoutY="420.0" minWidth="0.0" mnemonicParsing="false" onAction="#onClose" prefHeight="50.0" prefWidth="50.0" styleClass="btn-close" stylesheets="@../styles/main.css">
                <graphic>
-                  <FontAwesomeIconView fill="WHITE" glyphName="TIMES" size="30" />
+                  <FontAwesomeIconView fill="WHITE" glyphName="TIMES" size="30" styleClass="icon-close" />
                </graphic>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -56,26 +68,63 @@
       </AnchorPane>
       <AnchorPane layoutX="238.0" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: cecece;">
          <children>
-            <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #fff;">
+            <Pane fx:id="pnlUpd" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #2583a8;">
                <children>
-                  <TextArea fx:id="infoCaptA1" layoutX="30.0" layoutY="268.0" prefHeight="212.0" prefWidth="648.0" />
-                  <Button fx:id="btnVerify" alignment="TOP_CENTER" layoutX="489.0" layoutY="14.0" mnemonicParsing="false" onAction="#verifyFinger" prefHeight="93.0" prefWidth="200.0" style="-fx-background-color: transparent; -fx-border-color: #234a7b;" text="Verify" textAlignment="CENTER" textFill="#234a7b" />
-                  <FontAwesomeIconView fill="#ff1744" glyphName="USER" layoutX="573.0" layoutY="82.0" size="40" />
-                  <AnchorPane layoutX="30.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-border-color: #bcbcbc; -fx-background-color: #d4d6d5;">
+                  <AnchorPane fx:id="frameUpdtA1" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
                      <children>
-                        <ImageView fx:id="imageVerifA" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="iupdateA1" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="278.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-border-color: #bcbcbc; -fx-background-color: #d4d6d5;">
+                  <TextArea fx:id="infoUpd" editable="false" layoutX="14.0" layoutY="349.0" prefHeight="154.0" prefWidth="681.0" promptText="Display Information " />
+                  <AnchorPane fx:id="frameUpdtB1" layoutX="181.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
                      <children>
-                        <ImageView fx:id="imageVerifB" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                        <ImageView fx:id="iupdateB1" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
-                  <Label layoutX="557.0" layoutY="151.0" text="Result" textFill="#4a4a4a">
+                  <Button fx:id="updBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#updateOk" prefHeight="55.0" prefWidth="186.0" styleClass="btn-enter" stylesheets="@../styles/main.css" text="Update" textFill="#234a7b">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="updBtnB1" layoutX="180.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptB1" prefHeight="55.0" prefWidth="156.0" styleClass="btn-capture" text="Capture B1" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="infoLabelB" alignment="CENTER_RIGHT" layoutX="509.0" layoutY="284.0" prefHeight="55.0" prefWidth="186.0" text="GET FINGER 2" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
+                  <Button fx:id="updBtnA1" layoutX="14.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptA1" prefHeight="55.0" prefWidth="154.0" styleClass="btn-capture" stylesheets="@../styles/main.css" text="Capture A1" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <AnchorPane fx:id="frameUpdtB2" layoutX="544.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
+                     <children>
+                        <ImageView fx:id="iupdateB2" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="frameUpdtA2" layoutX="377.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
+                     <children>
+                        <ImageView fx:id="iupdateA2" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+                  <Label fx:id="infoLabelA" layoutX="14.0" layoutY="284.0" prefHeight="55.0" prefWidth="186.0" text="GET FINGER 1" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="updBtnA2" layoutX="377.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptA2" prefHeight="55.0" prefWidth="154.0" styleClass="btn-capture" text="Capture A2" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="updBtnB2" layoutX="544.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptB2" prefHeight="55.0" prefWidth="154.0" styleClass="btn-capture" text="Capture B2" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
             <Pane fx:id="pnlConn" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #fff;">
@@ -146,9 +195,18 @@
                   <TextField fx:id="fieldDPI" layoutX="200.0" layoutY="262.0" />
                   <TextField fx:id="fieldHEIGHT" layoutX="200.0" layoutY="293.0" />
                   <TextField fx:id="fieldWIDTH" layoutX="200.0" layoutY="324.0" />
-                  <Button fx:id="btnInit" alignment="TOP_CENTER" layoutX="402.0" layoutY="14.0" mnemonicParsing="false" onAction="#onInit" prefHeight="93.0" prefWidth="294.0" style="-fx-background-color: transparent; -fx-border-color: #234a7b;" text="Initialize" textAlignment="CENTER" textFill="#234a7b" />
-                  <Button fx:id="btnOn" alignment="TOP_CENTER" contentDisplay="TOP" layoutX="402.0" layoutY="138.0" mnemonicParsing="false" onAction="#onLedOn" prefHeight="93.0" prefWidth="294.0" style="-fx-background-color: transparent; -fx-border-color: #234a7b;" text=" Led On" textFill="#234a7b" />
-                  <Button fx:id="btnOff" alignment="TOP_CENTER" layoutX="402.0" layoutY="262.0" mnemonicParsing="false" onAction="#onLedOff" prefHeight="93.0" prefWidth="294.0" style="-fx-background-color: transparent; -fx-border-color: #234a7b;" text="Led Off" textFill="#234a7b" />
+                  <Button fx:id="btnInit" alignment="CENTER" contentDisplay="TOP" layoutX="402.0" layoutY="14.0" mnemonicParsing="false" onAction="#onInit" prefHeight="93.0" prefWidth="294.0" styleClass="btn-init" text="Initialize" textAlignment="CENTER" textFill="#234b7a">
+                     <graphic>
+                        <FontAwesomeIconView fill="#39c7c9" glyphName="REFRESH" size="40" />
+                     </graphic></Button>
+                  <Button fx:id="btnOn" alignment="CENTER" contentDisplay="TOP" layoutX="402.0" layoutY="138.0" mnemonicParsing="false" onAction="#onLedOn" prefHeight="93.0" prefWidth="294.0" styleClass="btn-init" text=" Led On" textFill="#234a7b">
+                     <graphic>
+                        <FontAwesomeIconView fill="#2bc344" glyphName="CIRCLE" size="40" />
+                     </graphic></Button>
+                  <Button fx:id="btnOff" alignment="CENTER" contentDisplay="TOP" layoutX="402.0" layoutY="262.0" mnemonicParsing="false" onAction="#onLedOff" prefHeight="93.0" prefWidth="294.0" styleClass="btn-init" text="Led Off" textFill="#234a7b">
+                     <graphic>
+                        <FontAwesomeIconView fill="#c93636" glyphName="CLOSE" size="40" />
+                     </graphic></Button>
                   <TextArea fx:id="displayCon" layoutX="14.0" layoutY="365.0" prefHeight="138.0" prefWidth="571.0" promptText="Information Display..." style="-fx-border-color: #234a7b;">
                      <effect>
                         <Blend />
@@ -157,74 +215,12 @@
                         <Font size="14.0" />
                      </font>
                   </TextArea>
-                  <FontAwesomeIconView fill="#39c7c9" glyphName="REFRESH" layoutX="532.0" layoutY="79.0" size="40" />
-                  <FontAwesomeIconView fill="#2bc344" glyphName="CIRCLE" layoutX="532.0" layoutY="203.0" size="40" />
-                  <FontAwesomeIconView fill="#c93636" glyphName="CLOSE" layoutX="533.0" layoutY="327.0" size="40" />
                   <FontAwesomeIconView fx:id="incubLight" fill="#e0242c" glyphName="SQUARE" layoutX="625.0" layoutY="426.0" size="40" />
                   <Label fx:id="lblInfo" layoutX="621.0" layoutY="446.0" text="OFF" textFill="#0d5cab">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-               </children>
-            </Pane>
-            <Pane fx:id="pnlUpd" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #2583a8;">
-               <children>
-                  <AnchorPane fx:id="frameUpdtA1" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
-                     <children>
-                        <ImageView fx:id="iupdateA1" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </AnchorPane>
-                  <TextArea fx:id="infoUpd" editable="false" layoutX="14.0" layoutY="349.0" prefHeight="154.0" prefWidth="681.0" promptText="Display Information " />
-                  <AnchorPane fx:id="frameUpdtB1" layoutX="181.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
-                     <children>
-                        <ImageView fx:id="iupdateB1" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </AnchorPane>
-                  <Button fx:id="updBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#updateOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Update" textFill="#234a7b">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Button fx:id="updBtnB1" layoutX="180.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptB1" prefHeight="55.0" prefWidth="156.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B1" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Label fx:id="infoLabelB" alignment="CENTER_RIGHT" layoutX="509.0" layoutY="284.0" prefHeight="55.0" prefWidth="186.0" text="GET FINGER 2" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="updBtnA1" layoutX="14.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptA1" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture A1" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <AnchorPane fx:id="frameUpdtB2" layoutX="544.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
-                     <children>
-                        <ImageView fx:id="iupdateB2" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="frameUpdtA2" layoutX="377.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
-                     <children>
-                        <ImageView fx:id="iupdateA2" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </AnchorPane>
-                  <Label fx:id="infoLabelA" layoutX="14.0" layoutY="284.0" prefHeight="55.0" prefWidth="186.0" text="GET FINGER 1" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="updBtnA2" layoutX="377.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptA2" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture A2" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="updBtnB2" layoutX="544.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptB2" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B2" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
                </children>
             </Pane>
             <Pane fx:id="pnlReg" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #2583a8;">
@@ -240,21 +236,21 @@
                         <ImageView fx:id="iregistrasiB1" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="regBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#registrationOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Registrasi" textFill="#234a7b">
+                  <Button fx:id="regBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#registrationOk" prefHeight="55.0" prefWidth="186.0" styleClass="btn-enter" text="Registrasi" textFill="#234a7b">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
-                  <Button fx:id="regBtnB1" layoutX="180.0" layoutY="222.0" mnemonicParsing="false" onAction="#regCaptB1" prefHeight="55.0" prefWidth="156.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B1" textFill="WHITE">
+                  <Button fx:id="regBtnB1" layoutX="180.0" layoutY="222.0" mnemonicParsing="false" onAction="#regCaptB1" prefHeight="55.0" prefWidth="156.0" styleClass="btn-capture" text="Capture B1" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
                   <Label fx:id="infoFinger2" alignment="CENTER_RIGHT" layoutX="509.0" layoutY="284.0" prefHeight="55.0" prefWidth="186.0" text="GET FINGER 2" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="regBtnA1" layoutX="14.0" layoutY="222.0" mnemonicParsing="false" onAction="#regCaptA1" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture A1" textFill="WHITE">
+                  <Button fx:id="regBtnA1" layoutX="14.0" layoutY="222.0" mnemonicParsing="false" onAction="#regCaptA1" prefHeight="55.0" prefWidth="154.0" styleClass="btn-capture" text="Capture A1" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -271,19 +267,41 @@
                   </AnchorPane>
                   <Label fx:id="infoFinger1" layoutX="14.0" layoutY="284.0" prefHeight="55.0" prefWidth="186.0" text="GET FINGER 1" textFill="WHITE">
                      <font>
-                        <Font size="14.0" />
+                        <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="regBtnA2" layoutX="377.0" layoutY="222.0" mnemonicParsing="false" onAction="#regCaptA2" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture A2" textFill="WHITE">
+                  <Button fx:id="regBtnA2" layoutX="377.0" layoutY="222.0" mnemonicParsing="false" onAction="#regCaptA2" prefHeight="55.0" prefWidth="154.0" styleClass="btn-capture" text="Capture A2" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <Button fx:id="regBtnB2" layoutX="544.0" layoutY="222.0" mnemonicParsing="false" onAction="#regCaptB2" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B2" textFill="WHITE">
+                  <Button fx:id="regBtnB2" layoutX="544.0" layoutY="222.0" mnemonicParsing="false" onAction="#regCaptB2" prefHeight="55.0" prefWidth="154.0" styleClass="btn-capture" text="Capture B2" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlVerify" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #fff;">
+               <children>
+                  <TextArea fx:id="infoCaptA1" layoutX="30.0" layoutY="268.0" prefHeight="212.0" prefWidth="648.0" />
+                  <Button fx:id="btnVerify" alignment="TOP_CENTER" layoutX="489.0" layoutY="14.0" mnemonicParsing="false" onAction="#verifyFinger" prefHeight="93.0" prefWidth="200.0" styleClass="btn-verification" text="Verify" textAlignment="CENTER" textFill="#234a7b" />
+                  <FontAwesomeIconView fill="#ff1744" glyphName="USER" layoutX="573.0" layoutY="82.0" size="40" />
+                  <AnchorPane layoutX="30.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-border-color: #bcbcbc; -fx-background-color: #d4d6d5;">
+                     <children>
+                        <ImageView fx:id="imageVerifA" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane layoutX="278.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-border-color: #bcbcbc; -fx-background-color: #d4d6d5;">
+                     <children>
+                        <ImageView fx:id="imageVerifB" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+                  <Label layoutX="557.0" layoutY="151.0" text="Result" textFill="#4a4a4a">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
                </children>
             </Pane>
          </children>
