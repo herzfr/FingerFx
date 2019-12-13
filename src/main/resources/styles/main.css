@@ -1,0 +1,103 @@
+.btn-connect, .btn-verify {
+    -fx-background-color: #00000070;
+}
+
+.btn-connect:hover, .btn-verify:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.btn-connect:focused, .btn-verify:focused {
+    -fx-background-color: #fff;
+    -fx-text-fill: #3a3a3a;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 1;
+}
+
+
+.btn-update, .btn-registred {
+    -fx-background-color: #00000070;
+}
+
+
+.btn-update:hover, .btn-registred:hover {
+    -fx-background-color: #3a3a3a;
+}
+
+.btn-update:focused, .btn-registred:focused {
+    -fx-background-color: #2583a8;
+    -fx-text-fill: #fff;
+    -fx-background-insets: 0 0 -1 0, 0, 1, 1;
+}
+
+.btn-close {
+    -fx-background-color: transparent;
+    -fx-border-color: #fff;
+}
+
+.btn-close:hover {
+    -fx-background-color: #fff;
+}
+
+.icon-close:hover {
+    -fx-fill: #3a3a3a;
+    -fx-text-fill: #3a3a3a;
+}
+
+
+.btn-capture {
+    -fx-background-color: transparent;
+    -fx-border-color: #fff;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-text-fill: #fff;
+}
+
+.btn-capture:hover {
+    -fx-background-color: #fff;
+    -fx-text-fill: #3a3a3a;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.btn-capture:pressed {
+    -fx-scale-x: 0.9;
+}
+
+.btn-enter {
+    -fx-text-fill: #234a7b;
+    -fx-background-color: #fff;
+}
+
+.btn-enter:hover {
+    -fx-background-color: #3a3a3a;
+    -fx-border-color: #fff;
+    -fx-text-fill: #fff;
+}
+
+.btn-enter:pressed {
+    -fx-background-color: #3a3a3a;
+    -fx-border-color: #fff;
+    -fx-text-fill: #fff;
+}
+
+
+.btn-init {
+    -fx-background-color: transparent;
+    -fx-border-color: #234a7b;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.btn-init:hover, .btn-verification:hover {
+    -fx-background-color: #1cbfff4f;
+}
+
+.btn-init:pressed, .btn-verification:pressed {
+    -fx-background-color: #234a7b;
+    -fx-border-color: #3a3a3a;
+    -fx-text-fill: #fff;
+}
+
+.btn-verification {
+    -fx-background-color: transparent;
+    -fx-border-color:  #234a7b;
+}
