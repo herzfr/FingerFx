@@ -7,6 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
@@ -73,6 +74,38 @@ public class SceneUtility {
 
         homeStage.getIcons().add(new Image(SceneUtility.class.getResourceAsStream("/images/fingericon.png")));
         homeStage.initStyle(StageStyle.UNDECORATED);
+        homeStage.setScene(scene);
+        homeStage.show();
+    }
+
+
+    public void fingerScanLogin(Stage stage) throws IOException {
+//        Window stage = loginAnchor.getScene().getWindow();
+//        stage.hide();
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/ScanLogin.fxml"));
+
+        Scene scene = new Scene(root);
+        Stage homeStage = new Stage();
+
+        root.setOnMousePressed(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                xOffset = event.getSceneX();
+                yOffset = event.getSceneY();
+            }
+        });
+
+        root.setOnMouseDragged(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                homeStage.setX(event.getScreenX() - xOffset);
+                homeStage.setY(event.getScreenY() - yOffset);
+            }
+        });
+
+        homeStage.getIcons().add(new Image(SceneUtility.class.getResourceAsStream("/images/fingericon.png")));
+        homeStage.initStyle(StageStyle.UNDECORATED);
+        homeStage.initModality(Modality.APPLICATION_MODAL);
         homeStage.setScene(scene);
         homeStage.show();
     }

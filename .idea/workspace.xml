@@ -2,8 +2,20 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ea15eef-3a42-4a85-a36d-98c0ae1a096d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/ListFinger.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/ScanLoginController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/AuthenticateData.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/images/fingerLogo.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/FDxSDKPro.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/FDxSDKPro.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_secugen_secugen_1_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_secugen_secugen_1_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FingerMainApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FingerMainApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/FingerFx.iml" beforeDir="false" afterPath="$PROJECT_DIR$/FingerFx.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/LoginApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/LoginApp.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/SceneUtility.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/SceneUtility.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/ServerRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/ServerRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/fxml/Main.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/Main.fxml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/classes/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -18,44 +30,43 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FingerMainApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="339" column="8" selection-start-line="339" selection-start-column="8" selection-end-line="339" selection-end-column="8" />
+            <state relative-caret-position="1149">
+              <caret line="1069" column="143" selection-start-line="1069" selection-start-column="143" selection-end-line="1069" selection-end-column="143" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4723#4724#0" expanded="true" />
-                <element signature="e#4751#4752#0" expanded="true" />
+                <element signature="e#9699#9700#0" expanded="true" />
+                <element signature="e#9727#9728#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Main.fxml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/Consts.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="168" column="33" selection-start-line="168" selection-start-column="33" selection-end-line="168" selection-end-column="33" />
+            <state relative-caret-position="153">
+              <caret line="9" selection-start-line="9" selection-end-line="9" />
             </state>
           </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/LoginApp.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1054">
-              <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+            <state relative-caret-position="-105">
+              <caret line="50" selection-start-line="50" selection-end-line="50" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/SceneUtility.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/ServerRequest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+            <state relative-caret-position="180">
+              <caret line="17" column="19" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="19" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -64,27 +75,65 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FXMLController.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/ListFinger.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="357">
-              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            <state relative-caret-position="198">
+              <caret line="36" selection-start-line="36" selection-end-line="36" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#457#458#0" expanded="true" />
+                <element signature="e#487#488#0" expanded="true" />
+                <element signature="e#563#564#0" expanded="true" />
+                <element signature="e#601#602#0" expanded="true" />
+                <element signature="e#668#669#0" expanded="true" />
+                <element signature="e#697#698#0" expanded="true" />
+                <element signature="e#775#776#0" expanded="true" />
+                <element signature="e#811#812#0" expanded="true" />
+                <element signature="e#890#891#0" expanded="true" />
+                <element signature="e#938#939#0" expanded="true" />
+                <element signature="e#1025#1026#0" expanded="true" />
+                <element signature="e#1083#1084#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Scene.fxml">
-          <provider selected="true" editor-type-id="text-editor" />
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/AuthenticateData.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="323">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#278#279#0" expanded="true" />
+                <element signature="e#311#312#0" expanded="true" />
+                <element signature="e#376#377#0" expanded="true" />
+                <element signature="e#432#433#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/ScanLoginController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="337">
+              <caret line="217" column="77" selection-start-line="217" selection-start-column="77" selection-end-line="217" selection-end-column="77" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/ScanLogin.fxml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="425">
+              <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+            </state>
+          </provider>
           <provider editor-type-id="JavaFX-Scene-Builder" />
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/LoginService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
-            </state>
-          </provider>
         </entry>
       </file>
     </leaf>
@@ -114,7 +163,19 @@
       <find>regMin2</find>
       <find>initia</find>
       <find>initialize</find>
+      <find>homeScene</find>
+      <find>Appdata</find>
+      <find>colo</find>
+      <find>infoCaptA1</find>
+      <find>initveri</find>
+      <find>displayCon</find>
+      <find>runnin</find>
+      <find>getAuthFinger</find>
+      <find>server</find>
     </findStrings>
+    <replaceStrings>
+      <replace>textStatus</replace>
+    </replaceStrings>
     <dirStrings>
       <dir>C:\Users\Nepatyaz\Desktop\Project\Secugen\2-12-2019\FingerFx</dir>
     </dirStrings>
@@ -131,24 +192,27 @@
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/LoginResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/AuthenticateErrorResult.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/Dialog.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/ServerRequest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/home.fxml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/Main.fxml" />
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/CustomInterceptor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/Dialog.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/Consts.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/Singleton.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/AppData.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/LoginApp.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/MainApp.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/SceneUtility.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/LoginService.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/LoginService.java" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/Login.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/styles/Styles.css" />
+        <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/Consts.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/SceneUtility.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/ListFinger.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/AuthenticateData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/LoginApp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/ServerRequest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FingerMainApp.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/travest/fingerfx/ScanLoginController.java" />
       </list>
     </option>
   </component>
@@ -187,6 +251,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -243,6 +309,15 @@
               <item name="FingerFx" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="fingerfx" type="462c0819:PsiDirectoryNode" />
+              <item name="utility" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FingerFx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FingerFx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="resources" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -255,21 +330,35 @@
             </path>
             <path>
               <item name="FingerFx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FingerFx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FingerFx" type="b2602c69:ProjectViewProjectNode" />
+              <item name="FingerFx" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="FingerFx" type="b2602c69:ProjectViewProjectNode" />
               <item name="External Libraries" type="cb654da1:ExternalLibrariesNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../secugen" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/images" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="project.structure.last.edited" value="Libraries" />
@@ -278,17 +367,18 @@
     <property name="settings.editor.selected.configurable" value="Errors" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\Nepatyaz\Desktop\Project\Secugen\2-12-2019\FingerFx\src\main\resources\images" />
-      <recent name="C:\Users\Nepatyaz\Desktop\Project\Secugen\2-12-2019\FingerFx\src\main\resources\fxml" />
-      <recent name="C:\Users\Nepatyaz\Desktop\Project\Secugen\2-12-2019\FingerFx\src\main\resources\styles" />
-      <recent name="C:\Users\Nepatyaz\Desktop\Project\Secugen\2-12-2019\FingerFx\src\main\java\com\travest\fingerfx\Service" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\fella\Documents\NetBeansProjects\FingerFx\src\main\resources\secugen-sdk" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.travest.fingerfx.Entity" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\fella\Documents\NetBeansProjects\FingerFx\src\main\resources\secugen-sdk" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\DELL\Desktop\Project\secugen\13-12-2019\FingerFx\src\main\resources\images" />
+      <recent name="C:\Users\Nepatyaz\Desktop\Project\Secugen\2-12-2019\FingerFx\src\main\resources\images" />
+      <recent name="C:\Users\Nepatyaz\Desktop\Project\Secugen\2-12-2019\FingerFx\src\main\resources\fxml" />
+      <recent name="C:\Users\Nepatyaz\Desktop\Project\Secugen\2-12-2019\FingerFx\src\main\resources\styles" />
+      <recent name="C:\Users\Nepatyaz\Desktop\Project\Secugen\2-12-2019\FingerFx\src\main\java\com\travest\fingerfx\Service" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -342,6 +432,9 @@
       <workItem from="1575277462048" duration="4912000" />
       <workItem from="1576045418254" duration="4989000" />
       <workItem from="1576116459316" duration="385000" />
+      <workItem from="1576202310604" duration="843000" />
+      <workItem from="1576203434818" duration="1022000" />
+      <workItem from="1576204781640" duration="7805000" />
     </task>
     <task id="LOCAL-00001" summary="Herza">
       <created>1575269938220</created>
@@ -354,13 +447,13 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31871000" />
+    <option name="totallyTimeSpent" value="41510000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2771855" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2867804" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -370,7 +463,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32827735" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3997833" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -454,64 +547,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/Consts.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="52" selection-start-line="6" selection-start-column="52" selection-end-line="6" selection-end-column="52" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/AppData.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="139">
-          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
-          <folding>
-            <element signature="e#274#275#0" expanded="true" />
-            <element signature="e#325#326#0" expanded="true" />
-            <element signature="e#366#367#0" expanded="true" />
-            <element signature="e#405#406#0" expanded="true" />
-            <element signature="e#433#434#0" expanded="true" />
-            <element signature="e#482#483#0" expanded="true" />
-            <element signature="e#521#522#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/Dialog.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Login.fxml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="115">
-          <caret line="35" column="64" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="64" />
-        </state>
-      </provider>
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/ServerRequest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="425">
-          <caret line="35" column="42" selection-start-line="35" selection-start-column="42" selection-end-line="35" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/styles/Styles.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="35" selection-start-line="35" selection-end-line="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FingerMainApp.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="339" column="8" selection-start-line="339" selection-start-column="8" selection-end-line="339" selection-end-column="8" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#4723#4724#0" expanded="true" />
-            <element signature="e#4751#4752#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Main.fxml">
       <provider selected="true" editor-type-id="text-editor">
         <state>
@@ -520,38 +556,207 @@
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/LoginApp.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Scene.fxml">
+      <provider selected="true" editor-type-id="text-editor" />
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/Finger.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1054">
-          <caret line="78" column="33" selection-start-line="78" selection-start-column="33" selection-end-line="78" selection-end-column="33" />
+          <caret line="90" column="1" selection-start-line="90" selection-start-column="1" selection-end-line="90" selection-end-column="1" />
+          <folding>
+            <element signature="e#837#838#0" expanded="true" />
+            <element signature="e#868#869#0" expanded="true" />
+            <element signature="e#946#947#0" expanded="true" />
+            <element signature="e#986#987#0" expanded="true" />
+            <element signature="e#1047#1048#0" expanded="true" />
+            <element signature="e#1076#1077#0" expanded="true" />
+            <element signature="e#1148#1149#0" expanded="true" />
+            <element signature="e#1184#1185#0" expanded="true" />
+            <element signature="e#1247#1248#0" expanded="true" />
+            <element signature="e#1277#1278#0" expanded="true" />
+            <element signature="e#1352#1353#0" expanded="true" />
+            <element signature="e#1390#1391#0" expanded="true" />
+            <element signature="e#1455#1456#0" expanded="true" />
+            <element signature="e#1486#1487#0" expanded="true" />
+            <element signature="e#1564#1565#0" expanded="true" />
+            <element signature="e#1604#1605#0" expanded="true" />
+            <element signature="e#1671#1672#0" expanded="true" />
+            <element signature="e#1703#1704#0" expanded="true" />
+            <element signature="e#1784#1785#0" expanded="true" />
+            <element signature="e#1826#1827#0" expanded="true" />
+            <element signature="e#1905#1906#0" expanded="true" />
+            <element signature="e#1953#1954#0" expanded="true" />
+            <element signature="e#2040#2041#0" expanded="true" />
+            <element signature="e#2098#2099#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Login.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="64" selection-start-line="35" selection-start-column="56" selection-end-line="35" selection-end-column="64" />
+        </state>
+      </provider>
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/LoginService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="799">
+          <caret line="57" column="17" selection-start-line="57" selection-start-column="17" selection-end-line="57" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/styles/Styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="35" selection-start-line="35" selection-end-line="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/styles/bootstrap.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="164" column="23" selection-start-line="164" selection-start-column="19" selection-end-line="164" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/SceneUtility.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="22" column="33" selection-start-line="22" selection-start-column="33" selection-end-line="22" selection-end-column="33" />
+        <state relative-caret-position="368">
+          <caret line="62" column="44" lean-forward="true" selection-start-line="62" selection-start-column="44" selection-end-line="62" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FXMLController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/Consts.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        <state relative-caret-position="153">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/Scene.fxml">
-      <provider selected="true" editor-type-id="text-editor" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/Record.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-102">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/AppData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="25" column="5" lean-forward="true" selection-end-line="47" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/utility/AuthenticateData.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#278#279#0" expanded="true" />
+            <element signature="e#311#312#0" expanded="true" />
+            <element signature="e#376#377#0" expanded="true" />
+            <element signature="e#432#433#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FXMLController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/RequestResult2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/RequestResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Entity/ListFinger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="36" selection-start-line="36" selection-end-line="36" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#487#488#0" expanded="true" />
+            <element signature="e#563#564#0" expanded="true" />
+            <element signature="e#601#602#0" expanded="true" />
+            <element signature="e#668#669#0" expanded="true" />
+            <element signature="e#697#698#0" expanded="true" />
+            <element signature="e#775#776#0" expanded="true" />
+            <element signature="e#811#812#0" expanded="true" />
+            <element signature="e#890#891#0" expanded="true" />
+            <element signature="e#938#939#0" expanded="true" />
+            <element signature="e#1025#1026#0" expanded="true" />
+            <element signature="e#1083#1084#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/LoginApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-105">
+          <caret line="50" selection-start-line="50" selection-end-line="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/ScanLogin.fxml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="25" column="7" lean-forward="true" selection-start-line="25" selection-start-column="7" selection-end-line="25" selection-end-column="7" />
+        </state>
+      </provider>
       <provider editor-type-id="JavaFX-Scene-Builder" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/LoginService.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/Service/ServerRequest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="34" column="42" selection-start-line="34" selection-start-column="42" selection-end-line="34" selection-end-column="42" />
+        <state relative-caret-position="180">
+          <caret line="17" column="19" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/FingerMainApp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1149">
+          <caret line="1069" column="143" selection-start-line="1069" selection-start-column="143" selection-end-line="1069" selection-end-column="143" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#9699#9700#0" expanded="true" />
+            <element signature="e#9727#9728#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/travest/fingerfx/ScanLoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="337">
+          <caret line="217" column="77" selection-start-line="217" selection-start-column="77" selection-end-line="217" selection-end-column="77" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

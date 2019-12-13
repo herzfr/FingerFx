@@ -1,11 +1,11 @@
 <component name="libraryTable">
   <library name="FDxSDKPro">
     <CLASSES>
-      <root url="jar://$PROJECT_DIR$/src/main/resources/secugen-sdk/FDxSDKPro.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../6-11-2019/FDx SDK Pro for Windows v3.85_J1.12/FDx SDK Pro for Java Windows v1.12/FDxSDKPro.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES>
-      <root url="jar://$PROJECT_DIR$/src/main/resources/secugen-sdk/FDxSDKPro.jar!/" />
+      <root url="jar://$PROJECT_DIR$/../../6-11-2019/FDx SDK Pro for Windows v3.85_J1.12/FDx SDK Pro for Java Windows v1.12/FDxSDKPro.jar!/" />
     </SOURCES>
   </library>
 </component>
