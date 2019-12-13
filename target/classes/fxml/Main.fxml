@@ -292,7 +292,7 @@
                         <ImageView fx:id="imageVerifA" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="278.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-border-color: #bcbcbc; -fx-background-color: #d4d6d5;">
+                  <AnchorPane layoutX="200.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-border-color: #bcbcbc; -fx-background-color: #d4d6d5;">
                      <children>
                         <ImageView fx:id="imageVerifB" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
@@ -302,6 +302,11 @@
                         <Font size="24.0" />
                      </font>
                   </Label>
+                  <Text fill="#3c3c3c" layoutX="511.0" layoutY="505.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Travest Fingers Co. Ltd" wrappingWidth="166.6708984375">
+                     <font>
+                        <Font name="System Italic" size="15.0" />
+                     </font>
+                  </Text>
                </children>
             </Pane>
          </children>

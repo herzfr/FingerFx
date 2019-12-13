@@ -47,14 +47,12 @@ public class LoginApp {
     private Button fingerScan;
 
     @FXML
-    void fingerLogin(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Information");
-        alert.setHeaderText(null);
-        alert.setContentText("Start Finger Scan Device");
-        alert.initModality(Modality.NONE);
+    void fingerLogin(ActionEvent event) throws IOException {
 
-        alert.showAndWait();
+        Window stage = loginAnchor.getScene().getWindow();
+        SceneUtility sceneUtility = new SceneUtility();
+        sceneUtility.fingerScanLogin((Stage) loginAnchor.getScene().getWindow());
+
     }
 
     @FXML

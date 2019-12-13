@@ -1,6 +1,8 @@
 <component name="libraryTable">
   <library name="Maven: com.secugen:secugen:1.0">
-    <CLASSES />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/secugen/secugen/1.0/secugen-1.0.jar!/" />
+    </CLASSES>
     <JAVADOC>
       <root url="jar://$MAVEN_REPOSITORY$/com/secugen/secugen/1.0/secugen-1.0-javadoc.jar!/" />
     </JAVADOC>
