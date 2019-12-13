@@ -168,65 +168,6 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="pnlUpd" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #2583a8;">
-               <children>
-                  <AnchorPane fx:id="frameUpdtA1" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
-                     <children>
-                        <ImageView fx:id="iupdateA1" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </AnchorPane>
-                  <TextArea fx:id="infoUpd" editable="false" layoutX="14.0" layoutY="349.0" prefHeight="154.0" prefWidth="681.0" promptText="Display Information " />
-                  <AnchorPane fx:id="frameUpdtB1" layoutX="181.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
-                     <children>
-                        <ImageView fx:id="iupdateB1" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </AnchorPane>
-                  <Button fx:id="updBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#updateOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Update" textFill="#234a7b">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></Button>
-                  <Button fx:id="updBtnB1" layoutX="180.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptB1" prefHeight="55.0" prefWidth="156.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B1" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Label fx:id="infoLabelB" alignment="CENTER_RIGHT" layoutX="509.0" layoutY="284.0" prefHeight="55.0" prefWidth="186.0" text="GET FINGER 2" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="updBtnA1" layoutX="14.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptA1" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture A1" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <AnchorPane fx:id="frameUpdtB2" layoutX="544.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
-                     <children>
-                        <ImageView fx:id="iupdateB2" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </AnchorPane>
-                  <AnchorPane fx:id="frameUpdtA2" layoutX="377.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
-                     <children>
-                        <ImageView fx:id="iupdateA2" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
-                     </children>
-                  </AnchorPane>
-                  <Label fx:id="infoLabelA" layoutX="14.0" layoutY="284.0" prefHeight="55.0" prefWidth="186.0" text="GET FINGER 1" textFill="WHITE">
-                     <font>
-                        <Font size="24.0" />
-                     </font>
-                  </Label>
-                  <Button fx:id="updBtnA2" layoutX="377.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptA2" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture A2" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-                  <Button fx:id="updBtnB2" layoutX="544.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptB2" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B2" textFill="WHITE">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-            </Pane>
             <Pane fx:id="pnlReg" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #2583a8;">
                <children>
                   <AnchorPane fx:id="frameUpdtA" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
@@ -240,11 +181,16 @@
                         <ImageView fx:id="iregistrasiB1" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
-                  <Button fx:id="regBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#registrationOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Registrasi" textFill="#234a7b">
+<<<<<<< Updated upstream
+                  <Button fx:id="updBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#updateOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Update" textFill="#234a7b">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Button>
+                  <Button fx:id="updBtnB1" layoutX="180.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptB1" prefHeight="55.0" prefWidth="156.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B1" textFill="WHITE">
+=======
+                  <Button fx:id="regBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#registrationOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Registrasi" textFill="#234a7b" />
                   <Button fx:id="regBtnB1" layoutX="180.0" layoutY="222.0" mnemonicParsing="false" onAction="#regCaptB1" prefHeight="55.0" prefWidth="156.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B1" textFill="WHITE">
+>>>>>>> Stashed changes
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
@@ -259,12 +205,12 @@
                         <Cursor fx:constant="HAND" />
                      </cursor>
                   </Button>
-                  <AnchorPane fx:id="frameRegA1" layoutX="544.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
+                  <AnchorPane fx:id="frameUpdtA1" layoutX="544.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
                      <children>
                         <ImageView fx:id="iregistrasiB2" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane fx:id="frameRegA2" layoutX="377.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
+                  <AnchorPane fx:id="frameUpdtA2" layoutX="377.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
                      <children>
                         <ImageView fx:id="iregistrasiA2" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
                      </children>
@@ -280,6 +226,74 @@
                      </cursor>
                   </Button>
                   <Button fx:id="regBtnB2" layoutX="544.0" layoutY="222.0" mnemonicParsing="false" onAction="#regCaptB2" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B2" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+               </children>
+            </Pane>
+            <Pane fx:id="pnlUpd" prefHeight="513.0" prefWidth="712.0" style="-fx-background-color: #2583a8;">
+               <children>
+                  <AnchorPane fx:id="frameUpdtA1" layoutX="14.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
+                     <children>
+                        <ImageView fx:id="iupdateA1" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+                  <TextArea fx:id="infoUpd" editable="false" layoutX="14.0" layoutY="349.0" prefHeight="154.0" prefWidth="681.0" promptText="Display Information " />
+                  <AnchorPane fx:id="frameUpdtB1" layoutX="181.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
+                     <children>
+                        <ImageView fx:id="iupdateB1" fitHeight="200.0" fitWidth="154.0" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+<<<<<<< Updated upstream
+                  <Button fx:id="regBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#registrationOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Registrasi" textFill="#234a7b">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Button>
+                  <Button fx:id="regBtnB1" layoutX="180.0" layoutY="222.0" mnemonicParsing="false" onAction="#regCaptB1" prefHeight="55.0" prefWidth="156.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B1" textFill="WHITE">
+=======
+                  <Button fx:id="updBtnOk" layoutX="263.0" layoutY="284.0" mnemonicParsing="false" onAction="#updateOk" prefHeight="55.0" prefWidth="186.0" style="-fx-background-color: #fff;" text="Update" textFill="#234a7b" />
+                  <Button fx:id="updBtnB1" layoutX="180.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptB1" prefHeight="55.0" prefWidth="156.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B1" textFill="WHITE">
+>>>>>>> Stashed changes
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Label fx:id="infoLabelB" alignment="CENTER_RIGHT" layoutX="509.0" layoutY="284.0" prefHeight="55.0" prefWidth="186.0" text="GET FINGER 2" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="updBtnA1" layoutX="14.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptA1" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture A1" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+<<<<<<< Updated upstream
+                  <AnchorPane fx:id="frameRegA1" layoutX="544.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
+=======
+                  <AnchorPane fx:id="frameUpdtB2" layoutX="544.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
+>>>>>>> Stashed changes
+                     <children>
+                        <ImageView fx:id="iupdateB2" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+                  <AnchorPane fx:id="frameRegA2" layoutX="377.0" layoutY="14.0" prefHeight="200.0" prefWidth="154.0" style="-fx-background-color: #e6e6e6;">
+                     <children>
+                        <ImageView fx:id="iupdateA2" fitHeight="200.0" fitWidth="154.0" nodeOrientation="INHERIT" pickOnBounds="true" preserveRatio="true" />
+                     </children>
+                  </AnchorPane>
+                  <Label fx:id="infoLabelA" layoutX="14.0" layoutY="284.0" prefHeight="55.0" prefWidth="186.0" text="GET FINGER 1" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Button fx:id="updBtnA2" layoutX="377.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptA2" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture A2" textFill="WHITE">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
+                  <Button fx:id="updBtnB2" layoutX="544.0" layoutY="222.0" mnemonicParsing="false" onAction="#updCaptB2" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: transparent; -fx-border-color: #fff;" text="Capture B2" textFill="WHITE">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor>
