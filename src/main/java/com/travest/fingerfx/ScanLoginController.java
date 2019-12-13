@@ -1,21 +1,23 @@
 package com.travest.fingerfx;
 
 import SecuGen.FDxSDKPro.jni.*;
-import com.sun.org.apache.xpath.internal.operations.String;
 import com.travest.fingerfx.Entity.Finger;
 import com.travest.fingerfx.Service.ServerRequest;
 import com.travest.fingerfx.utility.AuthenticateData;
 import com.travest.fingerfx.utility.Dialog;
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextArea;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 import java.awt.image.BufferedImage;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -36,50 +38,37 @@ public class ScanLoginController implements Initializable {
     private long deviceName;
     private long devicePort;
 
-    // Verification ============
+    // Verification =========================
     byte[] imageBufferVerify1;
-    byte[] imageBufferVerify2;
-
-    private byte[] regMinC = new byte[400];
-    private byte[] regMinD = new byte[400];
-    private byte[] regMinE = new byte[400];
-
     private byte[] regVerify1 = new byte[400];
     private byte[] regVerify2 = new byte[400];
     private byte[] regVerify3 = new byte[400];
-
     private BufferedImage imgVerif;
-    private BufferedImage imgVerif2;
-
-    public String fingerVerif1 = null;
-    public String fingerVerif2 = null;
-    byte[] imgByteVerif;
-    byte[] imgByteVerif2;
-
-    //verification tab properties
+    // end verification properties ===========
 
 
+    @FXML
+    private AnchorPane ancorScane;
     @FXML
     private ImageView imageVerifA;
     @FXML
     private TextArea textStatus;
     @FXML
     private Button btnScan;
+    @FXML
+    private FontAwesomeIconView closeBtnLogin;
 
+    @FXML
+    void closeScanLogin(MouseEvent event) {
+        Stage stage = (Stage) ancorScane.getScene().getWindow();
+        stage.close();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
         initialize();
         Boolean status = serverRequest.getAuthFinger();
-        if (status) {
-//            System.out.println("running oke");
-        } else {
-//            System.out.println("running false");
-        }
-
     }
-
 
     private void initialize() {
         textStatus.setText("");
@@ -140,10 +129,9 @@ public class ScanLoginController implements Initializable {
     void scanFinger(ActionEvent event) {
         System.out.println("scanning yout finger ");
 
-
         int[] quality = new int[1];
-        long nfiqvalue;
-        int[] numOfMinutes = new int[1];
+//        long nfiqvalue;
+//        int[] numOfMinutes = new int[1];
 
         // Global BufferedImage
         imgVerif = new BufferedImage(dvcInfo.imageWidth, dvcInfo.imageHeight, BufferedImage.TYPE_BYTE_GRAY);
@@ -169,7 +157,6 @@ public class ScanLoginController implements Initializable {
                     textStatus.appendText("Thank You\n");
                     ret = jsgfpLib.CreateTemplate(fingerInfo, imageBufferVerify1, regVerify3);
                     compareTemplate(regVerify3);
-
                 }
             } else {
                 textStatus.appendText("Captured A is Failed\n");
@@ -184,8 +171,6 @@ public class ScanLoginController implements Initializable {
 
 
     void compareTemplate(byte[] scannedTemplate) {
-
-
         List<Finger> data;
 
         data = authenticateData.getFingerList();
@@ -206,10 +191,7 @@ public class ScanLoginController implements Initializable {
                 textStatus.setText("");
                 textStatus.appendText("Username Anda =>" + temp.getUsername());
                 textStatus.appendText("\nOn Finger 1");
-//                System.out.println("index =>" + i + " Success");
-//                System.out.println("username anda =>" + temp.getUsername());
                 break;
-
             } else {
                 textStatus.setText("");
                 textStatus.appendText("1st Verification Failed\n");
@@ -218,14 +200,12 @@ public class ScanLoginController implements Initializable {
                     break;
                 }
             }
-//            i++;
         }
     }
 
 
     boolean compare2ndFinger(Finger finger, byte[] scannedTemplate) {
 
-        int[] matchScore = new int[1];
         boolean[] matched = new boolean[1];
         long secuLevel = SGFDxSecurityLevel.SL_NORMAL;
         matched[0] = false;
@@ -236,9 +216,6 @@ public class ScanLoginController implements Initializable {
             textStatus.setText("");
             textStatus.appendText("Username Anda => " + finger.getUsername());
             textStatus.appendText("\nOn Finger 2");
-//            textStatus.appendText("index : " + i);
-//            System.out.println("index =>" + i + " Success");
-//            System.out.println("username anda =>" + finger.getUsername());
             return true;
         } else {
             textStatus.setText("Verification Failed\n");
