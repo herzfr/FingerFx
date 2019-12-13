@@ -126,10 +126,6 @@ public class ScanLoginController implements Initializable {
                 textStatus.setText("Open Device Success \n");
                 textStatus.appendText("Waiting scan your finger \n");
 
-
-//                System.out.println("authenticate data : " +authenticateData.getFingerList().size() );
-
-
                 ret = jsgfpLib.GetDeviceInfo(dvcInfo);
                 if (ret == SGFDxErrorCode.SGFDX_ERROR_NONE) {
                 } else {
@@ -171,9 +167,7 @@ public class ScanLoginController implements Initializable {
                 } else {
                     textStatus.appendText("Get Image Success\n");
                     textStatus.appendText("Thank You\n");
-
                     ret = jsgfpLib.CreateTemplate(fingerInfo, imageBufferVerify1, regVerify3);
-
                     compareTemplate(regVerify3);
 
                 }

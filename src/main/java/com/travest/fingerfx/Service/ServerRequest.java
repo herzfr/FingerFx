@@ -40,8 +40,8 @@ public class ServerRequest {
         ByteArrayOutputStream bAOS2 = new ByteArrayOutputStream();
 
         try {
-            ImageIO.write(finger, "gif", bAOS);
-            ImageIO.write(finger2, "gif", bAOS);
+            ImageIO.write(finger, "jpg", bAOS);
+            ImageIO.write(finger2, "jpg", bAOS);
             byte[] imageByte = bAOS.toByteArray();
             byte[] imageByte2 = bAOS2.toByteArray();
             fingerImage1 = Base64.getEncoder().encodeToString(imageByte);
@@ -105,7 +105,7 @@ public class ServerRequest {
         ByteArrayOutputStream bAOS2 = new ByteArrayOutputStream();
 
         try {
-            ImageIO.write(finger, "gif", bAOS);
+            ImageIO.write(finger, "jpg", bAOS);
             byte[] imageByte = bAOS.toByteArray();
             fingerImage1 = Base64.getEncoder().encodeToString(imageByte);
         } catch (IOException e) {
@@ -113,7 +113,7 @@ public class ServerRequest {
         }
 
         try {
-            ImageIO.write(finger2, "gif", bAOS2);
+            ImageIO.write(finger2, "jpg", bAOS2);
             byte[] imageByte2 = bAOS2.toByteArray();
             fingerImage2 = Base64.getEncoder().encodeToString(imageByte2);
         } catch (IOException e) {
